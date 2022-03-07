@@ -83,6 +83,12 @@ const navigations = [
         name: "Internal Documents",
         basePath: "/cdc/internal-documents",
       },
+      {
+        id: 11,
+        uKey: "cdc-external-documents", //unique readable key
+        name: "External Documents",
+        basePath: "/cdc/external-documents",
+      },
     ],
   },
 

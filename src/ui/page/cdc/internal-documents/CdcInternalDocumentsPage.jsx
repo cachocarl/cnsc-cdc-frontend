@@ -5,6 +5,9 @@ import ContentTab from "../../../component/tabs/ContentTab";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import DicrRegistrationAndMonitoringFormPage from "./DicrRegistrationAndMonitoringFormPage";
 import MasterListPageInternal from "./MasterListPageInternal";
+import IssuanceAndRevisionHistoryPage from "./IssuanceAndRevisionHistoryPage";
+import IssuanceAndRetrievalPage from "./IssuanceAndRetrievalPage";
+import ScheduleAndMonitoringPage from "./ScheduleAndMonitoringPage";
 
 const CdcInternalDocumentsPage = () => {
   const navigatorContext = useContext(NavigatorContext);
@@ -27,7 +30,18 @@ const CdcInternalDocumentsPage = () => {
           {
             title: "Issuance And Revision History",
             key: "tab3",
-            content: <MasterListPageInternal />,
+            content: <IssuanceAndRevisionHistoryPage />,
+          },
+          {
+            title: "Issuance And Retrieval",
+            key: "tab4",
+            content: <IssuanceAndRetrievalPage />,
+          },
+          {
+            title:
+              "Schedule and Monitoring of QMS Documented Information Backup",
+            key: "tab5",
+            content: <ScheduleAndMonitoringPage />,
           },
         ]}
       />
