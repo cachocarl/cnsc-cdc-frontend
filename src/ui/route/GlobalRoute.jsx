@@ -11,6 +11,7 @@ import RequestDocumentInfoPage from "../page/transactions/request-document-info/
 import ApproveDocumentsPage from "../page/documents/approve-documents/ApproveDocumentsPage";
 import ArchivePage from "../page/documents/archive/ArchivePage";
 import AboutPage from "../page/about/AboutPage";
+import CdcInternalDocumentsPage from "../page/cdc/internal-documents/CdcInternalDocumentsPage";
 
 //This will serve as the base router for all pages
 const GlobalRoute = () => {
@@ -48,9 +49,11 @@ const GlobalRoute = () => {
             />
 
             <Route
-              path="/about"
-              element={<AboutPage />}
+              path="/cdc/internal-documents"
+              element={<CdcInternalDocumentsPage />}
             />
+
+            <Route path="/about" element={<AboutPage />} />
 
             <Route path="documents/archive" element={<ArchivePage />} />
           </Route>

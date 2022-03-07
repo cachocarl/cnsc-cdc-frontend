@@ -20,54 +20,6 @@ const dataSource = [
     dateinitiated: "01-26-22",
     status: "Approved",
   },
-  {
-    docinfotitle: "Sample Document Change Request #3",
-    docutype: "Procedure",
-    dateinitiated: "02-01-22",
-    status: "Approved",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #4",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #5",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #7",
-    docutype: "Procedure",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #8",
-    docutype: "Procedure",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #9",
-    docutype: "Procedure",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #10",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #11",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
 ];
 
 const column = [

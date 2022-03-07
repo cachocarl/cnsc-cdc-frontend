@@ -1,4 +1,4 @@
-import { PageHeader } from "antd";
+import { PageHeader, Table } from "antd";
 import React, { useContext } from "react";
 import ContentTab from "../../component/tabs/ContentTab";
 import NavigatorContext from "../../../service/context/NavigatorContext";
@@ -12,9 +12,8 @@ const HomePage = () => {
       <ContentTab
         content={[
           {
-            title: "",
-            key: "tab2",
-            content: <div className="base-container">Content Here</div>,
+            title: "Tab 1",
+            key: "tab1",
           },
         ]}
       />
