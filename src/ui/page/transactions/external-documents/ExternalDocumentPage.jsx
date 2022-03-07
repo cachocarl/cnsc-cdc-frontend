@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import InternalDocumentDrawer from "../../../component/drawer/InternalDocumentDrawer";
 
@@ -100,18 +100,20 @@ const column = [
     },
   },
   {
-    title: 'Action',
-    key: 'operation',
-    fixed: 'right',
+    title: "Action",
+    key: "operation",
+    fixed: "right",
     width: 100,
-    render: () => <Space> 
-      <Tooltip title="Edit">
-      <Button icon={<EditOutlined/>} />
-    </Tooltip>
-    <Tooltip title="Delete">
-      <Button type="primary" danger ghost icon={<DeleteOutlined/>} />
-    </Tooltip>
-    </Space>,
+    render: () => (
+      <Space>
+        <Tooltip title="Edit">
+          <Button icon={<EditOutlined />} />
+        </Tooltip>
+        <Tooltip title="Delete">
+          <Button type="primary" danger ghost icon={<DeleteOutlined />} />
+        </Tooltip>
+      </Space>
+    ),
   },
 ];
 
@@ -136,7 +138,7 @@ const ExternalDocumentPage = () => {
        Request List"
         subTitle="View List of my Request"
         extra={[
-          <Button type="primary" icon={<PlusOutlined/>} onClick={showDrawer}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
             Create New Form Request
           </Button>,
         ]}

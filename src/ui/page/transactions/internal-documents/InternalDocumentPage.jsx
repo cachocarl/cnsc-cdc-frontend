@@ -20,54 +20,6 @@ const dataSource = [
     dateinitiated: "01-26-22",
     status: "Approved",
   },
-  {
-    docinfotitle: "Sample Document Change Request #3",
-    docutype: "Procedure",
-    dateinitiated: "02-01-22",
-    status: "Approved",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #4",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #5",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #7",
-    docutype: "Procedure",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #8",
-    docutype: "Procedure",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #9",
-    docutype: "Procedure",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #10",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #11",
-    docutype: "Policy",
-    dateinitiated: "02-03-22",
-    status: "Registered",
-  },
 ];
 
 const column = [
@@ -127,14 +79,14 @@ const InternalDocumentPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("internal-documents");
 
-  const [visible1, setVisible1] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
 
-  const showDrawer1 = () => {
-    setVisible1(true);
+  const showDrawer = () => {
+    setVisible(true);
   };
 
-  const onClose1 = () => {
-    setVisible1(false);
+  const onClose = () => {
+    setVisible(false);
   };
 
   return (
@@ -144,7 +96,7 @@ const InternalDocumentPage = () => {
        Request List"
         subTitle="View List of my Request"
         extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer1}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
             Create New Form Request
           </Button>,
         ]}
@@ -164,14 +116,14 @@ const InternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer1();
+                showDrawer();
               }, // double click row
             };
           }}
         />
       </div>
 
-      <InternalDocumentDrawers visible={visible1} onClose={onClose1} />
+      <InternalDocumentDrawers visible={visible} onClose={onClose} />
     </>
   );
 };

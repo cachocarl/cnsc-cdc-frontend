@@ -68,14 +68,37 @@ const navigations = [
       },
     ],
   },
+
   {
     id: 9,
+    uKey: "cdc", //unique readable key
+    name: "CDC - Transactions",
+    basePath: null,
+    icon: <FileTextOutlined />,
+
+    sub: [
+      {
+        id: 10,
+        uKey: "cdc-internal-documents", //unique readable key
+        name: "Internal Documents",
+        basePath: "/cdc/internal-documents",
+      },
+      {
+        id: 11,
+        uKey: "cdc-external-documents", //unique readable key
+        name: "External Documents",
+        basePath: "/cdc/external-documents",
+      },
+    ],
+  },
+
+  {
+    id: 15,
     uKey: "about", //unique readable key
     name: "About",
     basePath: "/about",
     icon: <HeartOutlined />,
   },
-
 
   //Add more navigations here
 ];

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import InternalDocumentDrawer from "../../../component/drawer/InternalDocumentDrawer";
 
@@ -74,7 +74,6 @@ const column = [
     title: "Document Type",
     dataIndex: "docutype",
     key: "docutype",
-    
   },
   {
     title: "Document Information Title",
@@ -92,8 +91,6 @@ const column = [
     dataIndex: "status",
     key: "status",
 
-    
-
     render: (data, record) => {
       return data === "Registered" ? (
         <Tag color="blue">Registered</Tag>
@@ -103,22 +100,22 @@ const column = [
     },
   },
   {
-    title: 'Action',
-    key: 'operation',
-    fixed: 'right',
+    title: "Action",
+    key: "operation",
+    fixed: "right",
     width: 100,
 
-    render: () => 
-     <Space>
-      <Tooltip title="Edit">
-      <Button icon={<EditOutlined/>} />
-    </Tooltip>
+    render: () => (
+      <Space>
+        <Tooltip title="Edit">
+          <Button icon={<EditOutlined />} />
+        </Tooltip>
 
-    <Tooltip title="Delete">
-      <Button danger icon={<DeleteOutlined/>} />
-    </Tooltip>
-    </Space>,
-    
+        <Tooltip title="Delete">
+          <Button danger icon={<DeleteOutlined />} />
+        </Tooltip>
+      </Space>
+    ),
   },
 ];
 
@@ -143,7 +140,7 @@ const RequestDocumentInfoPage = () => {
        Request List"
         subTitle="View List of my Request"
         extra={[
-          <Button type="primary" icon={<PlusOutlined/>} onClick={showDrawer}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
             Create New Form Request
           </Button>,
         ]}
