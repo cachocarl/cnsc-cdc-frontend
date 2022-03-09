@@ -1,43 +1,40 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Input,PageHeader, Table, Tag, } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
+import ApproveDicrDrawer from "../../../component/drawer/approveDrawer/ApproveDicrDrawe";
+
 
 const { Search } = Input;
 
 const dataSource = [
   {
-    docinfotitle: "Registration and Monitoring Form Rev.0",
-    docutype: "CNSC-SP-QMS-01F2-DICR",
+    docinfotitle: "Sample Document Change Request #1",
+    docutype: "Policy",
     dateinitiated: "01-13-22",
     status: "Registered",
   },
   {
-    docinfotitle: "Documented Info. Change Request DICR Rev.0",
-    docutype: "CNSC-SP-QMS-01F1",
+    docinfotitle: "Sample Document Change Request #2",
+    docutype: "Procedure",
     dateinitiated: "01-26-22",
-    status: "Approved",
-  },
-  {
-    docinfotitle: "Master List of Internal Documented Information Rev.0",
-    docutype: "CNSC-SP-QMS-01F3",
-    dateinitiated: "02-01-22",
-    status: "Approved",
+    status: "Registered",
   },
 ];
 
 const column = [
   {
-    title: "Document Type",
-    dataIndex: "docutype",
-    key: "docutype",
-  },
-  {
     title: "Document Information Title",
     dataIndex: "docinfotitle",
     key: "docuinfotitle",
     width: 450,
+  },
+  {
+    title: "Document Type",
+    dataIndex: "docutype",
+    key: "docutype",
+    onFilter: (value, record) => record.docutype.indexOf(value) === 0,
+    sorter: (a, b) => a.docutype.length - b.docutype.length,
+    sortDirections: ["ascend"],
   },
   {
     title: "Date Initiated",
@@ -57,29 +54,12 @@ const column = [
       );
     },
   },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
 
-    render: () => (
-      <Space>
-        <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
-        </Tooltip>
-
-        <Tooltip title="Delete">
-          <Button danger icon={<DeleteOutlined />} />
-        </Tooltip>
-      </Space>
-    ),
-  },
 ];
 
-const RequestDocumentInfoPage = () => {
+const ApproveInternalDocumentPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("user-request-document-info");
+  navigatorContext.setSelectedKey("approve-internal-documents");
 
   const [visible, setVisible] = React.useState(false);
 
@@ -94,13 +74,10 @@ const RequestDocumentInfoPage = () => {
   return (
     <>
       <PageHeader
-        title="List of Request for Documented Information"
+        title="My Internal Document
+       Request List"
         subTitle="View List of my Request"
-        extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
-            Create New Form Request
-          </Button>,
-        ]}
+
       ></PageHeader>
 
       <div className="base-container">
@@ -124,9 +101,9 @@ const RequestDocumentInfoPage = () => {
         />
       </div>
 
-      <ReqDocInfoDrawer visible={visible} onClose={onClose} />
+      <ApproveDicrDrawer visible={visible} onClose={onClose} />
     </>
   );
 };
 
-export default RequestDocumentInfoPage;
+export default ApproveInternalDocumentPage;

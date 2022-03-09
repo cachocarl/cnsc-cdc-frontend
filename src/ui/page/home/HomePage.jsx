@@ -1,4 +1,4 @@
-import { PageHeader, Table } from "antd";
+import { PageHeader, } from "antd";
 import React, { useContext } from "react";
 import ContentTab from "../../component/tabs/ContentTab";
 import NavigatorContext from "../../../service/context/NavigatorContext";

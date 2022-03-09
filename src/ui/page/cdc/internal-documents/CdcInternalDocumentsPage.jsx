@@ -11,7 +11,7 @@ import ScheduleAndMonitoringPage from "./ScheduleAndMonitoringPage";
 
 const CdcInternalDocumentsPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("internal-documents");
+  navigatorContext.setSelectedKey("cdc-internal-documents");
   return (
     <>
       <PageHeader title="Internal Documents"></PageHeader>

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Input, PageHeader, Table, Tag, } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
 
@@ -17,13 +16,13 @@ const dataSource = [
     docinfotitle: "Documented Info. Change Request DICR Rev.0",
     docutype: "CNSC-SP-QMS-01F1",
     dateinitiated: "01-26-22",
-    status: "Approved",
+    status: "Registered",
   },
   {
     docinfotitle: "Master List of Internal Documented Information Rev.0",
     docutype: "CNSC-SP-QMS-01F3",
     dateinitiated: "02-01-22",
-    status: "Approved",
+    status: "Registered",
   },
 ];
 
@@ -57,29 +56,11 @@ const column = [
       );
     },
   },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-
-    render: () => (
-      <Space>
-        <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
-        </Tooltip>
-
-        <Tooltip title="Delete">
-          <Button danger icon={<DeleteOutlined />} />
-        </Tooltip>
-      </Space>
-    ),
-  },
 ];
 
-const RequestDocumentInfoPage = () => {
+const ApproveRequestDocumentInfoPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("user-request-document-info");
+  navigatorContext.setSelectedKey("approve-request-document-info");
 
   const [visible, setVisible] = React.useState(false);
 
@@ -96,11 +77,6 @@ const RequestDocumentInfoPage = () => {
       <PageHeader
         title="List of Request for Documented Information"
         subTitle="View List of my Request"
-        extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
-            Create New Form Request
-          </Button>,
-        ]}
       ></PageHeader>
 
       <div className="base-container">
@@ -129,4 +105,4 @@ const RequestDocumentInfoPage = () => {
   );
 };
 
-export default RequestDocumentInfoPage;
+export default ApproveRequestDocumentInfoPage;

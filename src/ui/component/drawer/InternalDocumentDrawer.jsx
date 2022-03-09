@@ -39,7 +39,7 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-const InternalDocumentDrawers = ({ visible, onClose }) => {
+const InternalDocumentDrawer = ({ visible, onClose }) => {
   function showConfirm() {
     confirm({
       title: "Submit Request?",
@@ -73,21 +73,18 @@ const InternalDocumentDrawers = ({ visible, onClose }) => {
       }
     >
       <Steps progressDot current={0}>
+        <Step title="Initiate Request" description="You're currently here." />
         <Step
-          title="Creating your Request"
-          description="You're currently here."
-        />
-        <Step
-          title="Your request is being registered by CDC"
+          title="Request is received and registered by CDC"
           description="Waiting"
         />
         <Step
-          title="Your request is being reviewed by Authority"
-          description="Waiting."
+          title="Request reviewed by Authority"
+          description="This is a description."
         />
         <Step
-          title="Your request is being approved by Authority"
-          description="Waiting."
+          title="Request approved by Authority"
+          description="This is a description."
         />
       </Steps>
       <Divider></Divider>
@@ -228,14 +225,14 @@ const InternalDocumentDrawers = ({ visible, onClose }) => {
               label="Description and Purpose of Documentation Request"
               rules={[
                 {
-                  required: false,
-                  message: "Please ",
+                  required: true,
+                  message: "please enter url description",
                 },
               ]}
             >
               <Input.TextArea
                 rows={4}
-                placeholder="Please enter your description and purpose of documentation request here"
+                placeholder="please enter url description"
               />
             </Form.Item>
           </Col>
@@ -245,4 +242,4 @@ const InternalDocumentDrawers = ({ visible, onClose }) => {
   );
 };
 
-export default InternalDocumentDrawers;
+export default InternalDocumentDrawer;

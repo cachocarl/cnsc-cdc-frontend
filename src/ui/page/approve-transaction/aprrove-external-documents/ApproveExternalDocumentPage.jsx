@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Input, PageHeader, Table, Tag,} from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import InternalDocumentTableViewDrawer from "../../../component/drawer/InternalDocumentTableViewDrawer";
 
@@ -11,7 +10,7 @@ const dataSource = [
     docinfotitle: "JEYSI CHECKS#1",
     namereq: "Jeysi",
     counit: "ICS",
-    status: "Approved",
+    status: "Registered",
   },
   {
     docinfotitle: "CRAL CHECKS#1",
@@ -57,27 +56,12 @@ const column = [
       );
     },
   },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-    render: () => (
-      <Space>
-        <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
-        </Tooltip>
-        <Tooltip title="Delete">
-          <Button type="primary" danger ghost icon={<DeleteOutlined />} />
-        </Tooltip>
-      </Space>
-    ),
-  },
+  
 ];
 
-const ExternalDocumentPage = () => {
+const ApproveExternalDocumentPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("user-external-documents");
+  navigatorContext.setSelectedKey("approve-external-documents");
 
   const [visible, setVisible] = React.useState(false);
 
@@ -94,11 +78,6 @@ const ExternalDocumentPage = () => {
       <PageHeader
         title="My External Document Request List"
         subTitle="View List of my Request"
-        extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
-            Create New Form Request
-          </Button>,
-        ]}
       ></PageHeader>
 
       <div className="base-container">
@@ -127,4 +106,4 @@ const ExternalDocumentPage = () => {
   );
 };
 
-export default ExternalDocumentPage;
+export default ApproveExternalDocumentPage;

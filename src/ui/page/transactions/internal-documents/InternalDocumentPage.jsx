@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import InternalDocumentDrawer from "../../../component/drawer/InternalDocumentDrawer";
-import InternalDocumentDrawers from "../../../component/drawer/InternalDocumentDrawer";
+import InternalDicrDrawer from "../../../component/drawer/userDrawer/InternalDicrDrawer";
+
 
 const { Search } = Input;
 
@@ -77,7 +77,7 @@ const column = [
 
 const InternalDocumentPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("internal-documents");
+  navigatorContext.setSelectedKey("user-internal-documents");
 
   const [visible, setVisible] = React.useState(false);
 
@@ -123,7 +123,7 @@ const InternalDocumentPage = () => {
         />
       </div>
 
-      <InternalDocumentDrawers visible={visible} onClose={onClose} />
+      <InternalDicrDrawer visible={visible} onClose={onClose} />
     </>
   );
 };

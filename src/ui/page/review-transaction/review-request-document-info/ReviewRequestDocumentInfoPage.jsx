@@ -77,9 +77,9 @@ const column = [
   },
 ];
 
-const RequestDocumentInfoPage = () => {
+const ReviewRequestDocumentInfoPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("user-request-document-info");
+  navigatorContext.setSelectedKey("review-request-document-info");
 
   const [visible, setVisible] = React.useState(false);
 
@@ -129,4 +129,4 @@ const RequestDocumentInfoPage = () => {
   );
 };
 
-export default RequestDocumentInfoPage;
+export default ReviewRequestDocumentInfoPage;
