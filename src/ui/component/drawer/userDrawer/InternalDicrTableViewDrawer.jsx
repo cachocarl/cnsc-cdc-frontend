@@ -10,13 +10,12 @@ import {
   DatePicker,
   Space,
   Typography,
-  Upload,
   Modal,
-  Steps,
   Divider,
+  Steps,
 } from "antd";
 
-import { UploadOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 const { confirm } = Modal;
@@ -29,82 +28,107 @@ const { Title } = Typography;
 
 const { Step } = Steps;
 
-const normFile = (e) => {
-  console.log("Upload event:", e);
-
-  if (Array.isArray(e)) {
-    return e;
-  }
-
-  return e && e.fileList;
-};
-
-const InternalDocumentDrawer = ({ visible, onClose }) => {
-  function showConfirm() {
-    confirm({
-      title: "Submit Request?",
-      icon: <ExclamationCircleOutlined />,
-      content:
-        "Submitting your request will forward it to CDC for further processing",
-      onOk() {
-        console.log("OK");
-        onClose();
-      },
-      onCancel() {
-        console.log("Cancel");
-      },
-    });
-  }
+const InternalDicrTableViewDrawer = ({ visible, onClose }) => {
   return (
     <Drawer
-      title="Initiate Document Information Change Request"
+      title="View my Document Information Change Request (DICR)"
       placement="right"
       size="large"
       visible={visible}
       closable={true}
       onClose={onClose}
       width={"850px"}
-      extra={
-        <Space>
-          <Button type="primary" onClick={showConfirm}>
-            Submit Request
-          </Button>
-        </Space>
-      }
     >
-      <Steps progressDot current={0}>
-        <Step title="Initiate Request" description="You're currently here." />
+      <Title level={4}>DICR Status:</Title>
+      <br />
+      <Steps size="small" current={2}>
+        <Step title="Step 1" description="Create your DICR" />
         <Step
-          title="Request is received and registered by CDC"
-          description="Waiting"
+          title="Step 2"
+          description="DICR is received and registered by CDC."
         />
         <Step
-          title="Request reviewed by Authority"
-          description="This is a description."
+          title="Step 3"
+          description="DICR is being reviewed by an Authority."
         />
         <Step
-          title="Request approved by Authority"
-          description="This is a description."
+          title="Step 4"
+          description="DICR is being approved by Authority"
         />
       </Steps>
-      <Divider></Divider>
-      <Title level={4}>Document Information</Title>
-      <br></br>
+      <Divider />
+
       <Form layout="vertical">
         {/* 1st Row */}
 
         <Row gutter={16}>
           <Col span={8}>
             <Form.Item
-              name="name"
-              label="DICR Number (For Registration)"
-              rules={[{ required: false }]}
+              name="natureOfChange"
+              label="Nature of Change:"
+              rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input disabled={true} />
+              <Select disabled placeholder="New">
+                <Option value="private">New</Option>
+                <Option value="public">Revision</Option>
+                <Option value="public">Deletion/Obslete</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
+              name="docinfotype"
+              label="Document Information Type:"
+              rules={[{ required: true, message: "Please choose" }]}
+            >
+              <Select disabled placeholder="Policy">
+                <Option value="private">Policy</Option>
+                <Option value="public">Procedure</Option>
+                <Option value="public">Form</Option>
+                <Option value="public">Attachment</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name="name"
+              label="DICR Number (For Registration)"
+              rules={[{ required: false }]}
+            >
+              <Input disabled={true} placeholder="DICR-017" />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        {/* 2nd Row */}
+
+        <Row gutter={16}>
+          <Col span={8}>
+            <Form.Item
+              name="name"
+              label="Initiator:"
+              rules={[{ required: true }]}
+            >
+              <Input disabled placeholder="Juan Dela Cruz" />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name="dct"
+              label="College/Office/Unit:"
+              rules={[{ required: true, message: "Please choose" }]}
+            >
+              <Select disabled placeholder="ICS">
+                <Option value="policy">ICS</Option>
+                <Option value="procedure">CBPA</Option>
+                <Option value="procedure">Engineering</Option>
+                <Option value="procedure">CBPA</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              disabled
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: false }]}
@@ -116,104 +140,31 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
-            <Form.Item
-              name="proposedDate"
-              label="Proposed Effective Date:"
-              rules={[{ required: false }]}
-            >
-              <DatePicker
-                defaultValue={moment("Select Date", dateFormat)}
-                Required
-                style={{ width: 255 }}
-              />
-            </Form.Item>
-          </Col>
         </Row>
 
-        {/* 2nd Row */}
-
+        <Divider></Divider>
+        <Title level={4}>Document Information</Title>
+        <br></br>
         <Row gutter={16}>
-          <Col span={8}>
-            <Form.Item
-              name="dct"
-              label="College/Office/Unit:"
-              rules={[{ required: true, message: "Please choose" }]}
-            >
-              <Select placeholder="Choose here">
-                <Option value="policy">ICS</Option>
-                <Option value="procedure">CBPA</Option>
-                <Option value="procedure">Engineering</Option>
-                <Option value="procedure">CBPA</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item
-              name="natureOfChange"
-              label="Nature of Change:"
-              rules={[{ required: true, message: "Please choose" }]}
-            >
-              <Select placeholder="Choose Nature of Change">
-                <Option value="private">Private</Option>
-                <Option value="public">Public</Option>
-              </Select>
-            </Form.Item>
-          </Col>
           <Col span={8}>
             <Form.Item
               name="name"
               label="Document Information Number:"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input disabled placeholder="DIN 087" />
             </Form.Item>
           </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={8}>
-            <Form.Item
-              name="natureOfChange"
-              label="Nature of Change:"
-              rules={[{ required: true, message: "Please choose" }]}
-            >
-              <Select placeholder="Choose Nature of Change">
-                <Option value="private">Private</Option>
-                <Option value="public">Public</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item
-              name="name"
-              label="Others: (Please Specify:"
-              rules={[{ required: false }]}
-            >
-              <Input disabled={true} />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item
-              name="upload"
-              label="Upload"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
-            >
-              <Upload name="logo" action="/upload.do" listType="picture">
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
-              </Upload>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row>
           <Col span={16}>
             <Form.Item
               name="name"
               label="Document Information Title:"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Please type your Document Information Title" />
+              <Input
+                disabled
+                placeholder="Example Document Information Title"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -230,13 +181,11 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
                 },
               ]}
             >
-              <Input.TextArea
-                rows={4}
-                placeholder="please enter url description"
-              />
+              <Input.TextArea disabled rows={4} placeholder="Example Message" />
             </Form.Item>
           </Col>
         </Row>
+
         <Divider></Divider>
         <Title level={4}>To be Accomplished by the Reviewing Authority</Title>
         <br></br>
@@ -247,7 +196,7 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
               label="Remarks: (if any)"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Please type your Remarks Here" />
+              <Input disabled placeholder="Please type your Remarks Here" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -256,7 +205,7 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
               label="Action Taken/Disposition:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Select placeholder="Approved">
+              <Select disabled placeholder="Approved">
                 <Option value="private">Approval</Option>
                 <Option value="public">Disapproval</Option>
                 <Option value="public">For Fine-tuning</Option>
@@ -271,11 +220,12 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
               label="Approved By:"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
+              disabled
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: true }]}
@@ -299,7 +249,7 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
               label="Remarks: (if any)"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Please type your Remarks Here" />
+              <Input disabled placeholder="Please type your Remarks Here" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -308,7 +258,7 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
               label="Action Taken/Disposition:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Select placeholder="Choose Here">
+              <Select disabled placeholder="Approved">
                 <Option value="private">Approval</Option>
                 <Option value="public">Disapproval</Option>
                 <Option value="public">For Fine-tuning</Option>
@@ -323,11 +273,12 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
               label="Approved By:"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
+              disabled
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: true }]}
@@ -341,8 +292,9 @@ const InternalDocumentDrawer = ({ visible, onClose }) => {
           </Col>
         </Row>
       </Form>
+      <br />
     </Drawer>
   );
 };
 
-export default InternalDocumentDrawer;
+export default InternalDicrTableViewDrawer;
