@@ -8,9 +8,7 @@ import {
   Input,
   Select,
   DatePicker,
-  Space,
   Typography,
-  Modal,
   Divider,
   Steps,
 } from "antd";
@@ -18,25 +16,20 @@ import {
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
 
-const { confirm } = Modal;
-
 const { Option } = Select;
-
 const dateFormat = "YYYY-MM-DD";
-
 const { Title } = Typography;
-
 const { Step } = Steps;
 
-const InternalDicrTableViewDrawer = ({ visible, onClose }) => {
+const InternalDicrTableViewDrawer = ({ visibleTD, onCloseTD }) => {
   return (
     <Drawer
       title="View my Document Information Change Request (DICR)"
       placement="right"
       size="large"
-      visible={visible}
+      visible={visibleTD}
       closable={true}
-      onClose={onClose}
+      onClose={onCloseTD}
       width={"850px"}
     >
       <Title level={4}>DICR Status:</Title>

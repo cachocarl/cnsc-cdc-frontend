@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import InternalDicrTableViewDrawer from "../../../component/drawer/userDrawer/InternalDicrTableViewDrawer";
-import InternalDocumentDrawer from "../../../component/drawer/InternalDocumentDrawer";
+import InternalUserDrawer from "../../../component/drawer/userDrawer/InternalUserDrawer";
 
 const { Search } = Input;
 const dataSource = [
@@ -75,28 +74,12 @@ const column = [
 ];
 
 const InternalDocumentPage = () => {
+  const [addVisible, setAddVisible] = React.useState(false);
+  const [editVisible, setEditVisible] = React.useState(false);
+  const [viewVisible, setViewVisible] = React.useState(false);
+
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-internal-documents");
-
-  const [createVisible, setCreateVisible] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
-
-  const showDrawer = () => {
-    setCreateVisible(true);
-  };
-
-  const onClose = () => {
-    setCreateVisible(false);
-  };
-
-  const showDrawer1 = () => {
-    setVisible(true);
-  };
-
-  const onClose1 = () => {
-    setVisible(false);
-  };
-
 
   return (
     <>
@@ -105,7 +88,12 @@ const InternalDocumentPage = () => {
        Request List"
         subTitle="View List of my Request"
         extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
+          <Button
+            //Ito yung napalabas sa DICR form Drawer
+            onClick={() => setAddVisible(true)}
+            type="primary"
+            icon={<PlusOutlined />}
+          >
             Create New Form Request
           </Button>,
         ]}
@@ -124,16 +112,27 @@ const InternalDocumentPage = () => {
           dataSource={dataSource}
           onRow={(record, rowIndex) => {
             return {
+              //ito yung napalabas sa Table View Drawer
               onDoubleClick: (event) => {
-                showDrawer1();
+                setViewVisible(true);
               }, // double click row
             };
           }}
         />
-      </div>
 
-      {/* <InternalDocumentDrawer></InternalDocumentDrawer> */}
-      <InternalDicrTableViewDrawer visible={visible} onClose={onClose} />
+        <InternalUserDrawer.Add
+          visible={addVisible}
+          onClose={() => setAddVisible(false)}
+        />
+        <InternalUserDrawer.Edit
+          visible={editVisible}
+          onClose={() => setEditVisible(false)}
+        />
+        <InternalUserDrawer.View
+          visible={viewVisible}
+          onClose={() => setViewVisible(false)}
+        />
+      </div>
     </>
   );
 };
