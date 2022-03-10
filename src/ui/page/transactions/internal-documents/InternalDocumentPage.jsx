@@ -2,12 +2,10 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import InternalDicrDrawer from "../../../component/drawer/userDrawer/InternalDicrDrawer";
-import InternalDocumentTableViewDrawer from "../../../component/drawer/InternalDocumentTableViewDrawer";
-
+import InternalDicrTableViewDrawer from "../../../component/drawer/userDrawer/InternalDicrTableViewDrawer";
+import InternalDocumentDrawer from "../../../component/drawer/InternalDocumentDrawer";
 
 const { Search } = Input;
-
 const dataSource = [
   {
     docinfotitle: "Sample Document Change Request #1",
@@ -19,7 +17,7 @@ const dataSource = [
     docinfotitle: "Sample Document Change Request #2",
     docutype: "Procedure",
     dateinitiated: "01-26-22",
-    status: "Approved",
+    status: "Registered",
   },
 ];
 
@@ -134,8 +132,8 @@ const InternalDocumentPage = () => {
         />
       </div>
 
-      <InternalDicrDrawer visible={createVisible} onClose={onClose} />
-      <InternalDocumentTableViewDrawer visible={visible} onClose={onClose1} />
+      {/* <InternalDocumentDrawer></InternalDocumentDrawer> */}
+      <InternalDicrTableViewDrawer visible={visible} onClose={onClose} />
     </>
   );
 };
