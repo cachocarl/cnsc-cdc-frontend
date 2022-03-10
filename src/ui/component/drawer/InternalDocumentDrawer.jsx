@@ -39,7 +39,7 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-const InternalDocumentDrawer = ({ visibleFD, onCloseFD }) => {
+const InternalDocumentDrawer = ({ visible, onClose }) => {
   function showConfirm() {
     confirm({
       title: "Submit Request?",
@@ -48,7 +48,7 @@ const InternalDocumentDrawer = ({ visibleFD, onCloseFD }) => {
         "Submitting your request will forward it to CDC for further processing",
       onOk() {
         console.log("OK");
-        onCloseFD();
+        onClose();
       },
       onCancel() {
         console.log("Cancel");
@@ -60,9 +60,9 @@ const InternalDocumentDrawer = ({ visibleFD, onCloseFD }) => {
       title="Initiate Document Information Change Request"
       placement="right"
       size="large"
-      visible={visibleFD}
+      visible={visible}
       closable={true}
-      onClose={onCloseFD}
+      onClose={onClose}
       width={"850px"}
       extra={
         <Space>
