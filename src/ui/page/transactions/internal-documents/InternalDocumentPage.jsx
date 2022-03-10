@@ -3,6 +3,7 @@ import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import InternalDicrDrawer from "../../../component/drawer/userDrawer/InternalDicrDrawer";
+import InternalDocumentTableViewDrawer from "../../../component/drawer/InternalDocumentTableViewDrawer";
 
 
 const { Search } = Input;
@@ -12,7 +13,7 @@ const dataSource = [
     docinfotitle: "Sample Document Change Request #1",
     docutype: "Policy",
     dateinitiated: "01-13-22",
-    status: "Approved",
+    status: "Registered",
   },
   {
     docinfotitle: "Sample Document Change Request #2",
@@ -79,15 +80,25 @@ const InternalDocumentPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-internal-documents");
 
+  const [createVisible, setCreateVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
 
   const showDrawer = () => {
-    setVisible(true);
+    setCreateVisible(true);
   };
 
   const onClose = () => {
+    setCreateVisible(false);
+  };
+
+  const showDrawer1 = () => {
+    setVisible(true);
+  };
+
+  const onClose1 = () => {
     setVisible(false);
   };
+
 
   return (
     <>
@@ -116,14 +127,15 @@ const InternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer();
+                showDrawer1();
               }, // double click row
             };
           }}
         />
       </div>
 
-      <InternalDicrDrawer visible={visible} onClose={onClose} />
+      <InternalDicrDrawer visible={createVisible} onClose={onClose} />
+      <InternalDocumentTableViewDrawer visible={visible} onClose={onClose1} />
     </>
   );
 };

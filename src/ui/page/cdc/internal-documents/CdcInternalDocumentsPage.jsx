@@ -8,6 +8,8 @@ import MasterListPageInternal from "./MasterListPageInternal";
 import IssuanceAndRevisionHistoryPage from "./IssuanceAndRevisionHistoryPage";
 import IssuanceAndRetrievalPage from "./IssuanceAndRetrievalPage";
 import ScheduleAndMonitoringPage from "./ScheduleAndMonitoringPage";
+import ListRequestPage from "./ListRequestsPage";
+
 
 const CdcInternalDocumentsPage = () => {
   const navigatorContext = useContext(NavigatorContext);
@@ -18,29 +20,34 @@ const CdcInternalDocumentsPage = () => {
       <ContentTab
         content={[
           {
-            title: "DICR Registration and Monitoring Form",
+            title: "List of Requests",
             key: "tab1",
+            content: <ListRequestPage/>,
+          },
+          {
+            title: "DICR Registration and Monitoring Form",
+            key: "tab2",
             content: <DicrRegistrationAndMonitoringFormPage />,
           },
           {
             title: "Master List of Internal Documented Information",
-            key: "tab2",
+            key: "tab3",
             content: <MasterListPageInternal />,
           },
           {
             title: "Issuance And Revision History",
-            key: "tab3",
+            key: "tab4",
             content: <IssuanceAndRevisionHistoryPage />,
           },
           {
             title: "Issuance And Retrieval",
-            key: "tab4",
+            key: "tab5",
             content: <IssuanceAndRetrievalPage />,
           },
           {
             title:
               "Schedule and Monitoring of QMS Documented Information Backup",
-            key: "tab5",
+            key: "tab6",
             content: <ScheduleAndMonitoringPage />,
           },
         ]}

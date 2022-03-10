@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined,} from "@ant-design/icons";
+import { Input, PageHeader, Table,} from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReviewDicrDrawer from "../../../component/drawer/reviewDrawer/ReviewDicrDrawer";
 
@@ -9,69 +8,45 @@ const { Search } = Input;
 
 const dataSource = [
   {
-    docinfotitle: "Sample Document Change Request #1",
-    docutype: "Policy",
-    dateinitiated: "01-13-22",
-    status: "Approved",
+    dicrno: "DICR-001",
+    namereq: "Cral",
+    docinfotitle: "Intrernal Document Change Request",
+    unit: "International Planning, and Development Office",
   },
   {
-    docinfotitle: "Sample Document Change Request #2",
-    docutype: "Procedure",
-    dateinitiated: "01-26-22",
-    status: "Approved",
+    dicrno: "DICR-002",
+    namereq: "Jeysi",
+    docinfotitle: "The Sample",
+    unit: "Internal Cotrol Office",
   },
 ];
 
 const column = [
   {
-    title: "Document Information Title",
-    dataIndex: "docinfotitle",
-    key: "docuinfotitle",
-    width: 450,
+    title: "DICR Number",
+    dataIndex: "dicrno",
+    key: "dicrno",
   },
   {
-    title: "Document Type",
-    dataIndex: "docutype",
-    key: "docutype",
+    title: "Name of Requestor",
+    dataIndex: "namereq",
+    key: "namereq",
     onFilter: (value, record) => record.docutype.indexOf(value) === 0,
     sorter: (a, b) => a.docutype.length - b.docutype.length,
     sortDirections: ["ascend"],
   },
   {
-    title: "Date Initiated",
-    dataIndex: "dateinitiated",
-    key: "dateinitiated",
+    title: "Document Information Title",
+    dataIndex: "docinfotitle",
+    key: "docinfotitle",
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
-
-    render: (data, record) => {
-      return data === "Registered" ? (
-        <Tag color="blue">Registered</Tag>
-      ) : (
-        <Tag color="green">Approved</Tag>
-      );
-    },
-  },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-
-    render: () => (
-      <Space>
-        <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
-        </Tooltip>
-
-        <Tooltip title="Delete">
-          <Button danger icon={<DeleteOutlined />} />
-        </Tooltip>
-      </Space>
-    ),
+    title: "College/Unit",
+    dataIndex: "unit",
+    key: "unit",
+    onFilter: (value, record) => record.docutype.indexOf(value) === 0,
+    sorter: (a, b) => a.docutype.length - b.docutype.length,
+    sortDirections: ["ascend"],
   },
 ];
 

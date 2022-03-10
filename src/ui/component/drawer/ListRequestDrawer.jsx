@@ -6,25 +6,25 @@ import {
   Col,
   Row,
   Input,
-  Select,
   DatePicker,
   Space,
   Typography,
   Upload,
   Modal,
+  Steps,
   Divider,
 } from "antd";
 
-import { UploadOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { FileOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 const { confirm } = Modal;
 
-const { Option } = Select;
-
 const dateFormat = "YYYY-MM-DD";
 
 const { Title } = Typography;
+
+const { Step } = Steps;
 
 const normFile = (e) => {
   console.log("Upload event:", e);
@@ -36,7 +36,7 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-const InternalDicrDrawer = ({ visible, onClose }) => {
+const ListRequestDrawer = ({ visible, onClose }) => {
   function showConfirm() {
     confirm({
       title: "Submit Request?",
@@ -54,7 +54,7 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
   }
   return (
     <Drawer
-      title="Initiate Document Information Change Request (DICR)"
+      title="Review Document Information Change Request (DICR)"
       placement="right"
       size="large"
       visible={visible}
@@ -64,11 +64,30 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
       extra={
         <Space>
           <Button type="primary" onClick={showConfirm}>
-            Submit Request
+            Register
           </Button>
         </Space>
       }
     >
+      <Steps progressDot current={1}>
+        <Step title="Initiate Request" description="You're currently here." />
+        <Step
+          title="Request is registered "
+          description="Date Requested yyyy-mm-dd"
+        />
+        <Step
+          title="Request reviewed by Authority"
+          description="This is a description."
+        />
+        <Step
+          title="Request approved by Authority"
+          description="This is a description."
+        />
+        <Step
+          title="Update of QMS"
+          description="This is a description."
+        />
+      </Steps>
       <Form layout="vertical">
         {/* 1st Row */}
 
@@ -79,11 +98,7 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="Nature of Change:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Select placeholder="Choose Nature of Change">
-                <Option value="private">New</Option>
-                <Option value="public">Revision</Option>
-                <Option value="public">Deletion/Obslete</Option>
-              </Select>
+              <Input disabled={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -92,12 +107,7 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="Document Information Type:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Select placeholder="Choose Document Information Type">
-                <Option value="private">Policy</Option>
-                <Option value="public">Procedure</Option>
-                <Option value="public">Form</Option>
-                <Option value="public">Attachment</Option>
-              </Select>
+              <Input disabled={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -118,9 +128,9 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
             <Form.Item
               name="name"
               label="Initiator:"
-              rules={[{ required: true }]}
+              rules={[{ required: false }]}
             >
-              <Input />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -129,12 +139,7 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="College/Office/Unit:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Select placeholder="Choose here">
-                <Option value="policy">ICS</Option>
-                <Option value="procedure">CBPA</Option>
-                <Option value="procedure">Engineering</Option>
-                <Option value="procedure">CBPA</Option>
-              </Select>
+              <Input disabled={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -143,11 +148,7 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="Date Requested (Current Date):"
               rules={[{ required: false }]}
             >
-              <DatePicker
-                defaultValue={moment("2022-03-04", dateFormat)}
-                disabled
-                style={{ width: 255 }}
-              />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -162,7 +163,7 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="Document Information Number:"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
           <Col span={16}>
@@ -171,7 +172,7 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="Document Information Title:"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Please type your Document Information Title" />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -182,26 +183,23 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="Proposed Effective Date:"
               rules={[{ required: false }]}
             >
-              <DatePicker
-                defaultValue={moment("Select Date", dateFormat)}
-                Required
-                style={{ width: 255 }}
-              />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
-              name="upload"
-              label="Upload"
+              name="file"
+              label="File Attachment:"
               valuePropName="fileList"
               getValueFromEvent={normFile}
             >
               <Upload name="logo" action="/upload.do" listType="picture">
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
+                <Button icon={<FileOutlined />}>Click Here to View File</Button>
               </Upload>
             </Form.Item>
           </Col>
         </Row>
+
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item
@@ -214,14 +212,13 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
                 },
               ]}
             >
-              <Input.TextArea
-                rows={4}
-                placeholder="please enter url description"
-              />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
         </Row>
-        <Divider><Title level={4}>To be Accomplished by the Reviewing Authority</Title></Divider>
+
+        <Divider></Divider>
+        <Title level={4}>To be Accomplished by the Reviewing Authority</Title>
         <br></br>
         <Row gutter={16}>
           <Col span={16}>
@@ -268,9 +265,8 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
           </Col>
         </Row>
 
-        <Divider>
-          <Title level={4}>To be Accomplished by the Approving Authority</Title>
-        </Divider>
+        <Divider></Divider>
+        <Title level={4}>To be Accomplished by the Approving Authority</Title>
         <br></br>
         <Row gutter={16}>
           <Col span={16}>
@@ -308,7 +304,11 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
               label="Date Requested (Current Date):"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <DatePicker
+                defaultValue={moment("2022-03-04", dateFormat)}
+                disabled
+                style={{ width: 255 }}
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -317,4 +317,4 @@ const InternalDicrDrawer = ({ visible, onClose }) => {
   );
 };
 
-export default InternalDicrDrawer;
+export default ListRequestDrawer;

@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import InternalDocumentTableViewDrawer from "../../../component/drawer/InternalDocumentTableViewDrawer";
+import ExternalQMRDrawer from "../../../component/drawer/userDrawer/ExternalQMRDrawer";
+import ExternalQMRTableViewDrawer from "../../../component/drawer/userDrawer/ExternalQMRTableViewDrawer";
 
 const { Search } = Input;
 
@@ -65,7 +66,7 @@ const column = [
     render: () => (
       <Space>
         <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
+          <Button icon={<EditOutlined />}  />
         </Tooltip>
         <Tooltip title="Delete">
           <Button type="primary" danger ghost icon={<DeleteOutlined />} />
@@ -79,13 +80,21 @@ const ExternalDocumentPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-external-documents");
 
+  const [createVisible, setCreateVisible] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
 
   const showDrawer = () => {
-    setVisible(true);
+    setCreateVisible(true);
   };
 
   const onClose = () => {
+    setCreateVisible(false);
+  };
+  const showDrawer1 = () => {
+    setVisible(true);
+  };
+
+  const onClose1 = () => {
     setVisible(false);
   };
 
@@ -115,14 +124,15 @@ const ExternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer();
+                showDrawer1();
               }, // double click row
             };
           }}
         />
       </div>
 
-      <InternalDocumentTableViewDrawer visible={visible} onClose={onClose} />
+      <ExternalQMRDrawer visible={createVisible} onClose={onClose} />
+      <ExternalQMRTableViewDrawer visible={visible} onClose={onClose1} />
     </>
   );
 };

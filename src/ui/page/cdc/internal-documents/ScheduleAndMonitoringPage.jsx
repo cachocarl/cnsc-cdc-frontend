@@ -1,10 +1,21 @@
 import React from "react";
-import { Table} from "antd";
+import { Table, Input, Row, Col} from "antd";
 
 const { Column, ColumnGroup } = Table;
 const ScheduleAndMonitoringPage = () => {
   return <div className="base-container">
-      <Table>
+      <Table
+           title={(c) => {
+                return (
+                  <Input.Group>
+                    <Row gutter={6}>
+                      <Col span={2}>
+                        <Input addonBefore="As of:" />
+                      </Col>
+                    </Row>
+                  </Input.Group>
+                );
+              }}>
 
             <Column title="MANAGEMENTS SYSTEM DOCUMENTS" 
                     dataIndex="mngtsysdoc" 

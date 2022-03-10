@@ -1,59 +1,51 @@
 import React, { useContext } from "react";
-import { Input,PageHeader, Table, Tag, } from "antd";
+import { Input,PageHeader, Table, } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import ApproveDicrDrawer from "../../../component/drawer/approveDrawer/ApproveDicrDrawe";
+import ApproveDicrDrawer from "../../../component/drawer/approveDrawer/ApproveDicrDrawer";
 
 
 const { Search } = Input;
 
 const dataSource = [
   {
-    docinfotitle: "Sample Document Change Request #1",
-    docutype: "Policy",
-    dateinitiated: "01-13-22",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #2",
-    docutype: "Procedure",
-    dateinitiated: "01-26-22",
-    status: "Registered",
+    dicrno: "DICR-001",
+    namereq: "Crispy Jeysi",
+    docinfono: "CNSC-SP-QMS-01F1",
+    docinfotitle: "Internal Documentation Change Request",
+    year:"2022",
   },
 ];
 
 const column = [
   {
-    title: "Document Information Title",
-    dataIndex: "docinfotitle",
-    key: "docuinfotitle",
-    width: 450,
+    title: "DICR-001",
+    dataIndex: "dicrno",
+    key: "dicrno",
   },
   {
-    title: "Document Type",
-    dataIndex: "docutype",
-    key: "docutype",
+    title: "Requestor",
+    dataIndex: "namereq",
+    key: "namereq",
     onFilter: (value, record) => record.docutype.indexOf(value) === 0,
     sorter: (a, b) => a.docutype.length - b.docutype.length,
     sortDirections: ["ascend"],
   },
   {
-    title: "Date Initiated",
-    dataIndex: "dateinitiated",
-    key: "dateinitiated",
+    title: "Document Information Number",
+    dataIndex: "docinfono",
+    key: "docinfono",
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
-
-    render: (data, record) => {
-      return data === "Registered" ? (
-        <Tag color="blue">Registered</Tag>
-      ) : (
-        <Tag color="green">Approved</Tag>
-      );
-    },
+    title: "Document Information Title",
+    dataIndex: "docinfotitle",
+    key: "docinfotitle",
   },
+  {
+    title: "Year Made",
+    dataIndex: "year",
+    key: "year",
+  },
+
 
 ];
 
