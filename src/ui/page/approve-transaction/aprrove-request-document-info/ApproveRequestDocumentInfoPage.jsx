@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Input, PageHeader, Table, Tag, } from "antd";
+import { Input, PageHeader, Space, Button, Tooltip, Table, Tag } from "antd";
+import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
 
@@ -9,19 +10,19 @@ const dataSource = [
   {
     docinfotitle: "Registration and Monitoring Form Rev.0",
     docutype: "CNSC-SP-QMS-01F2-DICR",
-    dateinitiated: "01-13-22",
-    status: "Registered",
+    dateinitiated: "Feburary 14, 2022",
+    status: "Approved",
   },
   {
     docinfotitle: "Documented Info. Change Request DICR Rev.0",
     docutype: "CNSC-SP-QMS-01F1",
-    dateinitiated: "01-26-22",
+    dateinitiated: "Feburary 25, 2022",
     status: "Registered",
   },
   {
     docinfotitle: "Master List of Internal Documented Information Rev.0",
     docutype: "CNSC-SP-QMS-01F3",
-    dateinitiated: "02-01-22",
+    dateinitiated: "March 07, 2022",
     status: "Registered",
   },
 ];
@@ -56,6 +57,24 @@ const column = [
       );
     },
   },
+  {
+    title: "Action",
+    key: "operation",
+    fixed: "right",
+    width: 100,
+
+    render: () => (
+      <Space>
+        <Tooltip title="Edit">
+          <Button icon={<EditOutlined />} />
+        </Tooltip>
+
+        <Tooltip title="Delete">
+          <Button danger icon={<DeleteOutlined />} />
+        </Tooltip>
+      </Space>
+    ),
+  },
 ];
 
 const ApproveRequestDocumentInfoPage = () => {
@@ -75,8 +94,13 @@ const ApproveRequestDocumentInfoPage = () => {
   return (
     <>
       <PageHeader
-        title="List of Request for Documented Information"
+        title="List of My Request for Documented Information"
         subTitle="View List of my Request"
+        extra={[
+          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
+            Initiate New Request
+          </Button>,
+        ]}
       ></PageHeader>
 
       <div className="base-container">

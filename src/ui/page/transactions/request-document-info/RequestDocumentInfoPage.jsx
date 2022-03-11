@@ -10,19 +10,19 @@ const dataSource = [
   {
     docinfotitle: "Registration and Monitoring Form Rev.0",
     docutype: "CNSC-SP-QMS-01F2-DICR",
-    dateinitiated: "01-13-22",
+    dateinitiated: "Feburary 14, 2022",
     status: "Approved",
   },
   {
     docinfotitle: "Documented Info. Change Request DICR Rev.0",
     docutype: "CNSC-SP-QMS-01F1",
-    dateinitiated: "01-26-22",
+    dateinitiated: "Feburary 25, 2022",
     status: "Registered",
   },
   {
     docinfotitle: "Master List of Internal Documented Information Rev.0",
     docutype: "CNSC-SP-QMS-01F3",
-    dateinitiated: "02-01-22",
+    dateinitiated: "March 07, 2022",
     status: "Registered",
   },
 ];
@@ -97,7 +97,7 @@ const RequestDocumentInfoPage = () => {
         title="List of My Request for Documented Information"
         extra={[
           <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
-            Create New Form Request
+            Initiate New Request
           </Button>,
         ]}
       ></PageHeader>

@@ -66,7 +66,7 @@ const column = [
     render: () => (
       <Space>
         <Tooltip title="Edit">
-          <Button icon={<EditOutlined />}  />
+          <Button icon={<EditOutlined />} />
         </Tooltip>
         <Tooltip title="Delete">
           <Button type="primary" danger ghost icon={<DeleteOutlined />} />
@@ -101,11 +101,11 @@ const ExternalDocumentPage = () => {
   return (
     <>
       <PageHeader
-        title="My External Document Request List"
-        subTitle="View List of my Request"
+        title="List of My External Document Request"
+        //subTitle="View List of my Request"
         extra={[
           <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
-            Create New Form Request
+            Initiate New Request
           </Button>,
         ]}
       ></PageHeader>

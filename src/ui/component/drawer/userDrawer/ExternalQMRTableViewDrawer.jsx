@@ -13,7 +13,7 @@ import {
   Divider,
 } from "antd";
 
-import { FileOutlined,} from "@ant-design/icons";
+import { FileOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 const dateFormat = "YYYY-MM-DD";
@@ -47,7 +47,7 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
         <Step title="Initiating Request" description="" />
         <Step
           title="Registration Of Request"
-          description="Start of Registration: DATER"
+          description="Start of Registration."
         />
         <Step
           title="Reviewing of Request"
@@ -57,15 +57,11 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
           title="Approving of Request"
           description="This is a description."
         />
-        <Step
-          title="Update of QMS"
-          description="This is a description."
-        />
+        <Step title="Update of QMS" description="This is a description." />
       </Steps>
       <Divider></Divider>
       <br></br>
       <Form layout="vertical">
-
         {/* 1st Row */}
 
         <Row gutter={16}>
@@ -194,9 +190,9 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
         </Row>
         <Divider></Divider>
         <Title level={4}>To be Accomplished by the Reviewing Authority</Title>
-      <br></br>  
-      <Row gutter={16}>
-      <Col span={16}>
+        <br></br>
+        <Row gutter={16}>
+          <Col span={16}>
             <Form.Item
               name="remarks"
               label="Remarks: (if any)"
@@ -211,12 +207,12 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Action Taken/Disposition:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-             <Input disabled={true} />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
-          </Row> 
-          <Row gutter={16}>
-             <Col span={16}>
+        </Row>
+        <Row gutter={16}>
+          <Col span={16}>
             <Form.Item
               name="approveby"
               label="Approved By:"
@@ -226,7 +222,7 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
             </Form.Item>
           </Col>
           <Col span={8}>
-          <Form.Item
+            <Form.Item
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: true }]}
@@ -235,17 +231,16 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
                 defaultValue={moment("2022-03-04", dateFormat)}
                 disabled
                 style={{ width: 255 }}
-
               />
             </Form.Item>
           </Col>
-          </Row> 
+        </Row>
 
-          <Divider></Divider>
+        <Divider></Divider>
         <Title level={4}>To be Accomplished by the Approving Authority</Title>
-      <br></br>  
-      <Row gutter={16}>
-      <Col span={16}>
+        <br></br>
+        <Row gutter={16}>
+          <Col span={16}>
             <Form.Item
               name="remarks"
               label="Remarks: (if any)"
@@ -263,9 +258,9 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               <Input disabled={true} />
             </Form.Item>
           </Col>
-          </Row> 
-          <Row gutter={16}>
-             <Col span={16}>
+        </Row>
+        <Row gutter={16}>
+          <Col span={16}>
             <Form.Item
               name="approveby"
               label="Approved By:"
@@ -275,7 +270,7 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
             </Form.Item>
           </Col>
           <Col span={8}>
-          <Form.Item
+            <Form.Item
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: true }]}
@@ -284,11 +279,10 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
                 defaultValue={moment("2022-03-04", dateFormat)}
                 disabled
                 style={{ width: 255 }}
-
               />
             </Form.Item>
           </Col>
-          </Row> 
+        </Row>
       </Form>
     </Drawer>
   );

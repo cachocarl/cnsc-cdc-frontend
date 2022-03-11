@@ -1,78 +1,114 @@
-import { Table } from "antd";
+import { Table, Input, DatePicker, Space } from "antd";
 import React from "react";
-import ReviewDicrDrawer from "../../../component/drawer/reviewDrawer/ReviewDicrDrawer";
-
+import InternalUserDrawer from "../../../component/drawer/userDrawer/InternalUserDrawer";
 
 const dataSource = [
   {
-    dicrno: "DICR NO-001",
+    dicrno: "DICR-001",
     datereceive: "03/09/2022",
-    docno: "01",
-    requestedby: "Cral",
+    docno: "Sample Documented Information Change Request Title",
+    requestedby: "Gerald Mesa",
     actiontaken: "Approved",
-    datecompleted:"03/14/2022"
+    datecompleted: "November 26, 2021",
+  },
+  {
+    dicrno: "DICR-002",
+    datereceive: "03/09/2022",
+    docno: "Sample Documented Information Change Request Title",
+    requestedby: "Ramil Rana",
+    actiontaken: "Approved",
+    datecompleted: "December 04, 2021",
+  },
+  {
+    dicrno: "DICR-003",
+    datereceive: "03/09/2022",
+    docno: "Sample Documented Information Change Request Title",
+    requestedby: "Cris Jimenez",
+    actiontaken: "--",
+    datecompleted: "--",
+  },
+  {
+    dicrno: "DICR-004",
+    datereceive: "03/09/2022",
+    docno: "Sample Documented Information Change Request Title",
+    requestedby: "Edmond Esmalla",
+    actiontaken: "--",
+    datecompleted: "--",
+  },
+  {
+    dicrno: "DICR-0015",
+    datereceive: "03/09/2022",
+    docno: "Sample Documented Information Change Request Title",
+    requestedby: "David Abanto",
+    actiontaken: "--",
+    datecompleted: "--",
   },
 ];
 const column = [
   {
-    title: "DICR NO",
+    title: "DICR No",
     dataIndex: "dicrno",
     key: "dicrno",
   },
   {
-    title: "DATE RECEIVED",
+    title: "Date Received",
     dataIndex: "datereceive",
     key: "datereceive",
   },
   {
-    title: "DOC NO/ DOC TITLE",
+    title: "Doc No/ Doc Title",
     dataIndex: "docno",
     key: "docno",
   },
   {
-    title: "REQUESTED BY",
+    title: "Requested By",
     dataIndex: "requestedby",
     key: "requestby",
   },
   {
-    title: "ACTION TAKEN",
+    title: "Action Taken",
     dataIndex: "actiontaken",
     key: "actiontaken",
   },
   {
-    title: "DATE COMPLETED",
+    title: "Date Completed",
     dataIndex: "datecompleted",
     key: "datecompleted",
   },
 ];
+const { Search } = Input;
+const { RangePicker } = DatePicker;
 
 const DicrRegistrationAndMonitoringFormPage = () => {
-  const [visible, setVisible] = React.useState(false);
+  const [editVisible, setEditVisible] = React.useState(false);
 
-  const showDrawer = () => {
-    setVisible(true);
-  };
-
-  const onClose = () => {
-    setVisible(false);
-  };
   return (
     <>
       <div className="base-container">
-        
-      <Table columns = {column}
-             dataSource={dataSource}
-             onRow={(record, rowIndex) => {
-              return {
-                onDoubleClick: (event) => {
-                  showDrawer();
-                }, // double click row
-              };
-            }}
-             />
-
-       </div>
-       <ReviewDicrDrawer visible={visible} onClose={onClose} />
+        <Space>
+          <Search
+            placeholder="input search text"
+            style={{ width: 250, margin: 18 }}
+            allowClear
+          />
+        </Space>
+        <br />
+        <Table
+          columns={column}
+          dataSource={dataSource}
+          onRow={(record, rowIndex) => {
+            return {
+              onDoubleClick: (event) => {
+                setEditVisible(true);
+              }, // double click row
+            };
+          }}
+        />
+        <InternalUserDrawer.Edit
+          visible={editVisible}
+          onClose={() => setEditVisible(false)}
+        />
+      </div>
     </>
   );
 };

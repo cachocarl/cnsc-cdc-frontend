@@ -6,6 +6,7 @@ import {
   Col,
   Row,
   Input,
+  Select,
   DatePicker,
   Space,
   Typography,
@@ -19,7 +20,7 @@ import { FileOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 const { confirm } = Modal;
-
+const { Option } = Select;
 const dateFormat = "YYYY-MM-DD";
 
 const { Title } = Typography;
@@ -69,25 +70,28 @@ const ApproveDicrDrawer = ({ visible, onClose }) => {
         </Space>
       }
     >
-      <Steps progressDot current={3}>
-        <Step title="Initiate Request" description="You're currently here." />
+      <Steps direction="vertical" current={3}>
         <Step
-          title="Request is registered "
-          description="Date Requested yyyy-mm-dd"
+          title="Step 1: Initiating Request"
+          description="Create a Documented Information Change Request"
         />
         <Step
-          title="Request reviewed by Authority"
-          description="This is a description."
+          title="Step 2: Registration Of Request"
+          description="DICR is being examined for registration by CDC"
         />
         <Step
-          title="Request approved by Authority"
-          description="This is a description."
+          title="Step 3: Reviewing of Request"
+          description="DICR is being reviewed by a Reviewing Authority"
         />
         <Step
-          title="Update of QMS"
-          description="This is a description."
+          title="Step 4: Approving of Request"
+          description="DICR is being evaluated by an Approving Authority"
         />
+        <Step title="Step 5: Update of QMS" />
       </Steps>
+
+      <Divider />
+
       <Form layout="vertical">
         {/* 1st Row */}
 
@@ -212,7 +216,7 @@ const ApproveDicrDrawer = ({ visible, onClose }) => {
                 },
               ]}
             >
-             <Input disabled={true} />
+              <Input disabled={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -236,7 +240,11 @@ const ApproveDicrDrawer = ({ visible, onClose }) => {
               label="Action Taken/Disposition:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-             <Input disabled={true} />
+              <Select disabled placeholder="Approved">
+                <Option value="private">Approval</Option>
+                <Option value="public">Disapproval</Option>
+                <Option value="public">For Fine-tuning</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -247,13 +255,13 @@ const ApproveDicrDrawer = ({ visible, onClose }) => {
               label="Approved By:"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input disabled placeholder="Reviewing Authority Name" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               name="proposedDate"
-              label="Date Requested (Current Date):"
+              label="Date:"
               rules={[{ required: true }]}
             >
               <DatePicker
@@ -284,7 +292,11 @@ const ApproveDicrDrawer = ({ visible, onClose }) => {
               label="Action Taken/Disposition:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input />
+              <Select placeholder="Choose Action">
+                <Option value="private">Approval</Option>
+                <Option value="public">Disapproval</Option>
+                <Option value="public">For Fine-tuning</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -295,13 +307,13 @@ const ApproveDicrDrawer = ({ visible, onClose }) => {
               label="Approved By:"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input disabled placeholder="Approving Authority Name" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               name="proposedDate"
-              label="Date Requested (Current Date):"
+              label="Date:"
               rules={[{ required: true }]}
             >
               <DatePicker

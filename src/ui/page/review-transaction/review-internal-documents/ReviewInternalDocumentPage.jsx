@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { Input, PageHeader, Table,} from "antd";
+import { Input, PageHeader, Table } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReviewDicrDrawer from "../../../component/drawer/reviewDrawer/ReviewDicrDrawer";
-
 
 const { Search } = Input;
 
@@ -67,9 +66,8 @@ const ReviewInternalDocumentPage = () => {
   return (
     <>
       <PageHeader
-        title="My Internal Document
-       Request List"
-        subTitle="View List of my Request"
+        title=" Documented Information Change Request for Review"
+        //subTitle="View List of my Request"
       ></PageHeader>
 
       <div className="base-container">

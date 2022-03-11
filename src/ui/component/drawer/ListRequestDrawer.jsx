@@ -54,7 +54,7 @@ const ListRequestDrawer = ({ visible, onClose }) => {
   }
   return (
     <Drawer
-      title="Review Document Information Change Request (DICR)"
+      title="Register Document Information Change Request (DICR)"
       placement="right"
       size="large"
       visible={visible}
@@ -63,31 +63,16 @@ const ListRequestDrawer = ({ visible, onClose }) => {
       width={"850px"}
       extra={
         <Space>
+          <Button type="ghost" onClick={showConfirm}>
+            Return Request
+          </Button>
           <Button type="primary" onClick={showConfirm}>
-            Register
+            Register Request
           </Button>
         </Space>
       }
     >
-      <Steps progressDot current={1}>
-        <Step title="Initiate Request" description="You're currently here." />
-        <Step
-          title="Request is registered "
-          description="Date Requested yyyy-mm-dd"
-        />
-        <Step
-          title="Request reviewed by Authority"
-          description="This is a description."
-        />
-        <Step
-          title="Request approved by Authority"
-          description="This is a description."
-        />
-        <Step
-          title="Update of QMS"
-          description="This is a description."
-        />
-      </Steps>
+      <br />
       <Form layout="vertical">
         {/* 1st Row */}
 

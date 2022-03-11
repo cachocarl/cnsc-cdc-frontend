@@ -2,21 +2,32 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import InternalDicrTableViewDrawer from "../../../component/drawer/userDrawer/InternalDicrTableViewDrawer";
-import InternalDocumentDrawer from "../../../component/drawer/InternalDocumentDrawer";
+import InternalUserDrawer from "../../../component/drawer/userDrawer/InternalUserDrawer";
 
 const { Search } = Input;
 const dataSource = [
   {
     docinfotitle: "Sample Document Change Request #1",
     docutype: "Policy",
-    dateinitiated: "01-13-22",
-    status: "Registered",
+    dateinitiated: "January 06, 2022",
+    status: "Registered for Review",
   },
   {
     docinfotitle: "Sample Document Change Request #2",
     docutype: "Procedure",
-    dateinitiated: "01-26-22",
+    dateinitiated: "January 14, 2022",
+    status: "Registered",
+  },
+  {
+    docinfotitle: "Sample Document Change Request #3",
+    docutype: "Form",
+    dateinitiated: "January 17, 2022",
+    status: "Registered",
+  },
+  {
+    docinfotitle: "Sample Document Change Request #4",
+    docutype: "Policy",
+    dateinitiated: "Februray 26, 2022",
     status: "Registered",
   },
 ];
@@ -48,7 +59,7 @@ const column = [
 
     render: (data, record) => {
       return data === "Registered" ? (
-        <Tag color="blue">Registered</Tag>
+        <Tag color="blue">Registered for Review</Tag>
       ) : (
         <Tag color="green">Approved</Tag>
       );
@@ -75,38 +86,25 @@ const column = [
 ];
 
 const InternalDocumentPage = () => {
+  const [addVisible, setAddVisible] = React.useState(false);
+  const [editVisible, setEditVisible] = React.useState(false);
+  const [viewVisible, setViewVisible] = React.useState(false);
+
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-internal-documents");
-
-  const [createVisible, setCreateVisible] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
-
-  const showDrawer = () => {
-    setCreateVisible(true);
-  };
-
-  const onClose = () => {
-    setCreateVisible(false);
-  };
-
-  const showDrawer1 = () => {
-    setVisible(true);
-  };
-
-  const onClose1 = () => {
-    setVisible(false);
-  };
-
 
   return (
     <>
       <PageHeader
-        title="My Internal Document
-       Request List"
-        subTitle="View List of my Request"
+        title="List of My Documented Information Change Request "
+        //subTitle="View List of my Request"
         extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
-            Create New Form Request
+          <Button
+            onClick={() => setAddVisible(true)}
+            type="primary"
+            icon={<PlusOutlined />}
+          >
+            Initiate New Request
           </Button>,
         ]}
       ></PageHeader>
@@ -125,15 +123,25 @@ const InternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer1();
+                setViewVisible(true);
               }, // double click row
             };
           }}
         />
-      </div>
 
-      {/* <InternalDocumentDrawer></InternalDocumentDrawer> */}
-      <InternalDicrTableViewDrawer visible={visible} onClose={onClose} />
+        <InternalUserDrawer.Add
+          visible={addVisible}
+          onClose={() => setAddVisible(false)}
+        />
+        <InternalUserDrawer.Edit
+          visible={editVisible}
+          onClose={() => setEditVisible(false)}
+        />
+        <InternalUserDrawer.View
+          visible={viewVisible}
+          onClose={() => setViewVisible(false)}
+        />
+      </div>
     </>
   );
 };
