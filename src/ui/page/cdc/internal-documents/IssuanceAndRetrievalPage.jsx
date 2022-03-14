@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Input, Row,Col } from "antd";
+import { Table, Input, Row, Col } from "antd";
 
 const { Column, ColumnGroup } = Table;
 
@@ -11,7 +11,7 @@ const IssuanceAndRetrievalPage = () => {
           return (
             <Input.Group>
               <Row gutter={6}>
-                <Col span={2}>
+                <Col span={4}>
                   <Input addonBefore="Doc no." />
                 </Col>
                 <Col>

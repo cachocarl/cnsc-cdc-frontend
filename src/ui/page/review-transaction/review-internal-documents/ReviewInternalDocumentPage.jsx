@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Input, PageHeader, Table } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import ReviewDicrDrawer from "../../../component/drawer/reviewDrawer/ReviewDicrDrawer";
+import ReviewingInternalDrawer from "../../../component/drawers/internalDrawer/reviewing/ReviewingInternalDrawer";
+import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 
 const { Search } = Input;
 
@@ -50,18 +51,10 @@ const column = [
 ];
 
 const ReviewInternalDocumentPage = () => {
+  const { add, edit, view } = useDrawerVisibility();
+
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("review-internal-documents");
-
-  const [visible, setVisible] = React.useState(false);
-
-  const showDrawer = () => {
-    setVisible(true);
-  };
-
-  const onClose = () => {
-    setVisible(false);
-  };
+  navigatorContext.setSelectedKey("user-internal-documents");
 
   return (
     <>
@@ -84,14 +77,17 @@ const ReviewInternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer();
+                view.setVisible(true);
               }, // double click row
             };
           }}
         />
       </div>
 
-      <ReviewDicrDrawer visible={visible} onClose={onClose} />
+      <ReviewingInternalDrawer.ReviewDrawer
+        visible={view.visible}
+        onClose={() => view.setVisible(false)}
+      ></ReviewingInternalDrawer.ReviewDrawer>
     </>
   );
 };

@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import ExternalQMRDrawer from "../../../component/drawer/userDrawer/ExternalQMRDrawer";
-import ExternalQMRTableViewDrawer from "../../../component/drawer/userDrawer/ExternalQMRTableViewDrawer";
+import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
+import UserExternalDrawer from "../../../component/drawers/externalDrawer/user/UserExternalDrawer";
 
 const { Search } = Input;
 
@@ -77,26 +77,10 @@ const column = [
 ];
 
 const ExternalDocumentPage = () => {
+  const { add, edit, view } = useDrawerVisibility();
+
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-external-documents");
-
-  const [createVisible, setCreateVisible] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
-
-  const showDrawer = () => {
-    setCreateVisible(true);
-  };
-
-  const onClose = () => {
-    setCreateVisible(false);
-  };
-  const showDrawer1 = () => {
-    setVisible(true);
-  };
-
-  const onClose1 = () => {
-    setVisible(false);
-  };
 
   return (
     <>
@@ -104,7 +88,11 @@ const ExternalDocumentPage = () => {
         title="List of My External Document Request"
         //subTitle="View List of my Request"
         extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => add.setVisible(true)}
+          >
             Initiate New Request
           </Button>,
         ]}
@@ -124,15 +112,22 @@ const ExternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer1();
+                view.setVisible(true);
               }, // double click row
             };
           }}
         />
       </div>
 
-      <ExternalQMRDrawer visible={createVisible} onClose={onClose} />
-      <ExternalQMRTableViewDrawer visible={visible} onClose={onClose1} />
+      <UserExternalDrawer.CreateExternalDrawer
+        visible={add.visible}
+        onClose={() => add.setVisible(false)}
+      ></UserExternalDrawer.CreateExternalDrawer>
+
+      <UserExternalDrawer.ViewExternalDrawer
+        visible={view.visible}
+        onClose={() => view.setVisible(false)}
+      ></UserExternalDrawer.ViewExternalDrawer>
     </>
   );
 };

@@ -6,6 +6,8 @@ import {
   EyeOutlined,
 } from "@ant-design/icons";
 import ListRequestDrawer from "../../../component/drawer/ListRequestDrawer";
+import CdcInternalDrawer from "../../../component/drawers/internalDrawer/cdc/CdcInternalDrawer";
+import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 
 const { Search } = Input;
 const { RangePicker } = DatePicker;
@@ -83,15 +85,7 @@ const column = [
 ];
 
 const ListRequestPage = () => {
-  const [visible, setVisible] = React.useState(false);
-
-  const showDrawer = () => {
-    setVisible(true);
-  };
-
-  const onClose = () => {
-    setVisible(false);
-  };
+  const { add, edit, view } = useDrawerVisibility();
   return (
     <>
       <div className="base-container">
@@ -110,13 +104,17 @@ const ListRequestPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer();
+                add.setVisible(true);
               }, // double click row
             };
           }}
         />
+
+        <CdcInternalDrawer.ListRequestDrawer
+          visible={add.visible}
+          onClose={() => add.setVisible(false)}
+        ></CdcInternalDrawer.ListRequestDrawer>
       </div>
-      <ListRequestDrawer visible={visible} onClose={onClose} />
     </>
   );
 };

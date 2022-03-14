@@ -3,6 +3,8 @@ import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
+import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
+import userRdiDrawer from "../../../component/drawers/rdiDrawer/user/userRdiDrawer";
 
 const { Search } = Input;
 
@@ -81,27 +83,22 @@ const RequestDocumentInfoPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-request-document-info");
 
-  const [visible, setVisible] = React.useState(false);
-
-  const showDrawer = () => {
-    setVisible(true);
-  };
-
-  const onClose = () => {
-    setVisible(false);
-  };
+  const { add, view, edit } = useDrawerVisibility();
 
   return (
     <>
       <PageHeader
         title="List of My Request for Documented Information"
         extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => add.setVisible(true)}
+          >
             Initiate New Request
           </Button>,
         ]}
       ></PageHeader>
-
       <div className="base-container">
         <Search
           placeholder="input search text"
@@ -116,14 +113,21 @@ const RequestDocumentInfoPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer();
+                view.setVisible(true);
               }, // double click row
             };
           }}
         />
       </div>
+      <userRdiDrawer.createRdiDrawer
+        visible={add.visible}
+        onClose={() => add.setVisible(false)}
+      ></userRdiDrawer.createRdiDrawer>
 
-      <ReqDocInfoDrawer visible={visible} onClose={onClose} />
+      <userRdiDrawer.viewRdiDrawer
+        visible={view.visible}
+        onClose={() => view.setVisible(false)}
+      ></userRdiDrawer.viewRdiDrawer>
     </>
   );
 };

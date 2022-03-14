@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import InternalUserDrawer from "../../../component/drawer/userDrawer/InternalUserDrawer";
+import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
+import UserInternalDrawer from "../../../component/drawers/internalDrawer/user/UserInternalDrawer";
 
 const { Search } = Input;
 const dataSource = [
@@ -10,7 +11,7 @@ const dataSource = [
     docinfotitle: "Sample Document Change Request #1",
     docutype: "Policy",
     dateinitiated: "January 06, 2022",
-    status: "Registered for Review",
+    status: "Registered",
   },
   {
     docinfotitle: "Sample Document Change Request #2",
@@ -59,7 +60,7 @@ const column = [
 
     render: (data, record) => {
       return data === "Registered" ? (
-        <Tag color="blue">Registered for Review</Tag>
+        <Tag color="blue">Registered</Tag>
       ) : (
         <Tag color="green">Approved</Tag>
       );
@@ -86,9 +87,7 @@ const column = [
 ];
 
 const InternalDocumentPage = () => {
-  const [addVisible, setAddVisible] = React.useState(false);
-  const [editVisible, setEditVisible] = React.useState(false);
-  const [viewVisible, setViewVisible] = React.useState(false);
+  const { add, edit, view } = useDrawerVisibility();
 
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-internal-documents");
@@ -100,7 +99,7 @@ const InternalDocumentPage = () => {
         //subTitle="View List of my Request"
         extra={[
           <Button
-            onClick={() => setAddVisible(true)}
+            onClick={() => add.setVisible(true)}
             type="primary"
             icon={<PlusOutlined />}
           >
@@ -110,12 +109,13 @@ const InternalDocumentPage = () => {
       ></PageHeader>
 
       <div className="base-container">
-        <Search
-          placeholder="input search text"
-          style={{ width: 250, margin: 18 }}
-          allowClear
-        />
-
+        <Space justify="right">
+          <Search
+            placeholder="input search text"
+            style={{ width: 250, margin: 18 }}
+            allowClear
+          />
+        </Space>
         <br></br>
         <Table
           columns={column}
@@ -123,24 +123,21 @@ const InternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                setViewVisible(true);
+                view.setVisible(true);
               }, // double click row
             };
           }}
         />
 
-        <InternalUserDrawer.Add
-          visible={addVisible}
-          onClose={() => setAddVisible(false)}
-        />
-        <InternalUserDrawer.Edit
-          visible={editVisible}
-          onClose={() => setEditVisible(false)}
-        />
-        <InternalUserDrawer.View
-          visible={viewVisible}
-          onClose={() => setViewVisible(false)}
-        />
+        <UserInternalDrawer.Add
+          visible={add.visible}
+          onClose={() => add.setVisible(false)}
+        ></UserInternalDrawer.Add>
+
+        <UserInternalDrawer.View
+          visible={view.visible}
+          onClose={() => view.setVisible(false)}
+        ></UserInternalDrawer.View>
       </div>
     </>
   );

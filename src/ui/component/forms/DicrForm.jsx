@@ -1,27 +1,33 @@
-import React from "react";
 import {
   Drawer,
   Form,
   Button,
+  Space,
+  Modal,
   Col,
   Row,
   Input,
+  Select,
   DatePicker,
   Typography,
-  Upload,
-  Steps,
   Divider,
+  Steps,
+  Upload,
+  message,
 } from "antd";
+import {
+  ExclamationCircleOutlined,
+  FileOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
 
-import { FileOutlined } from "@ant-design/icons";
 import moment from "moment";
 
+const { Option } = Select;
 const dateFormat = "YYYY-MM-DD";
-
 const { Title } = Typography;
-
 const { Step } = Steps;
-
+const { confirm } = Modal;
 const normFile = (e) => {
   console.log("Upload event:", e);
 
@@ -32,35 +38,9 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
+const DicrForm = () => {
   return (
-    <Drawer
-      title="Progress of Form Request"
-      placement="right"
-      size="large"
-      visible={visible}
-      closable={true}
-      onClose={onClose}
-      width={"850px"}
-    >
-      <Steps direction="vertical" current={1}>
-        <Step title="Initiating Request" description="Initiate New Request" />
-        <Step
-          title="Registration Of Request"
-          description="Start of Registration."
-        />
-        <Step
-          title="Reviewing of Request"
-          description="This is a description."
-        />
-        <Step
-          title="Approving of Request"
-          description="This is a description."
-        />
-        <Step title="Update of QMS" description="This is a description." />
-      </Steps>
-      <Divider></Divider>
-      <br></br>
+    <Form>
       <Form layout="vertical">
         {/* 1st Row */}
 
@@ -71,7 +51,11 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Nature of Change:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input disabled={true} />
+              <Select placeholder="New">
+                <Option value="private">New</Option>
+                <Option value="public">Revision</Option>
+                <Option value="public">Deletion/Obslete</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -80,7 +64,12 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Document Information Type:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input disabled={true} />
+              <Select placeholder="Policy">
+                <Option value="private">Policy</Option>
+                <Option value="public">Procedure</Option>
+                <Option value="public">Form</Option>
+                <Option value="public">Attachment</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -103,7 +92,7 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Initiator:"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input disabled placeholder="Sample Name" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -112,23 +101,30 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="College/Office/Unit:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input disabled={true} />
+              <Select placeholder="Choose College/Office/Unit">
+                <Option value="policy">ICS</Option>
+                <Option value="procedure">CBPA</Option>
+                <Option value="procedure">Engineering</Option>
+                <Option value="procedure">CBPA</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
+              disabled
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: false }]}
             >
-              <Input disabled={true} />
+              <DatePicker
+                defaultValue={moment("2022-03-04", dateFormat)}
+                disabled
+                style={{ width: 255 }}
+              />
             </Form.Item>
           </Col>
         </Row>
 
-        <Divider></Divider>
-        <Title level={4}>Document Information</Title>
-        <br></br>
         <Row gutter={16}>
           <Col span={8}>
             <Form.Item
@@ -136,42 +132,32 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Document Information Number:"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input placeholder="Please enter Document Information Number" />
             </Form.Item>
           </Col>
-          <Col span={16}>
+          <Col span={8}>
             <Form.Item
               name="name"
               label="Document Information Title:"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={8}>
-            <Form.Item
-              name="proposedDate"
-              label="Proposed Effective Date:"
-              rules={[{ required: false }]}
-            >
-              <Input disabled={true} />
+              <Input placeholder="Please enter Document Information Title" />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
-              name="viewfile"
-              label="File Attachment"
+              name="file"
+              label="File Attachment:"
               valuePropName="fileList"
               getValueFromEvent={normFile}
             >
               <Upload name="logo" action="/upload.do" listType="picture">
-                <Button icon={<FileOutlined />}>Click Here to View File</Button>
+                <Button icon={<UploadOutlined />}>Upload File(s)</Button>
               </Upload>
             </Form.Item>
           </Col>
         </Row>
+
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item
@@ -184,10 +170,14 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
                 },
               ]}
             >
-              <Input disabled={true} />
+              <Input.TextArea
+                rows={4}
+                placeholder="Please enter Description and Purpose of Documentation Request"
+              />
             </Form.Item>
           </Col>
         </Row>
+
         <Divider></Divider>
         <Title level={4}>To be Accomplished by the Reviewing Authority</Title>
         <br></br>
@@ -198,7 +188,7 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Remarks: (if any)"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input disabled placeholder="Please type your Remarks Here" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -207,7 +197,11 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Action Taken/Disposition:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input disabled={true} />
+              <Select disabled placeholder="Approved">
+                <Option value="private">Approval</Option>
+                <Option value="public">Disapproval</Option>
+                <Option value="public">For Fine-tuning</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -218,11 +212,12 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Approved By:"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input disabled />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
+              disabled
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: true }]}
@@ -246,7 +241,7 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Remarks: (if any)"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input disabled placeholder="Please type your Remarks Here" />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -255,7 +250,11 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Action Taken/Disposition:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input disabled={true} />
+              <Select disabled placeholder="Approved">
+                <Option value="private">Approval</Option>
+                <Option value="public">Disapproval</Option>
+                <Option value="public">For Fine-tuning</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -266,11 +265,12 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               label="Approved By:"
               rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input disabled />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
+              disabled
               name="proposedDate"
               label="Date Requested (Current Date):"
               rules={[{ required: true }]}
@@ -284,8 +284,8 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
           </Col>
         </Row>
       </Form>
-    </Drawer>
+    </Form>
   );
 };
 
-export default ExternalQMRTableViewDrawer;
+export default DicrForm;

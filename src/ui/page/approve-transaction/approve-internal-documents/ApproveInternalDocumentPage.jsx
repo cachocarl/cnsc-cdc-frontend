@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { Input,PageHeader, Table, } from "antd";
+import { Input, PageHeader, Table } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import ApproveDicrDrawer from "../../../component/drawer/approveDrawer/ApproveDicrDrawer";
-
-
+import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
+import ApprovingInternalDrawer from "../../../component/drawers/internalDrawer/approving/ApprovingInternalDrawer";
 const { Search } = Input;
 
 const dataSource = [
@@ -12,7 +11,7 @@ const dataSource = [
     namereq: "Crispy Jeysi",
     docinfono: "CNSC-SP-QMS-01F1",
     docinfotitle: "Internal Documentation Change Request",
-    year:"2022",
+    year: "2022",
   },
 ];
 
@@ -45,31 +44,19 @@ const column = [
     dataIndex: "year",
     key: "year",
   },
-
-
 ];
 
 const ApproveInternalDocumentPage = () => {
+  const { add, edit, view } = useDrawerVisibility();
+
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("approve-internal-documents");
-
-  const [visible, setVisible] = React.useState(false);
-
-  const showDrawer = () => {
-    setVisible(true);
-  };
-
-  const onClose = () => {
-    setVisible(false);
-  };
 
   return (
     <>
       <PageHeader
-        title="My Internal Document
-       Request List"
-        subTitle="View List of my Request"
-
+        title="List of Documented Information Change Request for Approval"
+        //subTitle="View List of my Request"
       ></PageHeader>
 
       <div className="base-container">
@@ -86,14 +73,17 @@ const ApproveInternalDocumentPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                showDrawer();
+                view.setVisible(true);
               }, // double click row
             };
           }}
         />
       </div>
 
-      <ApproveDicrDrawer visible={visible} onClose={onClose} />
+      <ApprovingInternalDrawer.ApproveDrawer
+        visible={view.visible}
+        onClose={() => view.setVisible(false)}
+      ></ApprovingInternalDrawer.ApproveDrawer>
     </>
   );
 };
