@@ -20,6 +20,7 @@ import ApproveInternalDocumentPage from "../page/approve-transaction/approve-int
 import ApproveExternalDocumentPage from "../page/approve-transaction/aprrove-external-documents/ApproveExternalDocumentPage";
 import ApproveRequestDocumentInfoPage from "../page/approve-transaction/aprrove-request-document-info/ApproveRequestDocumentInfoPage";
 import ControlledCopiesPage from "../page/cdc/controlled-documents/ControlledCopiesPage";
+import LoginPage from "../page/login/LoginPage";
 
 
 //This will serve as the base router for all pages
@@ -97,7 +98,7 @@ const GlobalRoute = () => {
 
             <Route path="documents/archive" element={<ArchivePage />} />
           </Route>
-          <Route path="/login" element={<PlainLayout />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </NavigatorProvider>
