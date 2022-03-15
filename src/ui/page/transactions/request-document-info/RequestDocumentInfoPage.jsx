@@ -3,7 +3,7 @@ import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
-import userRdiDrawer from "../../../component/drawers/rdiDrawer/user/UserRdiDrawer";
+import UserRdiDrawer from "../../../component/drawers/rdiDrawer/user/UserRdiDrawer";
 
 const { Search } = Input;
 
@@ -118,15 +118,15 @@ const RequestDocumentInfoPage = () => {
           }}
         />
       </div>
-      <userRdiDrawer.createRdiDrawer
+      <UserRdiDrawer.CreateRdiDrawer
         visible={add.visible}
         onClose={() => add.setVisible(false)}
-      ></userRdiDrawer.createRdiDrawer>
+      ></UserRdiDrawer.CreateRdiDrawer>
 
-      <userRdiDrawer.viewRdiDrawer
+      <UserRdiDrawer.ViewRdiDrawer
         visible={view.visible}
         onClose={() => view.setVisible(false)}
-      ></userRdiDrawer.viewRdiDrawer>
+      ></UserRdiDrawer.ViewRdiDrawer>
     </>
   );
 };

@@ -1,52 +1,58 @@
 import React from "react";
-import {
-  Drawer,
-  Typography,
-  Divider,
-  Steps,
-} from "antd";
+import { Drawer, Button, Space, Steps, Modal, Divider, Typography } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
-const { Step } = Steps;
+import UserRdiForm from "./UserRdiForm";
+
 const { Title } = Typography;
+const { confirm } = Modal;
+const { Step } = Steps;
 
-const createRdiDrawer = ({ visible, onClose }) => {
+const CreateRdiDrawer = ({ visible, onClose }) => {
+    //function to show a modal after a button click
+    function showConfirm() {
+      confirm({
+        title: "Submit Request for Copies of Documented Information?",
+        icon: <ExclamationCircleOutlined />,
+        content:
+          "Submitting your request will forward it to CDC for registration. ",
+        onOk() {
+          console.log("OK");
+  
+          onClose();
+        },
+        onCancel() {
+          console.log("Cancel");
+        },
+      });
+    }
 
   return (
-    <>
       <Drawer
-        title="Initiate 123 Request for Documented Information"
+        title="Registration of Request Copies"
         placement="right"
         size="large"
         visible={visible}
         closable={true}
         onClose={onClose}
         width={"850px"}
+        extra={
+          <Space>
+            <Button type="primary" onClick={showConfirm}>
+              Submit New Request
+            </Button>
+          </Space>
+        }
       >
-        <Title level={4}>DIR Status:</Title>
-        <br />
-        <Steps progressDot current={2}>
-          <Step title="Creating your Request" description="Finished" />
-          <Step
-            title="Your request is being registered by CDC"
-            description="Finished"
-          />
-
-          <Step
-            title="Your request is being reviewed for approval"
-            description="Waiting."
-          />
-        </Steps>
-        <Divider />
+        <UserRdiForm.CreateRdiForm/>
       </Drawer>
-    </>
   );
 };
 
-const viewRdiDrawer = ({ visible, onClose }) => {
+const ViewRdiDrawer = ({ visible, onClose }) => {
 
 
   return (
-    <>
       <Drawer
         title="View My Request for Documented Information"
         placement="right"
@@ -58,27 +64,34 @@ const viewRdiDrawer = ({ visible, onClose }) => {
       >
         <Title level={4}>DIR Status:</Title>
         <br />
-        <Steps progressDot current={2}>
-          <Step title="Creating your Request" description="Finished" />
+        <Steps direction="vertical" current={2}>
           <Step
-            title="Your request is being registered by CDC"
-            description="Finished"
+            title="Step 1: Initiating Request"
+            description="Create a Documented Information Change Request"
           />
-
           <Step
-            title="Your request is being reviewed for approval"
-            description="Waiting."
+            title="Step 2: Registration Of Request"
+            description="DICR is being examined for registration by CDC"
           />
+          <Step
+            title="Step 3: Reviewing of Request"
+            description="DICR is being reviewed by a Reviewing Authority"
+          />
+          <Step
+            title="Step 4: Approving of Request"
+            description="DICR is being evaluated by an Approving Authority"
+          />
+          <Step title="Step 5: Update of QMS" />
         </Steps>
         <Divider />
+        <UserRdiForm.ViewRdiForm/>
       </Drawer>
-    </>
   );
 };
 
-const userRdiDrawer = {
-  createRdiDrawer,
-  viewRdiDrawer,
+const UserRdiDrawer = {
+  CreateRdiDrawer,
+  ViewRdiDrawer,
 };
 
-export default userRdiDrawer;
+export default UserRdiDrawer;

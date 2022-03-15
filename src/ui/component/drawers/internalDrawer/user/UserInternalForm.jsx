@@ -31,7 +31,7 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-const AddForm = () => {
+const AddForm = ({ visible, onClose }) => {
   return (
     <Form>
       <Form layout="vertical">
