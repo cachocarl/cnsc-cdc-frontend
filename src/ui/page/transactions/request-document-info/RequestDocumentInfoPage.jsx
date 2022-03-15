@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
-import userRdiDrawer from "../../../component/drawers/rdiDrawer/user/userRdiDrawer";
+import userRdiDrawer from "../../../component/drawers/rdiDrawer/user/UserRdiDrawer";
 
 const { Search } = Input;
 
@@ -83,7 +82,7 @@ const RequestDocumentInfoPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-request-document-info");
 
-  const { add, view, edit } = useDrawerVisibility();
+  const { add, view, /*edit*/ } = useDrawerVisibility();
 
   return (
     <>

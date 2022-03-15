@@ -10,12 +10,12 @@ import {
   DatePicker,
   Space,
   Typography,
+  Upload,
   Modal,
   Divider,
-  Steps,
 } from "antd";
 
-import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { UploadOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 const { confirm } = Modal;
@@ -23,15 +23,28 @@ const { confirm } = Modal;
 const { Option } = Select;
 
 const dateFormat = "YYYY-MM-DD";
-const { Step } = Steps;
+
 const { Title } = Typography;
+
+
+const normFile = (e) => {
+  console.log("Upload event:", e);
+
+  if (Array.isArray(e)) {
+    return e;
+  }
+
+  return e && e.fileList;
+};
+
 
 const ReqDocInfoDrawer = ({ visible, onClose }) => {
   function showConfirm() {
     confirm({
-      title: "Edit Request Information?",
+      title: "Submit Request?",
       icon: <ExclamationCircleOutlined />,
-      content: "Edit Request Information?",
+      content:
+        "Submitting your request will forward it to CDC for further processing",
       onOk() {
         console.log("OK");
         onClose();
@@ -50,22 +63,14 @@ const ReqDocInfoDrawer = ({ visible, onClose }) => {
       closable={true}
       onClose={onClose}
       width={"850px"}
+      extra={
+        <Space>
+          <Button type="primary" onClick={showConfirm}>
+            Submit Request
+          </Button>
+        </Space>
+      }
     >
-      <Title level={4}>DIR Status:</Title>
-      <br />
-      <Steps progressDot current={2}>
-        <Step title="Creating your Request" description="Finished" />
-        <Step
-          title="Your request is being registered by CDC"
-          description="Finished"
-        />
-
-        <Step
-          title="Your request is being reviewed for approval"
-          description="Waiting."
-        />
-      </Steps>
-      <Divider />
 
       <Form layout="vertical">
         {/* 1st Row */}
@@ -88,7 +93,6 @@ const ReqDocInfoDrawer = ({ visible, onClose }) => {
             >
               <DatePicker
                 defaultValue={moment("2022-03-04", dateFormat)}
-                disabled
                 style={{ width: 255 }}
               />
             </Form.Item>
@@ -113,11 +117,11 @@ const ReqDocInfoDrawer = ({ visible, onClose }) => {
               label="Requested From (College/Unit):"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Select disabled placeholder="Choose here">
-                <Option value="policy">ICS</Option>
-                <Option value="procedure">CBPA</Option>
-                <Option value="procedure">Engineering</Option>
-                <Option value="procedure">CBPA</Option>
+              <Select placeholder="Choose here">
+                <Option value="policy">CBPA</Option>
+                <Option value="procedure">ICS</Option>
+                <Option value="form">Graduate School</Option>
+                <Option value="attachment">CoENG</Option>
               </Select>
             </Form.Item>
           </Col>
@@ -127,32 +131,85 @@ const ReqDocInfoDrawer = ({ visible, onClose }) => {
               label="Number of Copies:"
               rules={[{ required: true }]}
             >
-              <Input disabled />
+              <Input />
             </Form.Item>
           </Col>
 
           <Divider></Divider>
-          <Title level={4}>Document Information</Title>
+          <Title level={4}>Description of Documented Information</Title>
           <br></br>
         </Row>
 
         <Row gutter={16}>
-          <Col span={8}>
+        <Col span={8}>
             <Form.Item
               name="name"
-              label="Documented Information No."
-              rules={[{ required: false }]}
+              label="Document Information Number:"
+              rules={[{ required: true }]}
             >
-              <Input disabled={true} />
+              <Input />
             </Form.Item>
           </Col>
-
           <Col span={16}>
-            <Form.Item name="name" label="Title:" rules={[{ required: true }]}>
+            <Form.Item
+              name="name"
+              label="Document Information Title:"
+              rules={[{ required: true }]}
+            >
+              <Input placeholder="Please type your Document Information Title" />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row gutter={16}>
+        <Col span={8}>
+            <Form.Item
+              name="dct"
+              label="Document Information Type:"
+              rules={[{ required: true, message: "Please choose" }]}
+            >
+              <Select placeholder="Choose here">
+                <Option value="policy">Policy</Option>
+                <Option value="procedure">Procedure</Option>
+                <Option value="form">Forms</Option>
+                <Option value="attachment">Attachment</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={16}>
+            <Form.Item name="name" label="Other Please Specify:" rules={[{ required: true }]}>
               <Input
-                disabled
                 placeholder="Please type your Document Information Title"
               />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row gutter={16}>
+        <Col span={8}>
+            <Form.Item
+              name="dct"
+              label="Copy Type:"
+              rules={[{ required: true, message: "Please choose" }]}
+            >
+              <Select placeholder="Choose here">
+                <Option value="policy">CBPA</Option>
+                <Option value="procedure">ICS</Option>
+                <Option value="form">Graduate School</Option>
+                <Option value="attachment">CoENG</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+        <Col span={8}>
+            <Form.Item
+              name="upload"
+              label="Upload"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+            >
+              <Upload name="logo" action="/upload.do" listType="picture">
+                <Button icon={<UploadOutlined />}>Click Here to upload</Button>
+              </Upload>
             </Form.Item>
           </Col>
         </Row>
@@ -170,7 +227,6 @@ const ReqDocInfoDrawer = ({ visible, onClose }) => {
               ]}
             >
               <Input.TextArea
-                disabled
                 rows={4}
                 placeholder="Please enter your description and purpose of documentation request here"
               />

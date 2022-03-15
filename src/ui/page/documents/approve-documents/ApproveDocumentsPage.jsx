@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
-import { PageHeader, Table } from "antd";
+import { PageHeader, Table, Input, Space, DatePicker } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
+
+const { Search } = Input;
+
+const { RangePicker } = DatePicker;
 
 const column = [
   {
@@ -30,11 +34,19 @@ const ApproveDocumentsPage = () => {
     navigatorContext.setSelectedKey("approve-documents")
   return (
     <>
+    
       <PageHeader title="Approve Documents">
        
       </PageHeader>
       <div className="base-container">
-
+      <Space>
+          <Search
+            placeholder="input search text"
+            style={{ width: 250, margin: 18 }}
+            allowClear
+          />
+          <RangePicker picker="year" />
+        </Space>
         <Table columns = {column} />
 
       </div>

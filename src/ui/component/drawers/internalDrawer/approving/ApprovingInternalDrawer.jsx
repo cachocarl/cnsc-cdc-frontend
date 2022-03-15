@@ -1,16 +1,8 @@
 import React from "react";
 import {
   Drawer,
-  Form,
   Button,
-  Col,
-  Row,
-  Input,
-  Select,
-  DatePicker,
   Space,
-  Typography,
-  Upload,
   Modal,
   Steps,
   Divider,
@@ -18,22 +10,9 @@ import {
 
 import ApprovingInternalForm from "./ApprovingInternalForm";
 
-import { FileOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
-import moment from "moment";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 const { confirm } = Modal;
-const { Option } = Select;
-const dateFormat = "YYYY-MM-DD";
-const { Title } = Typography;
 const { Step } = Steps;
-
-const normFile = (e) => {
-  console.log("Upload event:", e);
-
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e && e.fileList;
-};
 
 const ApproveDrawer = ({ visible, onClose }) => {
   function showConfirm() {

@@ -11,7 +11,6 @@ import {
   Typography,
   Upload,
   Modal,
-  Steps,
   Divider,
 } from "antd";
 
@@ -23,8 +22,6 @@ const { confirm } = Modal;
 const dateFormat = "YYYY-MM-DD";
 
 const { Title } = Typography;
-
-const { Step } = Steps;
 
 const normFile = (e) => {
   console.log("Upload event:", e);

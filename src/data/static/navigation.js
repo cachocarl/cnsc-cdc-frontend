@@ -126,6 +126,12 @@ const navigations = [
         name: "External Documents",
         basePath: "/cdc/external-documents",
       },
+      {
+        id: 20,
+        uKey: "cdc-controlled-documents", //unique readable key
+        name: "Controlled Documents",
+        basePath: "/cdc/controlled-documents",
+      },
     ],
   },
   {
@@ -151,7 +157,7 @@ const navigations = [
     ],
   },
   {
-    id: 20,
+    id: 21,
     uKey: "about", //unique readable key
     name: "About CNSC",
     basePath: "/about",

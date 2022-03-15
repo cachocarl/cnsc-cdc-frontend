@@ -14,12 +14,10 @@ import {
   Divider,
   Steps,
   Upload,
-  message,
 } from "antd";
 import {
   ExclamationCircleOutlined,
   FileOutlined,
-  UploadOutlined,
 } from "@ant-design/icons";
 
 import moment from "moment";

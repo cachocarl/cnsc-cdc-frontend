@@ -54,7 +54,7 @@ const ExternalQMRDrawer = ({ visible, onClose }) => {
   }
   return (
     <Drawer
-      title="Initiate External Document Request "
+      title="Initiate Form Request for Exteral Documents"
       placement="right"
       size="large"
       visible={visible}
@@ -64,7 +64,7 @@ const ExternalQMRDrawer = ({ visible, onClose }) => {
       extra={
         <Space>
           <Button type="primary" onClick={showConfirm}>
-            Submit Request
+            Submit for Registration
           </Button>
         </Space>
       }

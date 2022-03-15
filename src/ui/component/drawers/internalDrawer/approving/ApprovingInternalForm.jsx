@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Drawer,
   Form,
   Button,
   Col,
@@ -8,24 +7,18 @@ import {
   Input,
   Select,
   DatePicker,
-  Space,
   Typography,
   Upload,
-  Modal,
-  Steps,
   Divider,
 } from "antd";
 
-import { FileOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { FileOutlined, } from "@ant-design/icons";
 import moment from "moment";
 
-const { confirm } = Modal;
 const { Option } = Select;
 const dateFormat = "YYYY-MM-DD";
 
 const { Title } = Typography;
-
-const { Step } = Steps;
 
 const normFile = (e) => {
   console.log("Upload event:", e);

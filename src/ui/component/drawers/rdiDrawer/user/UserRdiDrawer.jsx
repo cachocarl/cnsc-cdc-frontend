@@ -1,45 +1,15 @@
 import React from "react";
 import {
   Drawer,
-  Form,
-  Button,
-  Col,
-  Row,
-  Input,
-  Select,
-  DatePicker,
-  Space,
   Typography,
-  Modal,
   Divider,
   Steps,
 } from "antd";
 
-import UserRdiForm from "./UserRdiForm";
-
-import { ExclamationCircleOutlined } from "@ant-design/icons";
-import moment from "moment";
-const { confirm } = Modal;
-const { Option } = Select;
-const dateFormat = "YYYY-MM-DD";
 const { Step } = Steps;
 const { Title } = Typography;
 
 const createRdiDrawer = ({ visible, onClose }) => {
-  function showConfirm() {
-    confirm({
-      title: "Edit Request Information?",
-      icon: <ExclamationCircleOutlined />,
-      content: "Edit Request Information?",
-      onOk() {
-        console.log("OK");
-        onClose();
-      },
-      onCancel() {
-        console.log("Cancel");
-      },
-    });
-  }
 
   return (
     <>
@@ -67,28 +37,13 @@ const createRdiDrawer = ({ visible, onClose }) => {
           />
         </Steps>
         <Divider />
-
-        <UserRdiForm.createRdiForm></UserRdiForm.createRdiForm>
       </Drawer>
     </>
   );
 };
 
 const viewRdiDrawer = ({ visible, onClose }) => {
-  function showConfirm() {
-    confirm({
-      title: "Edit Request Information?",
-      icon: <ExclamationCircleOutlined />,
-      content: "Edit Request Information?",
-      onOk() {
-        console.log("OK");
-        onClose();
-      },
-      onCancel() {
-        console.log("Cancel");
-      },
-    });
-  }
+
 
   return (
     <>
@@ -116,8 +71,6 @@ const viewRdiDrawer = ({ visible, onClose }) => {
           />
         </Steps>
         <Divider />
-
-        <UserRdiForm.createRdiForm></UserRdiForm.createRdiForm>
       </Drawer>
     </>
   );

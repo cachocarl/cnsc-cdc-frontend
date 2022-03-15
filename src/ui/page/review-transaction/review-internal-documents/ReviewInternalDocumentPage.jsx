@@ -51,7 +51,7 @@ const column = [
 ];
 
 const ReviewInternalDocumentPage = () => {
-  const { add, edit, view } = useDrawerVisibility();
+  const { /*add, edit,*/ view } = useDrawerVisibility();
 
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-internal-documents");

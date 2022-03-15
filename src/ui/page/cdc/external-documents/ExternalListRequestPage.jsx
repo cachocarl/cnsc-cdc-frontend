@@ -4,8 +4,9 @@ import {
   CheckCircleOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
-import CdcInternalDrawer from "../../../component/drawers/internalDrawer/cdc/CdcInternalDrawer";
+
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
+import CdcExternalDrawer from "../../../component/drawers/externalDrawer/cdc/CdcExternalDrawer";
 
 const { Search } = Input;
 const { RangePicker } = DatePicker;
@@ -82,8 +83,9 @@ const column = [
   },
 ];
 
-const ListRequestPage = () => {
-  const { add, /*edit, view*/ } = useDrawerVisibility();
+const ExternalListRequestPage = () => {
+  const {view} = useDrawerVisibility()
+
   return (
     <>
       <div className="base-container">
@@ -102,19 +104,18 @@ const ListRequestPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                add.setVisible(true);
+                view.setVisible(true);
               }, // double click row
             };
           }}
         />
-
-        <CdcInternalDrawer.ListRequestDrawer
-          visible={add.visible}
-          onClose={() => add.setVisible(false)}
-        ></CdcInternalDrawer.ListRequestDrawer>
       </div>
+      <CdcExternalDrawer.ListExternalRequestDrawer
+      visible = {view.visible}
+      onClose = {() => view.setVisible(false)}
+      ></CdcExternalDrawer.ListExternalRequestDrawer>
     </>
   );
 };
 
-export default ListRequestPage;
+export default ExternalListRequestPage;

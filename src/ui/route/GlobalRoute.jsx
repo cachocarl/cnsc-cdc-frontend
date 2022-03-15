@@ -19,6 +19,7 @@ import ReviewRequestDocumentInfoPage from "../page/review-transaction/review-req
 import ApproveInternalDocumentPage from "../page/approve-transaction/approve-internal-documents/ApproveInternalDocumentPage";
 import ApproveExternalDocumentPage from "../page/approve-transaction/aprrove-external-documents/ApproveExternalDocumentPage";
 import ApproveRequestDocumentInfoPage from "../page/approve-transaction/aprrove-request-document-info/ApproveRequestDocumentInfoPage";
+import ControlledCopiesPage from "../page/cdc/controlled-documents/ControlledCopiesPage";
 
 
 //This will serve as the base router for all pages
@@ -88,6 +89,10 @@ const GlobalRoute = () => {
               element={<CdcExternalDocumentsPage />}
             />
 
+            <Route
+              path="/cdc/controlled-documents"
+              element={<ControlledCopiesPage />}
+            />
             <Route path="/about" element={<AboutPage />} />
 
             <Route path="documents/archive" element={<ArchivePage />} />

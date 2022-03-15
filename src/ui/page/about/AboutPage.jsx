@@ -9,7 +9,7 @@ const AboutPage = () => {
     <>
       <PageHeader title="About Camarines Norte State College" />
 
-      <div className="base-container">This is about page</div>
+      <div className="base-container">Hehe</div>
     </>
   );
 };

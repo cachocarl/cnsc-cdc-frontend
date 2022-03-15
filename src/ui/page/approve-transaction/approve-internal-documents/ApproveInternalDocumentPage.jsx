@@ -47,7 +47,7 @@ const column = [
 ];
 
 const ApproveInternalDocumentPage = () => {
-  const { add, edit, view } = useDrawerVisibility();
+  const { /*add, edit,*/ view } = useDrawerVisibility();
 
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("approve-internal-documents");

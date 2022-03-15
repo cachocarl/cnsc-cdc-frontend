@@ -1,37 +1,21 @@
 import React from "react";
 import {
   Drawer,
-  Form,
   Button,
-  Col,
-  Row,
-  Input,
-  Select,
-  DatePicker,
   Space,
-  Typography,
-  Upload,
   Modal,
   Divider,
+  Steps,
+  Typography
 } from "antd";
 
 import UserExternalForm from "./UserExternalForm";
 
-import { UploadOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
-import moment from "moment";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+
 const { confirm } = Modal;
-const { Option } = Select;
-const dateFormat = "YYYY-MM-DD";
 const { Title } = Typography;
-const normFile = (e) => {
-  console.log("Upload event:", e);
-
-  if (Array.isArray(e)) {
-    return e;
-  }
-
-  return e && e.fileList;
-};
+const { Step } = Steps;
 
 const CreateExternalDrawer = ({ visible, onClose }) => {
   function showConfirm() {
@@ -72,21 +56,7 @@ const CreateExternalDrawer = ({ visible, onClose }) => {
 };
 
 const ViewExternalDrawer = ({ visible, onClose }) => {
-  function showConfirm() {
-    confirm({
-      title: "Submit Request?",
-      icon: <ExclamationCircleOutlined />,
-      content:
-        "Submitting your request will forward it to CDC for further processing",
-      onOk() {
-        console.log("OK");
-        onClose();
-      },
-      onCancel() {
-        console.log("Cancel");
-      },
-    });
-  }
+  //function to show a modal after a button click
   return (
     <Drawer
       title="View External Document Requests "
@@ -96,14 +66,34 @@ const ViewExternalDrawer = ({ visible, onClose }) => {
       closable={true}
       onClose={onClose}
       width={"850px"}
-      extra={
-        <Space>
-          <Button type="primary" onClick={showConfirm}>
-            Submit Request
-          </Button>
-        </Space>
-      }
     >
+      <Divider orientation="left">
+          <Title level={4}>PROGRESS OF FORM REQUEST:</Title>
+        </Divider>
+        <Steps direction="vertical" current={2}>
+          <Step
+            title="Step 1: Initiating Request"
+            description="Create a Documented Information Change Request"
+          />
+          <Step
+            title="Step 2: Registration Of Request"
+            description="DICR is being examined for registration by CDC"
+          />
+          <Step
+            title="Step 3: Reviewing of Request"
+            description="DICR is being reviewed by a Reviewing Authority"
+          />
+          <Step
+            title="Step 4: Approving of Request"
+            description="DICR is being evaluated by an Approving Authority"
+          />
+          <Step title="Step 5: Update of QMS" />
+        </Steps>
+        <Divider orientation="left">
+          <Title level={3}>Description Of Documented Information</Title>
+        </Divider>
+
+        <br></br>
       <UserExternalForm.ViewExternalForm></UserExternalForm.ViewExternalForm>
     </Drawer>
   );

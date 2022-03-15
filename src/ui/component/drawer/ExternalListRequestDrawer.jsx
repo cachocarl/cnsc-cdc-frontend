@@ -6,17 +6,16 @@ import {
   Col,
   Row,
   Input,
-  Typography,
+  Space,
   Upload,
-  Steps,
-  Divider,
+  Modal,
+
 } from "antd";
 
-import { FileOutlined } from "@ant-design/icons";
+import { FileOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 
-const { Title } = Typography;
 
-const { Step } = Steps;
+const { confirm } = Modal;
 
 const normFile = (e) => {
   console.log("Upload event:", e);
@@ -28,45 +27,60 @@ const normFile = (e) => {
   return e && e.fileList;
 };
 
-const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
+const ExternalListRequestDrawer = ({ visible, onClose }) => {
+  function showConfirm() {
+    confirm({
+      title: "Submit Request?",
+      icon: <ExclamationCircleOutlined />,
+      content:
+        "Submitting your request will forward it to CDC for further processing",
+      onOk() {
+        console.log("OK");
+        onClose();
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+  }
   return (
     <Drawer
-      title="Progress of Form Request"
+      title="Register and Send to Approving Authority"
       placement="right"
       size="large"
       visible={visible}
       closable={true}
       onClose={onClose}
       width={"850px"}
+      extra={
+        <Space>
+          <Button type="ghost" onClick={showConfirm}>
+            Cancel
+          </Button>
+          <Button type="primary" onClick={showConfirm}>
+            Submit
+          </Button>
+        </Space>
+      }
     >
-      <Steps direction="vertical" current={1}>
-        <Step title="Initiating Request" description="Initiate New Request" />
-        <Step
-          title="Registration Of Request"
-          description="Start of Registration."
-        />
-        <Step
-          title="Reviewing of Request"
-          description="This is a description."
-        />
-        <Step
-          title="Approving of Request"
-          description="This is a description."
-        />
-        <Step title="Update of QMS" description="This is a description." />
-      </Steps>
-      <Divider></Divider>
-      <br></br>
-        <Title level={4}>Description of Documented Information</Title>
-        <br></br>
+      <br />
       <Form layout="vertical">
         {/* 1st Row */}
 
         <Row gutter={16}>
         <Col span={8}>
             <Form.Item
-              name="name"
-              label="DICR Number (For Registration)"
+              name="proposedDate"
+              label="Date Requested (Current Date):"
+              rules={[{ required: false }]}
+            >
+              <Input disabled={true} />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name="proposedDate"
+              label="Proposed Effective Date:"
               rules={[{ required: false }]}
             >
               <Input disabled={true} />
@@ -81,21 +95,42 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               <Input disabled={true} />
             </Form.Item>
           </Col>
+        </Row>
+
+        {/* 2nd Row */}
+
+        <Row gutter={16}>
           <Col span={8}>
             <Form.Item
-              name="proposedDate"
-              label="Date Requested (Current Date):"
+              name="name"
+              label="Name of Requestor:"
               rules={[{ required: false }]}
+            >
+              <Input disabled={true} />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name="source"
+              label="Source/ Author:"
+              rules={[{ required: true }]}
+            >
+              <Input disabled={true} />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name="name"
+              label="Document Information Number:"
+              rules={[{ required: true }]}
             >
               <Input disabled={true} />
             </Form.Item>
           </Col>
         </Row>
 
-        {/* 2nd Row */}
-
         <Row gutter={16}>
-        <Col span={16}>
+        <Col span={8}>
             <Form.Item
               name="name"
               label="Document Information Title:"
@@ -104,42 +139,19 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
               <Input disabled={true} />
             </Form.Item>
           </Col>
-          <Col span={8}>
-            <Form.Item
-              name="name"
-              label="Source/Author:"
-              rules={[{ required: true }]}
-            >
-              <Input disabled={true} />
-            </Form.Item>
-          </Col>
-        </Row>
-
-
-        <Row gutter={16}>
         <Col span={8}>
             <Form.Item
               name="copytype"
               label="Copy Type:"
               rules={[{ required: true, message: "Please choose" }]}
             >
-              <Input disabled={true} />
+           <Input disabled={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
-              name="proposedDate"
-              label="Proposed Effective Date:"
-              rules={[{ required: false }]}
-            >
-              <Input disabled={true} />
-            </Form.Item>
-          </Col>
-          
-          <Col span={8}>
-            <Form.Item
-              name="viewfile"
-              label="File Attachment"
+              name="file"
+              label="File Attachment:"
               valuePropName="fileList"
               getValueFromEvent={normFile}
             >
@@ -149,9 +161,7 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={16}>
 
-        </Row>
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item
@@ -173,4 +183,4 @@ const ExternalQMRTableViewDrawer = ({ visible, onClose }) => {
   );
 };
 
-export default ExternalQMRTableViewDrawer;
+export default ExternalListRequestDrawer;

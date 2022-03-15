@@ -1,4 +1,4 @@
-import { Table, Input, DatePicker, Space } from "antd";
+import { Table, Input, Space } from "antd";
 import React from "react";
 import InternalUserDrawer from "../../../component/drawer/userDrawer/InternalUserDrawer";
 
@@ -77,7 +77,6 @@ const column = [
   },
 ];
 const { Search } = Input;
-const { RangePicker } = DatePicker;
 
 const DicrRegistrationAndMonitoringFormPage = () => {
   const [editVisible, setEditVisible] = React.useState(false);

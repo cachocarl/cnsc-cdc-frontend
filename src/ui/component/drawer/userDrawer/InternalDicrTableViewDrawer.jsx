@@ -2,20 +2,17 @@ import React from "react";
 import {
   Drawer,
   Form,
-  Button,
   Col,
   Row,
   Input,
   Select,
   DatePicker,
-  Space,
   Typography,
   Modal,
   Divider,
   Steps,
 } from "antd";
 
-import { ExclamationCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
 
 const { confirm } = Modal;
