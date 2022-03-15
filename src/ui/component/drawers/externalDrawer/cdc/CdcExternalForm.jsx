@@ -68,33 +68,33 @@ const CdcRegisterForm = ({ visible, onClose }) => {
 
       <Row gutter={16}>
         <Col span={8}>
-          <Form.Item
-            name="natureOfChange"
-            label="Nature of Change:"
-            rules={[{ required: true, message: "Please choose" }]}
-          >
-            <Input disabled={true} />
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item
-            name="docinfotype"
-            label="Document Information Type:"
-            rules={[{ required: true, message: "Please choose" }]}
-          >
-            <Input disabled={true} />
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item
-            name="name"
-            label="DICR Number (For Registration)"
-            rules={[{ required: false }]}
-          >
-            <Input disabled={true} />
-          </Form.Item>
-        </Col>
-      </Row>
+            <Form.Item
+              name="proposedDate"
+              label="Date Requested (Current Date):"
+              rules={[{ required: false }]}
+            >
+              <Input disabled={true} />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name="proposedDate"
+              label="Proposed Effective Date:"
+              rules={[{ required: false }]}
+            >
+              <Input disabled={true} />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              name="dct"
+              label="College/Office/Unit:"
+              rules={[{ required: true, message: "Please choose" }]}
+            >
+              <Input disabled={true} />
+            </Form.Item>
+          </Col>
+        </Row>
 
       {/* 2nd Row */}
 

@@ -1,12 +1,9 @@
 import React from "react";
 import { Input, Button, DatePicker, Table, Space, Tooltip } from "antd";
-import {
-  CheckCircleOutlined,
-  EyeOutlined,
-} from "@ant-design/icons";
+import { CheckCircleOutlined, EyeOutlined } from "@ant-design/icons";
 
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
-import CdcExternalDrawer from "../../../component/drawers/externalDrawer/cdc/CdcExternalDrawer";
+import CdcExternalForm from "../../../component/drawers/externalDrawer/cdc/CdcExternalForm";
 
 const { Search } = Input;
 const { RangePicker } = DatePicker;
@@ -84,7 +81,7 @@ const column = [
 ];
 
 const ExternalListRequestPage = () => {
-  const {view} = useDrawerVisibility()
+  const { add } = useDrawerVisibility();
 
   return (
     <>
@@ -104,16 +101,16 @@ const ExternalListRequestPage = () => {
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {
-                view.setVisible(true);
+                add.setVisible(true);
               }, // double click row
             };
           }}
         />
+        <CdcExternalForm.CdcRegisterForm
+          visible={add.visible}
+          onClose={() => add.setVisible(false)}
+        ></CdcExternalForm.CdcRegisterForm>
       </div>
-      <CdcExternalDrawer.ListExternalRequestDrawer
-      visible = {view.visible}
-      onClose = {() => view.setVisible(false)}
-      ></CdcExternalDrawer.ListExternalRequestDrawer>
     </>
   );
 };
