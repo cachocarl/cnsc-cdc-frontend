@@ -67,7 +67,6 @@ const ListRequestDrawer = ({ visible, onClose }) => {
       }
     >
       <br />
-
       <CdcInternalForm.RegisterForm></CdcInternalForm.RegisterForm>
     </Drawer>
   );

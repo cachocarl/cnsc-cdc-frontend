@@ -226,13 +226,14 @@ const ViewRdiForm = ({ visible, onClose }) => {
         </Col>
         <Col span={8}>
             <Form.Item
-              disabled
+              
               name="proposedDate"
               label="Proposed Effective Date:"
               rules={[{ required: true }]}
             >
               <DatePicker
                 defaultValue={moment("2022-03-04", dateFormat)}
+                disabled
                 style={{ width: 255 }}
               />
             </Form.Item>

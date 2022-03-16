@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined, } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
 
@@ -96,11 +96,6 @@ const ReviewRequestDocumentInfoPage = () => {
       <PageHeader
         title="List of My Request for Documented Information"
         subTitle="View List of my Request"
-        extra={[
-          <Button type="primary" icon={<PlusOutlined />} onClick={showDrawer}>
-            Initiate New Request
-          </Button>,
-        ]}
       ></PageHeader>
 
       <div className="base-container">
