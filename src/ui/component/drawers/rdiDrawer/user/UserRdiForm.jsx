@@ -12,7 +12,7 @@ import {
   Divider,
 } from "antd";
 
-import { UploadOutlined, } from "@ant-design/icons";
+import { UploadOutlined, FileOutlined } from "@ant-design/icons";
 
 import moment from "moment";
 
@@ -199,15 +199,16 @@ const ViewRdiForm = ({ visible, onClose }) => {
   return (
     <Form layout="vertical">
       {/* 1st Row */}
-
+        <Title level={4}>Description of Documented Information</Title>
+        <br></br>
       <Row gutter={16}>
-        <Col span={8}>
+      <Col span={8}>
           <Form.Item
             name="name"
-            label="Requested By:"
-            rules={[{ required: true }]}
+            label="DICR Number (For Registration)"
+            rules={[{ required: false }]}
           >
-            <Input disabled />
+            <Input disabled={true} />
           </Form.Item>
         </Col>
         <Col span={8}>
@@ -224,14 +225,18 @@ const ViewRdiForm = ({ visible, onClose }) => {
           </Form.Item>
         </Col>
         <Col span={8}>
-          <Form.Item
-            name="name"
-            label="DICR Number (For Registration)"
-            rules={[{ required: false }]}
-          >
-            <Input disabled={true} />
-          </Form.Item>
-        </Col>
+            <Form.Item
+              disabled
+              name="proposedDate"
+              label="Proposed Effective Date:"
+              rules={[{ required: true }]}
+            >
+              <DatePicker
+                defaultValue={moment("2022-03-04", dateFormat)}
+                style={{ width: 255 }}
+              />
+            </Form.Item>
+          </Col>
       </Row>
 
       {/* 2nd Row */}
@@ -243,7 +248,7 @@ const ViewRdiForm = ({ visible, onClose }) => {
             label="Requested From (College/Unit):"
             rules={[{ required: true, message: "Please choose" }]}
           >
-            <Select disabled placeholder="Choose here">
+            <Select disabled placeholder="Choose Here">
               <Option value="policy">ICS</Option>
               <Option value="procedure">CBPA</Option>
               <Option value="procedure">Engineering</Option>
@@ -252,31 +257,26 @@ const ViewRdiForm = ({ visible, onClose }) => {
           </Form.Item>
         </Col>
         <Col span={8}>
-          <Form.Item
-            name="numcopies"
-            label="Number of Copies:"
-            rules={[{ required: true }]}
-          >
-            <Input disabled />
-          </Form.Item>
-        </Col>
-
-        <Divider></Divider>
-        <Title level={4}>Document Information</Title>
-        <br></br>
+            <Form.Item
+              name="docInfoNumber"
+              label="Document Information Number:"
+              rules={[{ required: true }]}
+            >
+              <Input disabled placeholder="Please enter Document Information Number" />
+            </Form.Item>
+          </Col>
       </Row>
-
+{/* 3rd Row */}
       <Row gutter={16}>
         <Col span={8}>
           <Form.Item
             name="name"
-            label="Documented Information No."
+            label="Documented Information Type"
             rules={[{ required: false }]}
           >
             <Input disabled={true} />
           </Form.Item>
         </Col>
-
         <Col span={16}>
           <Form.Item name="name" label="Title:" rules={[{ required: true }]}>
             <Input
@@ -286,7 +286,40 @@ const ViewRdiForm = ({ visible, onClose }) => {
           </Form.Item>
         </Col>
       </Row>
-
+{/* 4rth Row */}
+      <Row gutter={16}>
+      <Col span={8}>
+          <Form.Item
+            name="name"
+            label="Number of Copies:"
+            rules={[{ required: false }]}
+          >
+            <Input disabled={true} />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item
+            name="name"
+            label="Copy Type:"
+            rules={[{ required: false }]}
+          >
+            <Input disabled={true} />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item
+            name="file"
+            label="File Attachment:"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload name="logo" action="/upload.do" listType="picture">
+              <Button icon={<FileOutlined />}>Click Here to View Files</Button>
+            </Upload>
+          </Form.Item>
+        </Col>
+      </Row>
+{/* 5rth Row */}
       <Row gutter={16}>
         <Col span={24}>
           <Form.Item

@@ -1,7 +1,7 @@
 import { useSessionStorageState } from "ahooks";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PlainLayout from "../page/_base/PlainLayout";
+//import PlainLayout from "../page/_base/PlainLayout";
 import { NavigatorProvider } from "../../service/context/NavigatorContext";
 import AdminLayout from "../page/_base/AdminLayout";
 import HomePage from "../page/home/HomePage";

@@ -67,19 +67,19 @@ const ViewRdiDrawer = ({ visible, onClose }) => {
         <Steps direction="vertical" current={2}>
           <Step
             title="Step 1: Initiating Request"
-            description="Create a Documented Information Change Request"
+            description="Create a Request for Document Information"
           />
           <Step
             title="Step 2: Registration Of Request"
-            description="DICR is being examined for registration by CDC"
+            description="Request for Document Information is being examined for registration by CDC"
           />
           <Step
             title="Step 3: Reviewing of Request"
-            description="DICR is being reviewed by a Reviewing Authority"
+            description="Request for Document Information is being reviewed by a Reviewing Authority"
           />
           <Step
             title="Step 4: Approving of Request"
-            description="DICR is being evaluated by an Approving Authority"
+            description="Request for Document Information is being evaluated by an Approving Authority"
           />
           <Step title="Step 5: Update of QMS" />
         </Steps>
