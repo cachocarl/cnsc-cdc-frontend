@@ -21,6 +21,7 @@ import ApproveExternalDocumentPage from "../page/approve-transaction/aprrove-ext
 import ApproveRequestDocumentInfoPage from "../page/approve-transaction/aprrove-request-document-info/ApproveRequestDocumentInfoPage";
 import ControlledCopiesPage from "../page/cdc/controlled-documents/ControlledCopiesPage";
 import LoginPage from "../page/login/LoginPage";
+import UserManagementPage from "../page/user-management/UserManagementPage";
 
 
 //This will serve as the base router for all pages
@@ -97,7 +98,12 @@ const GlobalRoute = () => {
             <Route path="/about" element={<AboutPage />} />
 
             <Route path="documents/archive" element={<ArchivePage />} />
+
+            <Route path="/user-management" element={<UserManagementPage/>}/>
           </Route>
+
+
+
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
