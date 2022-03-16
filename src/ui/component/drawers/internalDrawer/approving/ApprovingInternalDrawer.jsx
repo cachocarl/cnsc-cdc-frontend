@@ -67,7 +67,7 @@ const ApproveDrawer = ({ visible, onClose }) => {
         <Step title="Step 5: Update of QMS" />
       </Steps>
       <Divider />
-      <ApprovingInternalForm.ApproveForm></ApprovingInternalForm.ApproveForm>
+      <ApprovingInternalForm.ApproveForm/>
     </Drawer>
   );
 };

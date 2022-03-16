@@ -48,7 +48,7 @@ const CdcListRdiDrawer = ({ visible, onClose }) => {
       }
   return (
     <Drawer
-    title="Register Document Information Change Request (DICR)"
+    title="Registration For Request of Copies"
     placement="right"
     size="large"
     visible={visible}
