@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { PageHeader } from "antd";
 import ContentTab from "../../../component/tabs/ContentTab";
-
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import DicrRegistrationAndMonitoringFormPage from "./DicrRegistrationAndMonitoringFormPage";
 import MasterListPageInternal from "./MasterListPageInternal";

@@ -4,7 +4,7 @@ import {
   FileWordOutlined,
   FileTextOutlined,
   HeartOutlined,
-  UserOutlined
+  SettingOutlined
 } from "@ant-design/icons/lib/icons";
 
 const navigations = [
@@ -166,10 +166,10 @@ const navigations = [
   },
   {
     id: 21,
-    uKey: "user-management", //unique readable key
+    uKey: "systerm-administration", //unique readable key
     name: "User Management",
-    basePath: "/user-management",
-    icon: <UserOutlined />,
+    basePath: "/administration",
+    icon: <SettingOutlined/>,
   },
   //Add more navigations here
 ];
