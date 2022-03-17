@@ -1,27 +1,53 @@
-import React from 'react'
-import { PageHeader, Button } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import React from "react";
+import { Row, Button, Table, Col, Typography } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import useDrawerVisibility from "../../../service/hooks/useDrawerVisibility";
+import Column from "antd/lib/table/Column";
 
 const DocumentTypePage = () => {
+  const { add } = useDrawerVisibility();
   return (
     <>
-    <PageHeader title="Document Types"       
-    extra={[
-        <Button
-          //onClick={() => add.setVisible(true)}
-          type="primary"
-          icon={<PlusOutlined />}
-        >
-          Add Document Type
-        </Button>,
-      ]} >
-
-    </PageHeader>
-
-    <div className="base-container">
+      <div className="base-container">
+        <Row justify="space-between">
+          <Col>
+            <Typography.Title level={4}>
+              Documnent Information Type
+            </Typography.Title>
+          </Col>
+          <Col>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={() => add.setVisible(true)}
+            >
+              Add New Document Information Type
+            </Button>
+          </Col>
+        </Row>
+        <br></br>
+        <Table>
+          <Column title="Type"></Column>
+          <Column title="Description"></Column>
+        </Table>
       </div>
-     </>
-  )
-}
+      <div className="base-container">
+        <Row justify="space-between">
+          <Col>
+            <Typography.Title level={4}>Nature of Request</Typography.Title>
+          </Col>
+          <Col>
+            <Button type="primary">Add New Nature of Request</Button>
+          </Col>
+        </Row>
+        <br></br>
+        <Table>
+          <Column title="Nature"></Column>
+          <Column title="Description"></Column>
+        </Table>
+      </div>
+    </>
+  );
+};
 
-export default DocumentTypePage
+export default DocumentTypePage;
