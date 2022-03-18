@@ -5,7 +5,7 @@ import FormItem from "antd/lib/form/FormItem";
 
 const { confirm } = Modal;
 
-const AddDocTypeForm = (visible, onClose) => {
+const AddRequestForm = ({ visible, onClose }) => {
   function showConfirm() {
     confirm({
       title: "Are You Sure you want to Add this Document Information Type?",
@@ -25,20 +25,20 @@ const AddDocTypeForm = (visible, onClose) => {
     <Form>
       <Form layout="vertical">
         <Form.Item
-          name={"type"}
-          label="Type:"
+          name={"nature"}
+          label="Nature:"
           rules={[
             {
               required: true,
-              message: "Please Input Document Information Type Here",
+              message: "Please Input Nature of Request Here",
             },
           ]}
         >
-          <Input placeholder="Input  Document Information Type Here" />
+          <Input placeholder="Input Nature of Request Here" />
         </Form.Item>
         <Form.Item
-          name={"description"}
-          label="description:"
+          name={"ndescription"}
+          label="Description:"
           rules={[
             {
               required: true,
@@ -50,14 +50,14 @@ const AddDocTypeForm = (visible, onClose) => {
         </Form.Item>
         <FormItem>
           <Button type="primary" onClick={showConfirm}>
-            Add Document Information Type
+            Add Nature of Request
           </Button>
         </FormItem>
       </Form>
     </Form>
   );
 };
-const DocInfoTypeForm = {
-  AddDocTypeForm,
+const NatureRequestForm = {
+  AddRequestForm,
 };
-export default DocInfoTypeForm;
+export default NatureRequestForm;
