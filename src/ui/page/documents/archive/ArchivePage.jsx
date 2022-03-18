@@ -1,42 +1,50 @@
 import React, { useContext } from "react";
-import { PageHeader, Table } from "antd";
+import { PageHeader, Input, Table, DatePicker, Space } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
+
+const { Search } = Input;
+
+const { RangePicker } = DatePicker;
 
 const column = [
   {
-    title: 'Document Information Title',
-    dataIndex: 'D',
-    key: 'docuinfotitle',
+    title: "Document Information Title",
+    dataIndex: "D",
+    key: "docuinfotitle",
   },
   {
-    title: 'Document Type',
-    dataIndex: 'asade',
-    key: 'docutype',
+    title: "Document Type",
+    dataIndex: "asade",
+    key: "docutype",
   },
   {
-    title: 'Date Initiated',
-    dataIndex: 'address',
-    key: 'address',
+    title: "Date Initiated",
+    dataIndex: "address",
+    key: "address",
   },
   {
-    title: 'Status',
-    dataIndex: 'address',
-    key: 'status',
-  }
+    title: "Status",
+    dataIndex: "address",
+    key: "status",
+  },
 ];
 
 const ArchivePage = () => {
-  const navigatorContext = useContext(NavigatorContext)
-    navigatorContext.setSelectedKey("archive")
+  const navigatorContext = useContext(NavigatorContext);
+  navigatorContext.setSelectedKey("archive");
   return (
     <>
-      <PageHeader title="Approve Documents">
-       
-      </PageHeader>
+      <PageHeader title="Approve Documents"></PageHeader>
       <div className="base-container">
-
-        <Table columns = {column} />
-
+        <Space>
+          <Search
+            placeholder="input search text"
+            style={{ width: 250, margin: 18 }}
+            allowClear
+          />
+          <RangePicker picker="year" />
+        </Space>
+        <Table columns={column} />
       </div>
     </>
   );

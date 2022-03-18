@@ -3,15 +3,14 @@ import {
   SnippetsOutlined,
   FileWordOutlined,
   FileTextOutlined,
-  HeartOutlined,
   SettingOutlined
 } from "@ant-design/icons/lib/icons";
 
 const navigations = [
   {
     id: 1,
-    uKey: "home", //unique readable key
-    name: "Home",
+    uKey: "dashboard", //unique readable key
+    name: "Dashboard",
     basePath: "/home",
     icon: <HomeOutlined />,
   },
@@ -157,13 +156,13 @@ const navigations = [
       },
     ],
   },
-  {
+/*
     id: 21,
     uKey: "about", //unique readable key
     name: "About CNSC",
     basePath: "/about",
     icon: <HeartOutlined />,
-  },
+*/
   {
     id: 21,
     uKey: "systerm-administration", //unique readable key
