@@ -30,7 +30,8 @@ const LoginPage = () => {
     onSuccess: (data) => {
       setLoginStatus("success-login");
       //user.set(transformUser(data.data));
-      navigate(state?.path || "/home");
+      //navigate(state?.path || "/home");
+      navigate("/home");
     },
     onError: (error) => {
       setLoginStatus("error-login");
@@ -78,11 +79,11 @@ const LoginPage = () => {
         <Col span={6}>
           <Form form={form} layout="vertical">
             <Form.Item
-              label="User ID"
-              name="user_code"
+              label="Username"
+              name="username"
               required
               rules={[
-                { message: "Please input your user ID!", required: true },
+                { message: "Please input your username!", required: true },
               ]}
             >
               <Input prefix={<UserOutlined />} />

@@ -34,11 +34,11 @@ const ArchivePage = () => {
   navigatorContext.setSelectedKey("archive");
   return (
     <>
-      <PageHeader title="Approve Documents"></PageHeader>
+      <PageHeader title="Archived Documents"></PageHeader>
       <div className="base-container">
         <Space>
           <Search
-            placeholder="input search text"
+            placeholder="Input search text"
             style={{ width: 250, margin: 18 }}
             allowClear
           />

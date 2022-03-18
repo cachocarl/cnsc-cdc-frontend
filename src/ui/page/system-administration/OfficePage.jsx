@@ -13,13 +13,16 @@ const OfficePage = () => {
       <div className="base-container">
         <Row justify="space-between">
           <Col>
-            <Typography.Title level={4}>Office</Typography.Title>
+            <Typography.Title style={{ margin: 10 }} level={4}>
+              Office
+            </Typography.Title>
           </Col>
           <Col>
             <Button
               type="primary"
               icon={<PlusOutlined />}
               onClick={() => add.setVisible(true)}
+              style={{ margin: 10 }}
             >
               Add Office
             </Button>
@@ -34,6 +37,7 @@ const OfficePage = () => {
         <OfficeDrawer.AddOfficeDrawer
           visible={add.visible}
           onClose={() => add.setVisible(false)}
+          style={{ margin: 10 }}
         />
       </div>
     </>

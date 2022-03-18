@@ -1,7 +1,6 @@
 import {
   Form,
   Button,
-
   Col,
   Row,
   Input,
@@ -9,13 +8,9 @@ import {
   DatePicker,
   Typography,
   Divider,
-
   Upload,
-
 } from "antd";
-import {
-  UploadOutlined,
-} from "@ant-design/icons";
+import { UploadOutlined } from "@ant-design/icons";
 
 import moment from "moment";
 

@@ -11,10 +11,7 @@ import {
   Divider,
   Upload,
 } from "antd";
-import {
-  FileOutlined,
-  UploadOutlined,
-} from "@ant-design/icons";
+import { FileOutlined, UploadOutlined } from "@ant-design/icons";
 
 import moment from "moment";
 
@@ -115,13 +112,10 @@ const AddForm = ({ visible, onClose }) => {
               disabled
               name="requestDate"
               label="Date Requested (Current Date):"
+              initialValue={moment()}
               rules={[{ required: false }]}
             >
-              <DatePicker
-                defaultValue={moment("2022-03-04", dateFormat)}
-                disabled
-                style={{ width: 255 }}
-              />
+              <DatePicker disabled style={{ width: 255 }} />
             </Form.Item>
           </Col>
         </Row>

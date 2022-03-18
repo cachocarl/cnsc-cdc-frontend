@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Button, Table, Col, Typography } from "antd";
+import { Row, Button, Table, Col, Typography, Space } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import useDrawerVisibility from "../../../service/hooks/useDrawerVisibility";
 import Column from "antd/lib/table/Column";
@@ -7,31 +7,34 @@ import DocInfoTypeDrawer from "../../component/drawers/systemAdministration/Docu
 import NatureRequestDrawer from "../../component/drawers/systemAdministration/NatureRequest/NatureRequestDrawer";
 
 const DocumentTypePage = () => {
-  const { add } = useDrawerVisibility();
+  const { add, edit } = useDrawerVisibility();
 
   return (
     <>
       <div className="base-container">
         <Row justify="space-between">
           <Col>
-            <Typography.Title level={4}>
-              Documnent Information Type
+            <Typography.Title style={{ margin: 10 }} level={4}>
+              Document Information Type
             </Typography.Title>
           </Col>
+
           <Col>
             <Button
               type="primary"
               icon={<PlusOutlined />}
-              onClick={() => add.setVisible(true)}
+              onClick={() => edit.setVisible(true)}
+              style={{ margin: 10 }}
             >
-              Add New Document Information Type
+              Add New Document Info Type
             </Button>
           </Col>
         </Row>
+
         <br></br>
         <Table>
-          <Column title="Type"></Column>
-          <Column title="Description"></Column>
+          <Column title="Type  "></Column>
+          <Column colSpan={200} title="Description"></Column>
         </Table>
 
         <DocInfoTypeDrawer.AddDocTypeDrawer
@@ -43,13 +46,16 @@ const DocumentTypePage = () => {
       <div className="base-container">
         <Row justify="space-between">
           <Col>
-            <Typography.Title level={4}>Nature of Request</Typography.Title>
+            <Typography.Title style={{ margin: 10 }} level={4}>
+              Nature of Request
+            </Typography.Title>
           </Col>
           <Col>
             <Button
               type="primary"
               icon={<PlusOutlined />}
               onClick={() => add.setVisible(true)}
+              style={{ margin: 10 }}
             >
               Add New Nature of Request
             </Button>
@@ -58,12 +64,16 @@ const DocumentTypePage = () => {
         <br></br>
         <Table>
           <Column title="Nature"></Column>
-          <Column title="Description"></Column>
+          <Column colSpan={200} title="Description"></Column>
         </Table>
         <NatureRequestDrawer.AddRequestDrawer
           visible={add.visible}
           onClose={() => add.setVisible(false)}
-        ></NatureRequestDrawer.AddRequestDrawer>
+        />
+        <DocInfoTypeDrawer.AddDocTypeDrawer
+          visible={edit.visible}
+          onClose={() => edit.setVisible(false)}
+        />
       </div>
     </>
   );

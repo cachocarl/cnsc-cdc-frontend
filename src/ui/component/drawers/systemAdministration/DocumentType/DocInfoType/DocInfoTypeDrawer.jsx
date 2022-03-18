@@ -6,10 +6,12 @@ const { Title } = Typography;
 
 const AddDocTypeDrawer = ({ visible, onClose }) => {
   return (
-    <Drawer visible={visible} onClose={onClose} width={"30%"}>
-      <Title level={3}>Add Document Information Type</Title>
-      <br></br>
-
+    <Drawer
+      title="Add New Document Information Type"
+      visible={visible}
+      onClose={onClose}
+      width={"30%"}
+    >
       <DocInfoTypeForm.AddDocTypeForm />
     </Drawer>
   );

@@ -11,10 +11,10 @@ const APP_CONFIG = {
   version: "0.0.1",
 
   //Base URL of the server
-  url: "http://localhost:8080",
+  url: "http://localhost:8000",
 
   //Base API endpoint
-  endpoint: "/api",
+  endpointPrefix: "/api",
 };
 
 export default APP_CONFIG;

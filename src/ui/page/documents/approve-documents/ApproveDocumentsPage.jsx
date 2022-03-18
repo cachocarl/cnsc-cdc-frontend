@@ -8,47 +8,43 @@ const { RangePicker } = DatePicker;
 
 const column = [
   {
-    title: 'Document Information Title',
-    dataIndex: 'D',
-    key: 'docuinfotitle',
+    title: "Document Information Title",
+    dataIndex: "D",
+    key: "docuinfotitle",
   },
   {
-    title: 'Document Type',
-    dataIndex: 'asade',
-    key: 'docutype',
+    title: "Document Type",
+    dataIndex: "asade",
+    key: "docutype",
   },
   {
-    title: 'Date Initiated',
-    dataIndex: 'address',
-    key: 'address',
+    title: "Date Initiated",
+    dataIndex: "address",
+    key: "address",
   },
   {
-    title: 'Status',
-    dataIndex: 'address',
-    key: 'status',
-  }
+    title: "Status",
+    dataIndex: "address",
+    key: "status",
+  },
 ];
 
 const ApproveDocumentsPage = () => {
-  const navigatorContext = useContext(NavigatorContext)
-    navigatorContext.setSelectedKey("approve-documents")
+  const navigatorContext = useContext(NavigatorContext);
+  navigatorContext.setSelectedKey("approve-documents");
   return (
     <>
-    
-      <PageHeader title="Approve Documents">
-       
-      </PageHeader>
+      <PageHeader title="Approved Documents"></PageHeader>
       <div className="base-container">
-      <Space>
+        <Space>
           <Search
-            placeholder="input search text"
+            placeholder="Input search text"
             style={{ width: 250, margin: 18 }}
             allowClear
           />
           <RangePicker picker="year" />
         </Space>
-        <Table columns = {column} />
-
+        <Table columns={column} />
       </div>
     </>
   );

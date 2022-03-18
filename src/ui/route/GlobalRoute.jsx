@@ -22,7 +22,7 @@ import ApproveRequestDocumentInfoPage from "../page/approve-transaction/aprrove-
 import ControlledCopiesPage from "../page/cdc/controlled-documents/ControlledCopiesPage";
 import LoginPage from "../page/login/LoginPage";
 import SystemAministrationPage from "../page/system-administration/SystemAministrationPage";
-
+import UserManagementPage from "../page/system-administration/UserManagementPage";
 
 //This will serve as the base router for all pages
 const GlobalRoute = () => {
@@ -55,26 +55,32 @@ const GlobalRoute = () => {
             />
 
             <Route
-               path="review-transactions/internal-documents"
-               element={<ReviewInternalDocumentPage/>}/>
-
-            <Route 
-               path="review-transactions/external-documents"
-               element={<ReviewExternalDocumentPage/>}/>
-
-            <Route 
-               path="review-transactions/request-document-info"
-               element={<ReviewRequestDocumentInfoPage/>}/>    
+              path="review-transactions/internal-documents"
+              element={<ReviewInternalDocumentPage />}
+            />
 
             <Route
-               path="approve-transactions/internal-documents"
-               element={<ApproveInternalDocumentPage/>}/>
+              path="review-transactions/external-documents"
+              element={<ReviewExternalDocumentPage />}
+            />
+
             <Route
-               path="approve-transactions/external-documents"
-               element={<ApproveExternalDocumentPage/>}/>
+              path="review-transactions/request-document-info"
+              element={<ReviewRequestDocumentInfoPage />}
+            />
+
             <Route
-               path="approve-transactions/request-document-info"
-               element={<ApproveRequestDocumentInfoPage/>}/>
+              path="approve-transactions/internal-documents"
+              element={<ApproveInternalDocumentPage />}
+            />
+            <Route
+              path="approve-transactions/external-documents"
+              element={<ApproveExternalDocumentPage />}
+            />
+            <Route
+              path="approve-transactions/request-document-info"
+              element={<ApproveRequestDocumentInfoPage />}
+            />
 
             <Route
               path="/documents/approve-documents"
@@ -99,10 +105,11 @@ const GlobalRoute = () => {
 
             <Route path="documents/archive" element={<ArchivePage />} />
 
-            <Route path="/administration" element={<SystemAministrationPage/>}/>
+            <Route
+              path="/administration"
+              element={<SystemAministrationPage />}
+            />
           </Route>
-
-
 
           <Route path="/login" element={<LoginPage />} />
         </Routes>

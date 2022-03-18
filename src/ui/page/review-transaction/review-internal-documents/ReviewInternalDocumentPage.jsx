@@ -65,7 +65,7 @@ const ReviewInternalDocumentPage = () => {
 
       <div className="base-container">
         <Search
-          placeholder="input search text"
+          placeholder="Input search text"
           style={{ width: 250, margin: 18 }}
           allowClear
         />

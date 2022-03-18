@@ -4,6 +4,7 @@ import NavigatorContext from "../../../service/context/NavigatorContext";
 import { PlusOutlined } from "@ant-design/icons";
 import useDrawerVisibility from "../../../service/hooks/useDrawerVisibility";
 import UserManagementDrawer from "../../component/drawers/systemAdministration/userManagement/UserManagementDrawer";
+import Search from "antd/lib/transfer/search";
 
 const { Column } = Table;
 const UserManagementPage = () => {
@@ -16,13 +17,16 @@ const UserManagementPage = () => {
       <div className="base-container">
         <Row justify="space-between">
           <Col>
-            <Typography.Title level={4}>User Management</Typography.Title>
+            <Typography.Title style={{ margin: 10 }} level={4}>
+              User Management
+            </Typography.Title>
           </Col>
           <Col>
             <Button
               type="primary"
               icon={<PlusOutlined />}
               onClick={() => add.setVisible(true)}
+              style={{ margin: 10 }}
             >
               Add User
             </Button>

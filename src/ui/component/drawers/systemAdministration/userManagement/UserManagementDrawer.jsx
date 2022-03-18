@@ -6,10 +6,12 @@ const { Title } = Typography;
 
 const AddDrawer = ({ visible, onClose }) => {
   return (
-    <Drawer title="" visible={visible} onClose={onClose} width={"30%"}>
-      <Title level={3}>Add User</Title>
-      <br></br>
-
+    <Drawer
+      title="Add New User"
+      visible={visible}
+      onClose={onClose}
+      width={"30%"}
+    >
       <UserManagementForm.AddUser />
     </Drawer>
   );

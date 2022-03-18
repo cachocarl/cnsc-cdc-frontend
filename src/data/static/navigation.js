@@ -3,7 +3,7 @@ import {
   SnippetsOutlined,
   FileWordOutlined,
   FileTextOutlined,
-  SettingOutlined
+  SettingOutlined,
 } from "@ant-design/icons/lib/icons";
 
 const navigations = [
@@ -156,7 +156,7 @@ const navigations = [
       },
     ],
   },
-/*
+  /*
     id: 21,
     uKey: "about", //unique readable key
     name: "About CNSC",
@@ -164,11 +164,11 @@ const navigations = [
     icon: <HeartOutlined />,
 */
   {
-    id: 21,
-    uKey: "systerm-administration", //unique readable key
-    name: "User Management",
+    id: 22,
+    uKey: "user-management", //unique readable key
+    name: "System Administration",
     basePath: "/administration",
-    icon: <SettingOutlined/>,
+    icon: <SettingOutlined />,
   },
   //Add more navigations here
 ];
