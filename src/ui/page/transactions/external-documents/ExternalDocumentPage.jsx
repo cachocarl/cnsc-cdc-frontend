@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Input, Button, PageHeader, Table, Tag } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 import UserExternalDrawer from "../../../component/drawers/externalDrawer/user/UserExternalDrawer";
@@ -57,22 +57,6 @@ const column = [
         <Tag color="green">Approved</Tag>
       );
     },
-  },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-    render: () => (
-      <Space>
-        <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
-        </Tooltip>
-        <Tooltip title="Delete">
-          <Button type="primary" danger ghost icon={<DeleteOutlined />} />
-        </Tooltip>
-      </Space>
-    ),
   },
 ];
 

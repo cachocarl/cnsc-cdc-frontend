@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Input, Button, PageHeader, Table } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 import UserRdiDrawer from "../../../component/drawers/rdiDrawer/user/UserRdiDrawer";
@@ -45,44 +45,13 @@ const column = [
     dataIndex: "dateinitiated",
     key: "dateinitiated",
   },
-  {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
-
-    render: (data, record) => {
-      return data === "Registered" ? (
-        <Tag color="blue">Registered</Tag>
-      ) : (
-        <Tag color="green">Approved</Tag>
-      );
-    },
-  },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-
-    render: () => (
-      <Space>
-        <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
-        </Tooltip>
-
-        <Tooltip title="Delete">
-          <Button danger icon={<DeleteOutlined />} />
-        </Tooltip>
-      </Space>
-    ),
-  },
 ];
 
 const RequestDocumentInfoPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-request-document-info");
 
-  const { add, view, /*edit*/ } = useDrawerVisibility();
+  const { add, view /*edit*/ } = useDrawerVisibility();
 
   return (
     <>

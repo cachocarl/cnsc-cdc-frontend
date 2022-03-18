@@ -22,7 +22,7 @@ import ApproveRequestDocumentInfoPage from "../page/approve-transaction/aprrove-
 import ControlledCopiesPage from "../page/cdc/controlled-documents/ControlledCopiesPage";
 import LoginPage from "../page/login/LoginPage";
 import SystemAministrationPage from "../page/system-administration/SystemAministrationPage";
-import UserManagementPage from "../page/system-administration/UserManagementPage";
+//import UserManagementPage from "../page/system-administration/UserManagementPage";
 
 //This will serve as the base router for all pages
 const GlobalRoute = () => {

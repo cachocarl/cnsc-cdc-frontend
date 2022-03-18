@@ -4,7 +4,6 @@ import NavigatorContext from "../../../service/context/NavigatorContext";
 import { PlusOutlined } from "@ant-design/icons";
 import useDrawerVisibility from "../../../service/hooks/useDrawerVisibility";
 import UserManagementDrawer from "../../component/drawers/systemAdministration/userManagement/UserManagementDrawer";
-import Search from "antd/lib/transfer/search";
 
 const { Column } = Table;
 const UserManagementPage = () => {

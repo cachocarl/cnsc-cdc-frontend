@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space, Tooltip } from "antd";
-import { EditOutlined, DeleteOutlined, } from "@ant-design/icons";
+import { Input, PageHeader, Table, Tag } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
 
@@ -56,24 +55,6 @@ const column = [
         <Tag color="green">Approved</Tag>
       );
     },
-  },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-
-    render: () => (
-      <Space>
-        <Tooltip title="Edit">
-          <Button icon={<EditOutlined />} />
-        </Tooltip>
-
-        <Tooltip title="Delete">
-          <Button danger icon={<DeleteOutlined />} />
-        </Tooltip>
-      </Space>
-    ),
   },
 ];
 

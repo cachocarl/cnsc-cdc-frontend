@@ -1,8 +1,6 @@
-import { Drawer, Typography } from "antd";
+import { Drawer } from "antd";
 import React from "react";
 import DocInfoTypeForm from "./DocInfoTypeForm";
-
-const { Title } = Typography;
 
 const AddDocTypeDrawer = ({ visible, onClose }) => {
   return (

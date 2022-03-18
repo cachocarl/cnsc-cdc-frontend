@@ -1,8 +1,7 @@
-import { Drawer, Typography } from "antd";
+import { Drawer } from "antd";
 import React from "react";
 import OfficeForm from "./OfficeForm";
 
-const { Title } = Typography;
 const AddOfficeDrawer = ({ visible, onClose }) => {
   return (
     <Drawer

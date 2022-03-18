@@ -1,8 +1,6 @@
 import React from "react";
-import { Drawer, Typography } from "antd";
+import { Drawer } from "antd";
 import NatureRequestForm from "./NatureRequestForm";
-
-const { Title } = Typography;
 
 const AddRequestDrawer = ({ visible, onClose }) => {
   return (
