@@ -1,37 +1,61 @@
 import React from "react";
-import { Table } from "antd";
+import { Table, Input, Row, Col } from "antd";
 
-const { Column, ColumnGroup } = Table;
+const column = [
+  {
+    title: "REV DATE (mm/dd/yy)",
+    dataIndex: "revdate",
+    key: "revdate",
+    width: "200px",
+  },
+  {
+    title: "REV",
+    dataIndex: "rev",
+    key: "rev",
+    width: "100px",
+  },
+  {
+    title: "PAGE REVISED",
+    dataIndex: "pagerev",
+    key: "pagerev",
+    width: "50px",
+  },
+  {
+    title: "DISCRIPTION OF ISSUANCE/REVISION",
+    dataIndex: "disrev",
+    key: "disrev",
+  },
+  {
+    title: "EFFECTIVE DATE (mm/dd/yy)",
+    dataIndex: "effectdate",
+    key: "effectdate",
+    width: "200px",
+  },
+];
 
 const IssuanceAndRevisionHistoryPage = () => {
-  return <div className="base-container">
-    <Table>
-    <ColumnGroup title="DOC NO AND TITLE:">
-            <Column title="REV DATE" 
-                    dataIndex="firstName" 
-                    key="firstName" />
-
-            <Column title="REV"  
-                    dataIndex="firstName" 
-                    key="firstName" />
-    </ColumnGroup>
-
-    <ColumnGroup title="">
-            <Column title="PAGE REVISED"  
-                    dataIndex="firstName"
-                    key="firstName" />       
-
-            <Column title="DISCRIPTION OF ISSUANCE / REVISION" 
-                    dataIndex="rev1" 
-                    key="rev1" />
-            <Column
-                    title="EFFECTIVE DATE"
-                    dataIndex="effectivedate1"
-                    key="effectivedate1"/>
-           </ColumnGroup>
-
-    </Table>
-  </div>;
+  return (
+    <div className="base-container">
+      <Table
+        bordered
+        columns={column}
+        title={(c) => {
+          return (
+            <Input.Group>
+              <Row gutter={6}>
+                <Col span={8}>
+                  <Input addonBefore="Doc no." />
+                </Col>
+                <Col span={12}>
+                  <Input addonBefore="Title" />
+                </Col>
+              </Row>
+            </Input.Group>
+          );
+        }}
+      />
+    </div>
+  );
 };
 
 export default IssuanceAndRevisionHistoryPage;
