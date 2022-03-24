@@ -1,52 +1,83 @@
 import React from "react";
-import { Table } from "antd";
+import { Table, Input, Row, Col } from "antd";
 
-const { Column, ColumnGroup } = Table;
+const column = [
+  {
+    title: "N0",
+    dataIndex: "no",
+    key: "no",
+  },
+  {
+    title: "DOCUMENT NUMBER",
+    dataIndex: "docno",
+    key: "docno",
+  },
+  {
+    title: "DOCUMENT TITLE",
+    dataIndex: "doctitle",
+    key: "doctitle",
+  },
+  {
+    title: "INITIAL ISSUANCE",
+    children: [
+      {
+        title: "REV",
+        dataIndex: "rev",
+        key: "rev",
+      },
+      {
+        title: "PAGES",
+        dataIndex: "pages",
+        key: "pages",
+      },
+      {
+        title: "EFFECTIVE DATE",
+        dataIndex: "effectdate",
+        key: "effectdate",
+      },
+    ],
+  },
+  {
+    title: "CURRENT REVISION",
+    children: [
+      {
+        title: "REV",
+        dataIndex: "rev",
+        key: "rev",
+      },
+      {
+        title: "PAGES",
+        dataIndex: "pages",
+        key: "pages",
+      },
+      {
+        title: "EFFECTIVE DATE",
+        dataIndex: "effectdate",
+        key: "effectdate",
+      },
+    ],
+  },
+];
 
 const MasterListPageInternal = () => {
-  return <div className="base-container">
-    As of____________ 
-    <Table>
-    <ColumnGroup title="">
-            <Column title="NO"></Column>
-            <Column title="DOCUMENT NUMBER"></Column>
-            <Column title="DOCUMENT TITLE"></Column>
-          </ColumnGroup>
-
-          <ColumnGroup title="INITIAL ISSUANCE">
-            <Column title="REV" 
-                    dataIndex="rev1" 
-                    key="rev1" />
-
-            <Column title="PAGES" 
-                    dataIndex="pages1" 
-                    key="pages1" />
-
-            <Column
-                    title="EFFECTIVE DATE"
-                    dataIndex="effectivedate1"
-                    key="effectivedate1"/>
-          </ColumnGroup>
-          
-          <ColumnGroup title="CURRENT REVISION">
-            <Column 
-                    title="REV" 
-                    dataIndex="rev2" 
-                    key="rev2" />
-
-            <Column 
-                    title="PAGES" 
-                    dataIndex="pages2" 
-                    key="pages2" />
-            <Column
-              title="EFFECTIVE DATE"
-              dataIndex="effectivedate2"
-              key="effectivedate2"
-            />
-          </ColumnGroup>
-    </Table>
-
-    </div>;
+  return (
+    <div className="base-container">
+      <Table
+        columns={column}
+        title={(c) => {
+          return (
+            <Input.Group>
+              <Row gutter={6}>
+                <Col span={4}>
+                  <Input addonBefore="As of." />
+                </Col>
+              </Row>
+            </Input.Group>
+          );
+        }}
+      />
+    </div>
+  );
 };
 
 export default MasterListPageInternal;
