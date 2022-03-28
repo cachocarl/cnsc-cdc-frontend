@@ -107,7 +107,7 @@ const navigations = [
     ],
   },
   {
-    id: 17,
+    id: 18,
     uKey: "cdc", //unique readable key
     name: "CDC - Transactions",
     basePath: null,
@@ -115,19 +115,19 @@ const navigations = [
 
     sub: [
       {
-        id: 18,
+        id: 19,
         uKey: "cdc-internal-documents", //unique readable key
         name: "Internal Documents",
         basePath: "/cdc/internal-documents",
       },
       {
-        id: 19,
+        id: 20,
         uKey: "cdc-external-documents", //unique readable key
         name: "External Documents",
         basePath: "/cdc/external-documents",
       },
       {
-        id: 20,
+        id: 21,
         uKey: "cdc-controlled-documents", //unique readable key
         name: "Controlled Documents",
         basePath: "/cdc/controlled-documents",
@@ -153,6 +153,12 @@ const navigations = [
         uKey: "archive", //unique readable key
         name: "Archive",
         basePath: "/documents/archive",
+      },
+      {
+        id: 17,
+        uKey: "master-list-of-records", //unique readable key
+        name: "Master List of Records",
+        basePath: "/documents/master-list-of-records",
       },
     ],
   },
