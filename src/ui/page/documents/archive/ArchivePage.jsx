@@ -8,30 +8,31 @@ const { RangePicker } = DatePicker;
 
 const column = [
   {
-    title: "Document Information Title",
-    dataIndex: "D",
-    key: "docuinfotitle",
+    title: "College/Department/Office/Unit",
+    dataIndex: "cdou",
+    key: "cdou",
   },
   {
-    title: "Document Type",
-    dataIndex: "asade",
-    key: "docutype",
+    title: "Type of Record",
+    dataIndex: "typerec",
+    key: "typerec",
   },
   {
-    title: "Date Initiated",
-    dataIndex: "address",
-    key: "address",
+    title: "Year Generated",
+    dataIndex: "year",
+    key: "year",
   },
   {
-    title: "Status",
-    dataIndex: "address",
-    key: "status",
+    title: "Confidential",
+    dataIndex: "confi",
+    key: "confi",
   },
 ];
 
 const ArchivePage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("archive");
+
   return (
     <>
       <PageHeader title="Archived Documents"></PageHeader>

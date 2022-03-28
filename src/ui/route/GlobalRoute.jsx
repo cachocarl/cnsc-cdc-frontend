@@ -23,6 +23,7 @@ import ControlledCopiesPage from "../page/cdc/controlled-documents/ControlledCop
 import LoginPage from "../page/login/LoginPage";
 import SystemAministrationPage from "../page/system-administration/SystemAministrationPage";
 import MasterListRecordsPage from "../page/cdc/masterlistofrecords/MasterListRecordsPage";
+import RequestCopyDocumentInfoPage from "../page/transactions/request-copy-document-info/RequestCopyDocumentInfoPage";
 //import UserManagementPage from "../page/system-administration/UserManagementPage";
 
 //This will serve as the base router for all pages
@@ -53,6 +54,11 @@ const GlobalRoute = () => {
             <Route
               path="user-transactions/request-document-info"
               element={<RequestDocumentInfoPage />}
+            />
+
+            <Route
+              path="/user-transactions/user-request-copy"
+              element={<RequestCopyDocumentInfoPage />}
             />
 
             <Route
