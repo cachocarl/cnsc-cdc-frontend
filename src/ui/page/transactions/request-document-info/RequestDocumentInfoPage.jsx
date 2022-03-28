@@ -49,7 +49,7 @@ const column = [
 
 const RequestDocumentInfoPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("user-request-document-info");
+  navigatorContext.setSelectedKey("user-document-info");
 
   const { add, view /*edit*/ } = useDrawerVisibility();
 

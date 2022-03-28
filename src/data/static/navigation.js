@@ -38,7 +38,7 @@ const navigations = [
       },
       {
         id: 5,
-        uKey: "user-request-", //unique readable key
+        uKey: "user-document-info", //unique readable key
         name: "Document Info",
         basePath: "/user-transactions/request-document-info",
       },
