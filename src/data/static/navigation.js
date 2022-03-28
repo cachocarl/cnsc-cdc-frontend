@@ -1,5 +1,5 @@
 import {
-  HomeOutlined,
+  DashboardOutlined,
   SnippetsOutlined,
   FileWordOutlined,
   FileTextOutlined,
@@ -12,7 +12,7 @@ const navigations = [
     uKey: "dashboard", //unique readable key
     name: "Dashboard",
     basePath: "/home",
-    icon: <HomeOutlined />,
+    icon: <DashboardOutlined />,
   },
 
   {
@@ -38,7 +38,7 @@ const navigations = [
       },
       {
         id: 5,
-        uKey: "user-request-document-info", //unique readable key
+        uKey: "user-request-", //unique readable key
         name: "Request Document Info",
         basePath: "/user-transactions/request-document-info",
       },
@@ -132,12 +132,18 @@ const navigations = [
         name: "Controlled Documents",
         basePath: "/cdc/controlled-documents",
       },
+      {
+        id: 17,
+        uKey: "cdc-master-list-of-records", //unique readable key
+        name: "Master List of Records",
+        basePath: "/cdc/master-list-of-records",
+      },
     ],
   },
   {
     id: 14,
     uKey: "Documents", //unique readable key
-    name: "Records",
+    name: "Documents",
     basePath: null,
     icon: <FileTextOutlined />,
 
@@ -154,12 +160,7 @@ const navigations = [
         name: "Archive",
         basePath: "/documents/archive",
       },
-      {
-        id: 17,
-        uKey: "master-list-of-records", //unique readable key
-        name: "Master List of Records",
-        basePath: "/documents/master-list-of-records",
-      },
+
     ],
   },
   /*

@@ -54,7 +54,7 @@ const column = [
 
 const MasterListRecordsPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("master-list-of-records");
+  navigatorContext.setSelectedKey("cdc-master-list-of-records");
   return (
     <>
       <PageHeader title="Master List of Records"></PageHeader>
