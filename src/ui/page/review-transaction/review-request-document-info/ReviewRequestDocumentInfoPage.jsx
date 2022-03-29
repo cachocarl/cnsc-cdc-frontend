@@ -74,12 +74,12 @@ const ReviewRequestDocumentInfoPage = () => {
 
   return (
     <>
-      <PageHeader
-        title="List of My Request for Documented Information"
-        subTitle="View List of my Request"
-      ></PageHeader>
-
       <div className="base-container">
+        <PageHeader
+          title="List of My Request for Documented Information"
+          subTitle="View List of my Request"
+        ></PageHeader>
+
         <Search
           placeholder="input search text"
           style={{ width: 250, margin: 18 }}

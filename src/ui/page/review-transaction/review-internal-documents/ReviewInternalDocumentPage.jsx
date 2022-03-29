@@ -58,12 +58,12 @@ const ReviewInternalDocumentPage = () => {
 
   return (
     <>
-      <PageHeader
-        title=" Documented Information Change Request for Review"
-        //subTitle="View List of my Request"
-      ></PageHeader>
-
       <div className="base-container">
+        <PageHeader
+          title=" Documented Information Change Request for Review"
+          //subTitle="View List of my Request"
+        ></PageHeader>
+
         <Search
           placeholder="Input search text"
           style={{ width: 250, margin: 18 }}

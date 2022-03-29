@@ -137,6 +137,7 @@ const CreateRcdiForm = ({ visible, onClose }) => {
         </Col>
       </Row>
       <Divider></Divider>
+      <Title level={4}>To be Accomplished by the Approving Authority</Title>
 
       <Row gutter={16}>
         <Col span={24}>
@@ -166,8 +167,7 @@ const CreateRcdiForm = ({ visible, onClose }) => {
           </Form.Item>
         </Col>
       </Row>
-      <Divider></Divider>
-      <Title level={4}>To be Accomplished by the Approving Authority</Title>
+
       <br></br>
       <Col span={16}>
         <Form.Item

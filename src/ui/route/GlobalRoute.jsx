@@ -7,7 +7,7 @@ import AdminLayout from "../page/_base/AdminLayout";
 import HomePage from "../page/home/HomePage";
 import InternalDocumentPage from "../page/transactions/internal-documents/InternalDocumentPage";
 import ExternalDocumentPage from "../page/transactions/external-documents/ExternalDocumentPage";
-import RequestDocumentInfoPage from "../page/transactions/request-document-info/RequestDocumentInfoPage";
+//import RequestDocumentInfoPage from "../page/transactions/request-document-info/RequestDocumentInfoPage";
 import ApproveDocumentsPage from "../page/documents/approve-documents/ApproveDocumentsPage";
 import ArchivePage from "../page/documents/archive/ArchivePage";
 import AboutPage from "../page/about/AboutPage";
@@ -24,6 +24,7 @@ import LoginPage from "../page/login/LoginPage";
 import SystemAministrationPage from "../page/system-administration/SystemAministrationPage";
 import MasterListRecordsPage from "../page/cdc/masterlistofrecords/MasterListRecordsPage";
 import RequestCopyDocumentInfoPage from "../page/transactions/request-copy-document-info/RequestCopyDocumentInfoPage";
+import UserMasterListRecordsPage from "../page/transactions/user-master-list-records/UserMasterListRecordsPage";
 //import UserManagementPage from "../page/system-administration/UserManagementPage";
 
 //This will serve as the base router for all pages
@@ -42,18 +43,18 @@ const GlobalRoute = () => {
             <Route path="home" element={<HomePage />} />
 
             <Route
-              path="user-transactions/internal-documents"
+              path="/user-transactions/internal-documents"
               element={<InternalDocumentPage />}
             />
 
             <Route
-              path="user-transactions/external-documents"
+              path="/user-transactions/external-documents"
               element={<ExternalDocumentPage />}
             />
 
             <Route
-              path="user-transactions/request-document-info"
-              element={<RequestDocumentInfoPage />}
+              path="/user-transactions/master-list-records"
+              element={<UserMasterListRecordsPage />}
             />
 
             <Route
@@ -62,30 +63,30 @@ const GlobalRoute = () => {
             />
 
             <Route
-              path="review-transactions/internal-documents"
+              path="/review-transactions/internal-documents"
               element={<ReviewInternalDocumentPage />}
             />
 
             <Route
-              path="review-transactions/external-documents"
+              path="/review-transactions/external-documents"
               element={<ReviewExternalDocumentPage />}
             />
 
             <Route
-              path="review-transactions/request-document-info"
+              path="/review-transactions/request-document-info"
               element={<ReviewRequestDocumentInfoPage />}
             />
 
             <Route
-              path="approve-transactions/internal-documents"
+              path="/approve-transactions/internal-documents"
               element={<ApproveInternalDocumentPage />}
             />
             <Route
-              path="approve-transactions/external-documents"
+              path="/approve-transactions/external-documents"
               element={<ApproveExternalDocumentPage />}
             />
             <Route
-              path="approve-transactions/request-document-info"
+              path="/approve-transactions/request-document-info"
               element={<ApproveRequestDocumentInfoPage />}
             />
 

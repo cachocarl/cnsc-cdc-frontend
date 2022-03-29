@@ -55,19 +55,20 @@ const RequestDocumentInfoPage = () => {
 
   return (
     <>
-      <PageHeader
-        title="List of My Request for Documented Information"
-        extra={[
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            onClick={() => add.setVisible(true)}
-          >
-            Initiate New Request
-          </Button>,
-        ]}
-      ></PageHeader>
       <div className="base-container">
+        <PageHeader
+          title="Master List of Records"
+          extra={[
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={() => add.setVisible(true)}
+            >
+              Initiate New Request
+            </Button>,
+          ]}
+        ></PageHeader>
+
         <Search
           placeholder="input search text"
           style={{ width: 250, margin: 18 }}
@@ -91,7 +92,6 @@ const RequestDocumentInfoPage = () => {
         visible={add.visible}
         onClose={() => add.setVisible(false)}
       ></UserRdiDrawer.CreateRdiDrawer>
-
       <UserRdiDrawer.ViewRdiDrawer
         visible={view.visible}
         onClose={() => view.setVisible(false)}

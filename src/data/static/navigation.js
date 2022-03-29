@@ -38,9 +38,9 @@ const navigations = [
       },
       {
         id: 5,
-        uKey: "user-document-info", //unique readable key
-        name: "Document Info",
-        basePath: "/user-transactions/request-document-info",
+        uKey: "user-master-list-records", //unique readable key
+        name: "Master List of Records",
+        basePath: "/user-transactions/master-list-records",
       },
       {
         id: 23,

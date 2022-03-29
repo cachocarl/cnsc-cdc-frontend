@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Input, PageHeader, Table, Tag,} from "antd";
+import { Input, PageHeader, Table, Tag } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import InternalDocumentTableViewDrawer from "../../../component/drawer/InternalDocumentTableViewDrawer";
 
@@ -56,7 +56,6 @@ const column = [
       );
     },
   },
-  
 ];
 
 const ApproveExternalDocumentPage = () => {
@@ -75,12 +74,12 @@ const ApproveExternalDocumentPage = () => {
 
   return (
     <>
-      <PageHeader
-        title="My External Document Request List"
-        subTitle="View List of my Request"
-      ></PageHeader>
-
       <div className="base-container">
+        <PageHeader
+          title="My External Document Request List"
+          subTitle="View List of my Request"
+        ></PageHeader>
+
         <Search
           placeholder="input search text"
           style={{ width: 250, margin: 18 }}

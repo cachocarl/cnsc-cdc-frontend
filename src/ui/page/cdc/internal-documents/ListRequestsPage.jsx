@@ -1,9 +1,6 @@
 import React from "react";
 import { Input, Button, DatePicker, Table, Space, Tooltip } from "antd";
-import {
-  CheckCircleOutlined,
-  EyeOutlined,
-} from "@ant-design/icons";
+import { CheckCircleOutlined, EyeOutlined } from "@ant-design/icons";
 import CdcInternalDrawer from "../../../component/drawers/internalDrawer/cdc/CdcInternalDrawer";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 
@@ -83,7 +80,7 @@ const column = [
 ];
 
 const ListRequestPage = () => {
-  const { add, /*edit, view*/ } = useDrawerVisibility();
+  const { add /*edit, view*/ } = useDrawerVisibility();
   return (
     <>
       <div className="base-container">

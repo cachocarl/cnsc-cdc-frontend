@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Input, PageHeader, Table, } from "antd";
+import { Input, PageHeader, Table } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 import ApprovingRdiDrawer from "../../../component/drawers/rdiDrawer/approving/ApprovingRdiDrawer";
@@ -41,19 +41,18 @@ const column = [
 ];
 
 const ApproveRequestDocumentInfoPage = () => {
-
   const { view } = useDrawerVisibility();
 
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("approve-request-document-info");
   return (
     <>
-      <PageHeader
-        title="List of Approve Forms Requests"
-        subTitle="View List of my Request"
-      ></PageHeader>
-
       <div className="base-container">
+        <PageHeader
+          title="List of Approve Forms Requests"
+          subTitle="View List of my Request"
+        ></PageHeader>
+
         <Search
           placeholder="input search text"
           style={{ width: 250, margin: 18 }}
@@ -74,10 +73,10 @@ const ApproveRequestDocumentInfoPage = () => {
         />
       </div>
 
-          <ApprovingRdiDrawer.RdiApproveDrawer
-            visible={view.visible}
-            onClose={() => view.setVisible(false)}>
-          </ApprovingRdiDrawer.RdiApproveDrawer>
+      <ApprovingRdiDrawer.RdiApproveDrawer
+        visible={view.visible}
+        onClose={() => view.setVisible(false)}
+      ></ApprovingRdiDrawer.RdiApproveDrawer>
     </>
   );
 };

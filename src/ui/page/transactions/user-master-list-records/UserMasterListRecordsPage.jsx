@@ -1,55 +1,13 @@
-import {
-  PageHeader,
-  Table,
-  Input,
-  Row,
-  Col,
-  Space,
-  Tooltip,
-  Button,
-  Popconfirm,
-} from "antd";
-import { FileZipOutlined } from "@ant-design/icons";
+import { PageHeader, Table, Input, Row, Col } from "antd";
+import React from "react";
 import { useContext } from "react/cjs/react.development";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
-const dataSource = [
-  {
-    namereq: "Carl Lawrence Cacho",
-    docinfotitle: "Sample Documented Information Change Request # 1",
-    docinfono: "Sample #1",
-    year: "2022",
-  },
-  {
-    namereq: "Ramil Rana",
-    docinfotitle: "Sample Documented Information Change Request # 2",
-    docinfono: "Sample #2",
-    year: "2022",
-  },
-  {
-    namereq: "Royeen Lagumen",
-    docinfotitle: "Sample Documented Information Change Request # 3",
-    docinfono: "Sample #3",
-    year: "2022",
-  },
-  {
-    namereq: "Juan Carlos Sendon",
-    docinfotitle: "Sample Documented Information Change Request # 4",
-    docinfono: "Sample #4",
-    year: "2022",
-  },
-  {
-    namereq: "Adrian Rodriguez",
-    docinfotitle: "Sample Documented Information Change Request # 5",
-    docinfono: "Sample #5",
-    year: "2022",
-  },
-];
 
 const column = [
   {
     title: "RECORD/FILE CODE",
-    dataIndex: "filecode",
-    key: "filecode",
+    dataIndex: "revdate",
+    key: "revdate",
   },
   {
     title: "RECORD/FILENAME",
@@ -92,27 +50,11 @@ const column = [
     dataIndex: "effectdate",
     key: "effectdate",
   },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-
-    render: () => (
-      <Space>
-        <Popconfirm title="Sure na yarn?">
-          <Tooltip title="Archive">
-            <Button danger icon={<FileZipOutlined />} />
-          </Tooltip>
-        </Popconfirm>
-      </Space>
-    ),
-  },
 ];
 
-const MasterListRecordsPage = () => {
+const UserMasterListRecordsPage = () => {
   const navigatorContext = useContext(NavigatorContext);
-  navigatorContext.setSelectedKey("cdc-master-list-of-records");
+  navigatorContext.setSelectedKey("user-master-list-records");
   return (
     <>
       <div className="base-container">
@@ -121,7 +63,6 @@ const MasterListRecordsPage = () => {
         <Table
           bordered
           columns={column}
-          dataSource={dataSource}
           scroll={{ x: 1200 }}
           title={(c) => {
             return (
@@ -146,4 +87,4 @@ const MasterListRecordsPage = () => {
   );
 };
 
-export default MasterListRecordsPage;
+export default UserMasterListRecordsPage;

@@ -74,12 +74,12 @@ const ReviewExternalDocumentPage = () => {
 
   return (
     <>
-      <PageHeader
-        title="My External Document Request List"
-        subTitle="View List of my Request"
-      ></PageHeader>
-
       <div className="base-container">
+        <PageHeader
+          title="My External Document Request List"
+          subTitle="View List of my Request"
+        ></PageHeader>
+
         <Search
           placeholder="input search text"
           style={{ width: 250, margin: 18 }}
