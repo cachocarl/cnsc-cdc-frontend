@@ -11,26 +11,28 @@ const SystemAministrationPage = () => {
   navigatorContext.setSelectedKey("user-management");
   return (
     <>
-      <PageHeader title="System Administration"></PageHeader>
-      <ContentTab
-        content={[
-          {
-            title: "Office",
-            key: "tab1",
-            content: <OfficePage />,
-          },
-          {
-            title: "User",
-            key: "tab2",
-            content: <UserManagementPage />,
-          },
-          {
-            title: "Document Type",
-            key: "tab3",
-            content: <DocumentTypePage />,
-          },
-        ]}
-      />
+      <div className="base-container">
+        <PageHeader title="System Administration"></PageHeader>
+        <ContentTab
+          content={[
+            {
+              title: "Office",
+              key: "tab1",
+              content: <OfficePage />,
+            },
+            {
+              title: "User",
+              key: "tab2",
+              content: <UserManagementPage />,
+            },
+            {
+              title: "Document Type",
+              key: "tab3",
+              content: <DocumentTypePage />,
+            },
+          ]}
+        />
+      </div>
     </>
   );
 };

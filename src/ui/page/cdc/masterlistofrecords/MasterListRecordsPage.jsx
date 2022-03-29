@@ -25,24 +25,6 @@ const dataSource = [
     docinfono: "Sample #2",
     year: "2022",
   },
-  {
-    namereq: "Royeen Lagumen",
-    docinfotitle: "Sample Documented Information Change Request # 3",
-    docinfono: "Sample #3",
-    year: "2022",
-  },
-  {
-    namereq: "Juan Carlos Sendon",
-    docinfotitle: "Sample Documented Information Change Request # 4",
-    docinfono: "Sample #4",
-    year: "2022",
-  },
-  {
-    namereq: "Adrian Rodriguez",
-    docinfotitle: "Sample Documented Information Change Request # 5",
-    docinfono: "Sample #5",
-    year: "2022",
-  },
 ];
 
 const column = [

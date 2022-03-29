@@ -1,12 +1,10 @@
 import React from "react";
-import { Drawer, Button, Space, Steps, Modal, Divider, Typography } from "antd";
+import { Drawer, Button, Space, Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 import UserRdiForm from "./UserRdiForm";
 
-const { Title } = Typography;
 const { confirm } = Modal;
-const { Step } = Steps;
 
 const CreateRdiDrawer = ({ visible, onClose }) => {
   //function to show a modal after a button click
@@ -29,7 +27,7 @@ const CreateRdiDrawer = ({ visible, onClose }) => {
 
   return (
     <Drawer
-      title="Request for Document Information"
+      title="Adding Item to Masterlist of Records"
       placement="right"
       size="large"
       visible={visible}
@@ -39,7 +37,7 @@ const CreateRdiDrawer = ({ visible, onClose }) => {
       extra={
         <Space>
           <Button type="primary" onClick={showConfirm}>
-            Submit New Request
+            Add to Masterlist
           </Button>
         </Space>
       }
@@ -60,28 +58,6 @@ const ViewRdiDrawer = ({ visible, onClose }) => {
       onClose={onClose}
       width={"850px"}
     >
-      <Title level={4}>DIR Status:</Title>
-      <br />
-      <Steps direction="vertical" current={2}>
-        <Step
-          title="Step 1: Initiating Request"
-          description="Create a Request for Document Information"
-        />
-        <Step
-          title="Step 2: Registration Of Request"
-          description="Request for Document Information is being examined for registration by CDC"
-        />
-        <Step
-          title="Step 3: Reviewing of Request"
-          description="Request for Document Information is being reviewed by a Reviewing Authority"
-        />
-        <Step
-          title="Step 4: Approving of Request"
-          description="Request for Document Information is being evaluated by an Approving Authority"
-        />
-        <Step title="Step 5: Update of QMS" />
-      </Steps>
-      <Divider />
       <UserRdiForm.ViewRdiForm />
     </Drawer>
   );

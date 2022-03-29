@@ -1,68 +1,143 @@
-import { PageHeader, Table, Input, Row, Col } from "antd";
+import {
+  PageHeader,
+  Table,
+  Input,
+  Row,
+  Col,
+  Space,
+  Tooltip,
+  Button,
+} from "antd";
+import { EditOutlined } from "@ant-design/icons";
 import React from "react";
 import { useContext } from "react/cjs/react.development";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
+import { PlusOutlined } from "@ant-design/icons";
+import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
+import UserRdiDrawer from "../../../component/drawers/rdiDrawer/user/UserRdiDrawer";
 
+const dataSource = [
+  {
+    filecode: "CNSC-SP-QMS-01",
+    filename: "Document Information Change Request-DICR",
+    docformat: "E",
+    doctype: "C",
+    activeperiod: "sample date",
+    activelocation: "sample location",
+    retnperiod: "sample ret'nperiod",
+    archiveloc: "sample archive",
+    remarks: "astig",
+  },
+  {
+    filecode: "CNSC-SP-QMS-01",
+    filename: "Document Information Change Request-DICR",
+    docformat: "E",
+    doctype: "C",
+    activeperiod: "sample date",
+    activelocation: "sample location",
+    retnperiod: "sample ret'nperiod",
+    archiveloc: "sample archive",
+    remarks: "astig",
+  },
+];
 const column = [
   {
     title: "RECORD/FILE CODE",
-    dataIndex: "revdate",
-    key: "revdate",
+    dataIndex: "filecode",
+    key: "filecode",
   },
   {
     title: "RECORD/FILENAME",
-    dataIndex: "rev",
-    key: "rev",
+    dataIndex: "filename",
+    key: "filename",
     width: "20%",
   },
   {
     title: "FORMAT (E/P)",
-    dataIndex: "pagerev",
-    key: "pagerev",
+    dataIndex: "docformat",
+    key: "docformat",
   },
   {
     title: "TYPE (C/NC)",
-    dataIndex: "disrev",
-    key: "disrev",
+    dataIndex: "doctype",
+    key: "doctype",
   },
   {
     title: "ACTIVE PERIOD (yrs)",
-    dataIndex: "effectdate",
-    key: "effectdate",
+    dataIndex: "activeperiod",
+    key: "activeperiod",
   },
   {
     title: "ACTIVE LOCATION",
-    dataIndex: "effectdate",
-    key: "effectdate",
+    dataIndex: "activelocation",
+    key: "activelocation",
   },
   {
     title: "RET'N PERIOD (yrs)",
-    dataIndex: "effectdate",
-    key: "effectdate",
+    dataIndex: "retnperiod",
+    key: "retnperiod",
   },
   {
     title: "ARCHIVE LOCATION",
-    dataIndex: "effectdate",
-    key: "effectdate",
+    dataIndex: "archiveloc",
+    key: "archiveloc",
   },
   {
     title: "REMARKS",
-    dataIndex: "effectdate",
-    key: "effectdate",
+    dataIndex: "remarks",
+    key: "remarks",
+  },
+  {
+    title: "Action",
+    key: "operation",
+    fixed: "right",
+    width: 100,
+
+    render: () => (
+      <Space>
+        <Tooltip title="Edit">
+          <Button
+            icon={<EditOutlined />} /* onClick={() => view.setVisible(true)}*/
+          />
+        </Tooltip>
+      </Space>
+    ),
   },
 ];
 
 const UserMasterListRecordsPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-master-list-records");
+
+  const { add, view /*edit*/ } = useDrawerVisibility();
+
   return (
     <>
       <div className="base-container">
-        <PageHeader title="Master List of Records"></PageHeader>
+        <PageHeader
+          title="Master List of Records"
+          extra={[
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={() => add.setVisible(true)}
+            >
+              Add Item
+            </Button>,
+          ]}
+        ></PageHeader>
 
         <Table
           bordered
           columns={column}
+          dataSource={dataSource}
+          onRow={(record, rowIndex) => {
+            return {
+              onDoubleClick: (event) => {
+                view.setVisible(true);
+              }, // double click row
+            };
+          }}
           scroll={{ x: 1200 }}
           title={(c) => {
             return (
@@ -83,6 +158,14 @@ const UserMasterListRecordsPage = () => {
           }
         />
       </div>
+      <UserRdiDrawer.CreateRdiDrawer
+        visible={add.visible}
+        onClose={() => add.setVisible(false)}
+      ></UserRdiDrawer.CreateRdiDrawer>
+      <UserRdiDrawer.ViewRdiDrawer
+        visible={view.visible}
+        onClose={() => view.setVisible(false)}
+      ></UserRdiDrawer.ViewRdiDrawer>
     </>
   );
 };
