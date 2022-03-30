@@ -37,7 +37,7 @@ const Add = ({ visible, onClose }) => {
         extra={
           <Space>
             <Button type="primary" onClick={showConfirm}>
-              Submit New Request
+              {/*Submit New Request*/}
             </Button>
           </Space>
         }
@@ -45,7 +45,7 @@ const Add = ({ visible, onClose }) => {
         <Title level={3}>Document Information Change Request</Title>
         <br></br>
 
-        <UserInternalForm.AddForm/>
+        <UserInternalForm.AddForm />
       </Drawer>
     </>
   );
@@ -88,9 +88,7 @@ const View = ({ visible, onClose }) => {
           <Title level={3}>Document Information Change Request</Title>
         </Divider>
 
-        <UserInternalForm.ViewForm/>
-
-
+        <UserInternalForm.ViewForm />
       </Drawer>
     </>
   );

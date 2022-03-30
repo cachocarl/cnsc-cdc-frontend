@@ -1,107 +1,140 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import {
+  Input,
+  notification,
+  Button,
+  PageHeader,
+  Table,
+  Tag,
+  Space,
+  Col,
+  Row,
+} from "antd";
+import { PlusOutlined, ReloadOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 import UserInternalDrawer from "../../../component/drawers/internalDrawer/user/UserInternalDrawer";
+import { DicrInitiationAPI } from "../../../../data/call/Resource";
+import moment from "moment";
 
 const { Search } = Input;
-const dataSource = [
-  {
-    docinfotitle: "Sample Document Change Request #1",
-    docutype: "Policy",
-    dateinitiated: "January 06, 2022",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #2",
-    docutype: "Procedure",
-    dateinitiated: "January 14, 2022",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #3",
-    docutype: "Form",
-    dateinitiated: "January 17, 2022",
-    status: "Registered",
-  },
-  {
-    docinfotitle: "Sample Document Change Request #4",
-    docutype: "Policy",
-    dateinitiated: "Februray 26, 2022",
-    status: "Registered",
-  },
-];
 
 const column = [
   {
     title: "Document Information Title",
-    dataIndex: "docinfotitle",
-    key: "docuinfotitle",
-    width: 450,
+    dataIndex: "req_info_title",
+    key: "req_info_title",
   },
   {
     title: "Document Type",
-    dataIndex: "docutype",
-    key: "docutype",
-    onFilter: (value, record) => record.docutype.indexOf(value) === 0,
-    sorter: (a, b) => a.docutype.length - b.docutype.length,
+    dataIndex: "_info_type",
+    key: "_info_type",
+    onFilter: (value, record) => record.req_info_type.indexOf(value) === 0,
+    sorter: (a, b) => a.req_info_type.length - b.req_info_type.length,
     sortDirections: ["ascend"],
+    render: (data, record) => {
+      if (data.type === "Policy") {
+        return <Tag color="green">{data.type}</Tag>;
+      } else if (data.type === "Procedure") {
+        return <Tag color="blue">{data.type}</Tag>;
+      }
+    },
   },
   {
     title: "Date Initiated",
-    dataIndex: "dateinitiated",
-    key: "dateinitiated",
+    dataIndex: "created_at",
+    key: "created_at",
+    render: (data, record) => {
+      return moment(data).format("MMMM Do YYYY");
+    },
   },
   {
     title: "Status",
-    dataIndex: "status",
-    key: "status",
-
+    dataIndex: "_request_status",
+    key: "_request_status",
     render: (data, record) => {
-      return data === "Registered" ? (
-        <Tag color="blue">Registered</Tag>
-      ) : (
-        <Tag color="green">Approved</Tag>
-      );
+      if (data.status === "Registered") {
+        return <Tag color="blue">{data.status}</Tag>;
+      } else if (data.status === "Unregistered") {
+        return <Tag color="geekblue">{data.status}</Tag>;
+      }
     },
   },
 ];
 
 const InternalDocumentPage = () => {
   const { add, /*edit,*/ view } = useDrawerVisibility();
-
+  const [dicrTableData, setDicrTableData] = React.useState([]);
+  const [loadingDicrTable, setLoadingDicrTable] = React.useState(false);
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-internal-documents");
 
+  const _refreshDicrTable = () => {
+    setLoadingDicrTable(true);
+    DicrInitiationAPI.retrieveList()
+      .then((res) => {
+        setDicrTableData(res.data);
+        setLoadingDicrTable(false);
+      })
+      .catch((err) => {
+        notification.error({
+          message: "An error has occured",
+        });
+      });
+  };
+
   return (
     <>
+      <PageHeader
+        title="List of My Documented Information Change Request "
+        //subTitle="View List of my Request"
+      ></PageHeader>
+
       <div className="base-container">
-        <PageHeader
-          title="List of My Documented Information Change Request "
-          //subTitle="View List of my Request"
-          extra={[
+        <Row justify="space-between">
+          <Col>
+            <Search
+              placeholder="Search Document Title"
+              allowClear
+              size="medium"
+              style={{ marginLeft: 20, marginTop: 20 }}
+              //onSearch={onSearch}
+            />
+          </Col>
+          <Col>
             <Button
-              onClick={() => add.setVisible(true)}
+              type="default"
+              icon={<ReloadOutlined />}
+              onClick={_refreshDicrTable}
+              style={{
+                marginLeft: 10,
+                marginTop: 20,
+                marginRight: 20,
+                marginBottom: 10,
+              }}
+            >
+              Refresh
+            </Button>
+            <Button
               type="primary"
               icon={<PlusOutlined />}
+              onClick={() => add.setVisible(true)}
+              style={{
+                marginLeft: 10,
+                marginTop: 20,
+                marginRight: 20,
+                marginBottom: 10,
+              }}
             >
               Initiate New Request
-            </Button>,
-          ]}
-        ></PageHeader>
-
-        <Space justify="right">
-          <Search
-            placeholder="input search text"
-            style={{ width: 250, margin: 18 }}
-            allowClear
-          />
-        </Space>
+            </Button>
+          </Col>
+        </Row>
         <br></br>
         <Table
+          style={{ margin: 20 }}
           columns={column}
-          dataSource={dataSource}
+          dataSource={dicrTableData}
           onRow={(record, rowIndex) => {
             return {
               onDoubleClick: (event) => {

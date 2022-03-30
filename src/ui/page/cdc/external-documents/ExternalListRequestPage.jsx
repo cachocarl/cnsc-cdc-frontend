@@ -89,7 +89,7 @@ const ExternalListRequestPage = () => {
         <Space>
           <Search
             placeholder="input search text"
-            style={{ width: 250, margin: 18 }}
+            style={{ width: 250, margin: 20 }}
             allowClear
           />
           <RangePicker picker="year" />

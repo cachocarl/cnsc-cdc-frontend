@@ -77,6 +77,7 @@ const RequestDocumentInfoPage = () => {
 
         <br></br>
         <Table
+          style={{ margin: 20 }}
           columns={column}
           dataSource={dataSource}
           onRow={(record, rowIndex) => {
