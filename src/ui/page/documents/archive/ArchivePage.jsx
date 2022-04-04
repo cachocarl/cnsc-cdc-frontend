@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { PageHeader, Input, Table, DatePicker, Space } from "antd";
+import { PageHeader, Input, Table, /*DatePicker,*/ Row, Col } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 
-const { Search } = Input;
+//const { Search } = Input;
 
-const { RangePicker } = DatePicker;
+//const { RangePicker } = DatePicker;
 
 const column = [
   {
@@ -35,17 +35,27 @@ const ArchivePage = () => {
 
   return (
     <>
-      <PageHeader title="Archived Documents"></PageHeader>
       <div className="base-container">
-        <Space>
-          <Search
-            placeholder="Input search text"
-            style={{ width: 250, margin: 18 }}
-            allowClear
-          />
-          <RangePicker picker="year" />
-        </Space>
-        <Table columns={column} />
+        <PageHeader title="Archived Documents"></PageHeader>
+        <Table
+          bordered
+          columns={column}
+          scroll={{ x: 1200 }}
+          title={(c) => {
+            return (
+              <Input.Group>
+                <Row justify="space-between">
+                  <Col span={12}>
+                    <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                  </Col>
+                  <Col>
+                    <Input.Search addonBefore="As of:" />
+                  </Col>
+                </Row>
+              </Input.Group>
+            );
+          }}
+        />
       </div>
     </>
   );

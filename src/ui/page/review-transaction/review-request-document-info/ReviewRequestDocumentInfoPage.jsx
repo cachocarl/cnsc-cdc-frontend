@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
-import { Input, PageHeader, Table, Tag } from "antd";
+import { Input, PageHeader, Table, Tag, Row, Col } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import ReqDocInfoDrawer from "../../../component/drawer/userDrawer/ReqDocInfoDrawer";
-
-const { Search } = Input;
 
 const dataSource = [
   {
@@ -79,15 +77,9 @@ const ReviewRequestDocumentInfoPage = () => {
           title="List of My Request for Documented Information"
           subTitle="View List of my Request"
         ></PageHeader>
-
-        <Search
-          placeholder="input search text"
-          style={{ width: 250, margin: 18 }}
-          allowClear
-        />
-
         <br></br>
         <Table
+          bordered
           columns={column}
           dataSource={dataSource}
           onRow={(record, rowIndex) => {
@@ -96,6 +88,21 @@ const ReviewRequestDocumentInfoPage = () => {
                 showDrawer();
               }, // double click row
             };
+          }}
+          scroll={{ x: 1200 }}
+          title={(c) => {
+            return (
+              <Input.Group>
+                <Row justify="space-between">
+                  <Col span={12}>
+                    <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                  </Col>
+                  <Col>
+                    <Input.Search addonBefore="As of:" />
+                  </Col>
+                </Row>
+              </Input.Group>
+            );
           }}
         />
       </div>

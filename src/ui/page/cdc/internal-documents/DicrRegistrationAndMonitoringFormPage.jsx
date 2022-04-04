@@ -1,4 +1,4 @@
-import { Table, Input, Space } from "antd";
+import { Table, Input, Row, Col } from "antd";
 import React from "react";
 import InternalUserDrawer from "../../../component/drawer/userDrawer/InternalUserDrawer";
 
@@ -76,38 +76,43 @@ const column = [
     key: "datecompleted",
   },
 ];
-const { Search } = Input;
 
 const DicrRegistrationAndMonitoringFormPage = () => {
   const [editVisible, setEditVisible] = React.useState(false);
 
   return (
     <>
-      <div className="base-container">
-        <Space>
-          <Search
-            placeholder="input search text"
-            style={{ width: 250, margin: 18 }}
-            allowClear
-          />
-        </Space>
-        <br />
-        <Table
-          columns={column}
-          dataSource={dataSource}
-          onRow={(record, rowIndex) => {
-            return {
-              onDoubleClick: (event) => {
-                setEditVisible(true);
-              }, // double click row
-            };
-          }}
-        />
-        <InternalUserDrawer.Edit
-          visible={editVisible}
-          onClose={() => setEditVisible(false)}
-        />
-      </div>
+      <Table
+        bordered
+        columns={column}
+        dataSource={dataSource}
+        onRow={(record, rowIndex) => {
+          return {
+            onDoubleClick: (event) => {
+              setEditVisible(true);
+            }, // double click row
+          };
+        }}
+        scroll={{ x: 1200 }}
+        title={(c) => {
+          return (
+            <Input.Group>
+              <Row justify="space-between">
+                <Col span={12}>
+                  <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                </Col>
+                <Col>
+                  <Input.Search addonBefore="As of:" />
+                </Col>
+              </Row>
+            </Input.Group>
+          );
+        }}
+      />
+      <InternalUserDrawer.Edit
+        visible={editVisible}
+        onClose={() => setEditVisible(false)}
+      />
     </>
   );
 };

@@ -36,30 +36,28 @@ const column = [
 
 const ScheduleAndMonitoringPage = () => {
   return (
-    <div className="base-container">
-      <Table
-        bordered
-        columns={column}
-        summary={() => (
-          <Table.Summary fixed>
-            <Table.Summary.Row>
-              <Table.Summary.Cell index={0}>Done By:</Table.Summary.Cell>
-              <Table.Summary.Cell index={1}></Table.Summary.Cell>
-              <Table.Summary.Cell index={2}></Table.Summary.Cell>
-              <Table.Summary.Cell index={3}></Table.Summary.Cell>
-              <Table.Summary.Cell index={4}></Table.Summary.Cell>
-            </Table.Summary.Row>
-            <Table.Summary.Row>
-              <Table.Summary.Cell index={0}>Verified By:</Table.Summary.Cell>
-              <Table.Summary.Cell index={1}></Table.Summary.Cell>
-              <Table.Summary.Cell index={2}></Table.Summary.Cell>
-              <Table.Summary.Cell index={3}></Table.Summary.Cell>
-              <Table.Summary.Cell index={4}></Table.Summary.Cell>
-            </Table.Summary.Row>
-          </Table.Summary>
-        )}
-      />
-    </div>
+    <Table
+      bordered
+      columns={column}
+      summary={() => (
+        <Table.Summary fixed>
+          <Table.Summary.Row>
+            <Table.Summary.Cell index={0}>Done By:</Table.Summary.Cell>
+            <Table.Summary.Cell index={1}></Table.Summary.Cell>
+            <Table.Summary.Cell index={2}></Table.Summary.Cell>
+            <Table.Summary.Cell index={3}></Table.Summary.Cell>
+            <Table.Summary.Cell index={4}></Table.Summary.Cell>
+          </Table.Summary.Row>
+          <Table.Summary.Row>
+            <Table.Summary.Cell index={0}>Verified By:</Table.Summary.Cell>
+            <Table.Summary.Cell index={1}></Table.Summary.Cell>
+            <Table.Summary.Cell index={2}></Table.Summary.Cell>
+            <Table.Summary.Cell index={3}></Table.Summary.Cell>
+            <Table.Summary.Cell index={4}></Table.Summary.Cell>
+          </Table.Summary.Row>
+        </Table.Summary>
+      )}
+    />
   );
 };
 

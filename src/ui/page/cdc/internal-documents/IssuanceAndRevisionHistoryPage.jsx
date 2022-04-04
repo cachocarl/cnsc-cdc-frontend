@@ -35,26 +35,24 @@ const column = [
 
 const IssuanceAndRevisionHistoryPage = () => {
   return (
-    <div className="base-container">
-      <Table
-        bordered
-        columns={column}
-        title={(c) => {
-          return (
-            <Input.Group>
-              <Row gutter={6}>
-                <Col span={8}>
-                  <Input addonBefore="Doc no." />
-                </Col>
-                <Col span={12}>
-                  <Input addonBefore="Title" />
-                </Col>
-              </Row>
-            </Input.Group>
-          );
-        }}
-      />
-    </div>
+    <Table
+      bordered
+      columns={column}
+      title={(c) => {
+        return (
+          <Input.Group>
+            <Row gutter={6}>
+              <Col span={8}>
+                <Input addonBefore="Doc no." />
+              </Col>
+              <Col span={12}>
+                <Input addonBefore="Title" />
+              </Col>
+            </Row>
+          </Input.Group>
+        );
+      }}
+    />
   );
 };
 

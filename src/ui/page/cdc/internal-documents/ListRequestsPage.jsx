@@ -1,11 +1,8 @@
 import React from "react";
-import { Input, Button, DatePicker, Table, Space, Tooltip } from "antd";
+import { Input, Button, Table, Space, Tooltip, Row, Col } from "antd";
 import { CheckCircleOutlined, EyeOutlined } from "@ant-design/icons";
 import CdcInternalDrawer from "../../../component/drawers/internalDrawer/cdc/CdcInternalDrawer";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
-
-const { Search } = Input;
-const { RangePicker } = DatePicker;
 
 const dataSource = [
   {
@@ -83,33 +80,38 @@ const ListRequestPage = () => {
   const { add /*edit, view*/ } = useDrawerVisibility();
   return (
     <>
-      <div className="base-container">
-        <Space>
-          <Search
-            placeholder="input search text"
-            style={{ width: 250, margin: 18 }}
-            allowClear
-          />
-          <RangePicker picker="year" />
-        </Space>
-        <br />
-        <Table
-          columns={column}
-          dataSource={dataSource}
-          onRow={(record, rowIndex) => {
-            return {
-              onDoubleClick: (event) => {
-                add.setVisible(true);
-              }, // double click row
-            };
-          }}
-        />
+      <Table
+        bordered
+        columns={column}
+        dataSource={dataSource}
+        onRow={(record, rowIndex) => {
+          return {
+            onDoubleClick: (event) => {
+              add.setVisible(true);
+            }, // double click row
+          };
+        }}
+        scroll={{ x: 1200 }}
+        title={(c) => {
+          return (
+            <Input.Group>
+              <Row justify="space-between">
+                <Col span={12}>
+                  <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                </Col>
+                <Col>
+                  <Input.Search addonBefore="As of:" />
+                </Col>
+              </Row>
+            </Input.Group>
+          );
+        }}
+      />
 
-        <CdcInternalDrawer.ListRequestDrawer
-          visible={add.visible}
-          onClose={() => add.setVisible(false)}
-        ></CdcInternalDrawer.ListRequestDrawer>
-      </div>
+      <CdcInternalDrawer.ListRequestDrawer
+        visible={add.visible}
+        onClose={() => add.setVisible(false)}
+      ></CdcInternalDrawer.ListRequestDrawer>
     </>
   );
 };

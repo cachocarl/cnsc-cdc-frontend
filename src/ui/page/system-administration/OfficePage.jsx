@@ -29,7 +29,7 @@ const OfficePage = () => {
           </Col>
         </Row>
         <br></br>
-        <Table>
+        <Table bordered>
           <Column title="Code"></Column>
           <Column title="Name"></Column>
           <Column title="Head"></Column>

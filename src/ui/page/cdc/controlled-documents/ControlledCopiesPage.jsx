@@ -3,19 +3,21 @@ import NavigatorContext from "../../../../service/context/NavigatorContext";
 import {
   PageHeader,
   Input,
-  DatePicker,
+  //DatePicker,
   Space,
   Tooltip,
   Button,
   Table,
+  Row,
+  Col,
 } from "antd";
 import { CheckCircleOutlined, EyeOutlined } from "@ant-design/icons";
 import CdcRdiDrawer from "../../../component/drawers/rdiDrawer/cdc/CdcRdiDrawer";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 
-const { Search } = Input;
+//const { Search } = Input;
 
-const { RangePicker } = DatePicker;
+//const { RangePicker } = DatePicker;
 
 const dataSource = [
   {
@@ -73,18 +75,11 @@ const ControlledCopiesPage = () => {
 
   return (
     <>
-      <PageHeader title="List of Request" subTitle="Controlled Documents" />
       <div className="base-container">
-        <Space>
-          <Search
-            placeholder="input search text"
-            style={{ width: 250, margin: 18 }}
-            allowClear
-          />
-          <RangePicker picker="year" />
-        </Space>
-        <br />
+        <PageHeader title="List of Request" subTitle="Controlled Documents" />
+
         <Table
+          bordered
           columns={column}
           dataSource={dataSource}
           onRow={(record) => {
@@ -93,6 +88,21 @@ const ControlledCopiesPage = () => {
                 view.setVisible(true);
               }, // double click row
             };
+          }}
+          scroll={{ x: 1200 }}
+          title={(c) => {
+            return (
+              <Input.Group>
+                <Row justify="space-between">
+                  <Col span={12}>
+                    <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                  </Col>
+                  <Col>
+                    <Input.Search addonBefore="As of:" />
+                  </Col>
+                </Row>
+              </Input.Group>
+            );
           }}
         />
       </div>

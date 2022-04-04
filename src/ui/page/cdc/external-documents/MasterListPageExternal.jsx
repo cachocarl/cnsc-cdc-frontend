@@ -36,22 +36,21 @@ const column = [
 
 const MasterListPageExternal = () => {
   return (
-    <div className="base-container">
-      <Table
-        columns={column}
-        title={(c) => {
-          return (
-            <Input.Group>
-              <Row gutter={6}>
-                <Col span={4}>
-                  <Input addonBefore="As of." />
-                </Col>
-              </Row>
-            </Input.Group>
-          );
-        }}
-      />
-    </div>
+    <Table
+      bordered
+      columns={column}
+      title={(c) => {
+        return (
+          <Input.Group>
+            <Row gutter={6}>
+              <Col span={4}>
+                <Input addonBefore="As of." />
+              </Col>
+            </Row>
+          </Input.Group>
+        );
+      }}
+    />
   );
 };
 

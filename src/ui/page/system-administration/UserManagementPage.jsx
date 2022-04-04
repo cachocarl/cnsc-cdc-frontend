@@ -32,7 +32,7 @@ const UserManagementPage = () => {
           </Col>
         </Row>
         <br></br>
-        <Table>
+        <Table bordered>
           <Column title="Username"></Column>
           <Column title="Name"></Column>
           <Column title="Access"></Column>

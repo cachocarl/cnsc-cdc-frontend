@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "antd";
+import { Input, Table, Row, Col } from "antd";
 
 const dataSource = [
   {
@@ -36,7 +36,26 @@ const column = [
 const ListExternalPage = () => {
   return (
     <div className="base-container">
-      <Table columns={column} dataSource={dataSource} />
+      <Table
+        bordered
+        columns={column}
+        dataSource={dataSource}
+        scroll={{ x: 1200 }}
+        title={(c) => {
+          return (
+            <Input.Group>
+              <Row justify="space-between">
+                <Col span={12}>
+                  <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                </Col>
+                <Col>
+                  <Input.Search addonBefore="As of:" />
+                </Col>
+              </Row>
+            </Input.Group>
+          );
+        }}
+      />
     </div>
   );
 };

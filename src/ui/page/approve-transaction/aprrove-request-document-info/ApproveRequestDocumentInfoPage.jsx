@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { Input, PageHeader, Table } from "antd";
+import { Input, PageHeader, Table, Row, Col } from "antd";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 import ApprovingRdiDrawer from "../../../component/drawers/rdiDrawer/approving/ApprovingRdiDrawer";
-const { Search } = Input;
 
 const dataSource = [
   {
@@ -52,13 +51,6 @@ const ApproveRequestDocumentInfoPage = () => {
           title="List of Approve Forms Requests"
           subTitle="View List of my Request"
         ></PageHeader>
-
-        <Search
-          placeholder="input search text"
-          style={{ width: 250, margin: 18 }}
-          allowClear
-        />
-
         <br></br>
         <Table
           columns={column}
@@ -69,6 +61,21 @@ const ApproveRequestDocumentInfoPage = () => {
                 view.setVisible(true);
               }, // double click row
             };
+          }}
+          scroll={{ x: 1200 }}
+          title={(c) => {
+            return (
+              <Input.Group>
+                <Row justify="space-between">
+                  <Col span={12}>
+                    <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                  </Col>
+                  <Col>
+                    <Input.Search addonBefore="As of:" />
+                  </Col>
+                </Row>
+              </Input.Group>
+            );
           }}
         />
       </div>
