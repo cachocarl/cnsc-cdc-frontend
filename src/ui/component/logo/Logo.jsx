@@ -18,8 +18,8 @@ const Large = () => {
     <img
       src={CNSCLogo}
       alt=""
-      width="150px"
-      height="150px"
+      width="120px"
+      height="120px"
       style={{ margin: 0 }}
     />
   );

@@ -9,12 +9,14 @@ import APP_CONFIG from "../../../data/static/config";
 //import transformUser from "../../../service/utils/transformer/transformUser";
 import Logo from "../../component/logo/Logo";
 import PlainLayout from "../_base/PlainLayout";
+import { useSessionStorageState } from "ahooks";
 
 const LoginPage = () => {
   let navigate = useNavigate();
   let { state } = useLocation();
   //let user = React.useContext(UserContext);
   let [form] = Form.useForm();
+  const [user, setUser] = useSessionStorageState("user");
   const [loginStatus, setLoginStatus] = React.useState(null);
 
   const registerCookieMutation = useMutation(AuthenticationAPI.registerCookie, {
@@ -28,9 +30,12 @@ const LoginPage = () => {
 
   const loginMutation = useMutation(AuthenticationAPI.login, {
     onSuccess: (data) => {
+      console.log(data);
       setLoginStatus("success-login");
       //user.set(transformUser(data.data));
       //navigate(state?.path || "/home");
+      setUser(data.data);
+
       navigate("/home");
     },
     onError: (error) => {

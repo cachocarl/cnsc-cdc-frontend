@@ -2,20 +2,20 @@ import React from "react";
 import {
   Input,
   Button,
-  //DatePicker,
+  DatePicker,
   Table,
   Space,
   Tooltip,
-  Row,
-  Col,
+  //Row,
+  //Col,
 } from "antd";
 import { CheckCircleOutlined, EyeOutlined } from "@ant-design/icons";
 
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 import CdcExternalForm from "../../../component/drawers/externalDrawer/cdc/CdcExternalForm";
 
-//const { Search } = Input;
-//const { RangePicker } = DatePicker;
+const { Search } = Input;
+const { RangePicker } = DatePicker;
 
 const dataSource = [
   {
@@ -94,37 +94,32 @@ const ExternalListRequestPage = () => {
 
   return (
     <>
-      <Table
-        bordered
-        columns={column}
-        dataSource={dataSource}
-        onRow={(record, rowIndex) => {
-          return {
-            onDoubleClick: (event) => {
-              add.setVisible(true);
-            }, // double click row
-          };
-        }}
-        scroll={{ x: 1200 }}
-        title={(c) => {
-          return (
-            <Input.Group>
-              <Row justify="space-between">
-                <Col span={12}>
-                  <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
-                </Col>
-                <Col>
-                  <Input.Search addonBefore="As of:" />
-                </Col>
-              </Row>
-            </Input.Group>
-          );
-        }}
-      />
-      <CdcExternalForm.CdcRegisterForm
-        visible={add.visible}
-        onClose={() => add.setVisible(false)}
-      ></CdcExternalForm.CdcRegisterForm>
+      <div className="base-container">
+        <Space>
+          <Search
+            placeholder="input search text"
+            style={{ width: 250, margin: 20 }}
+            allowClear
+          />
+          <RangePicker picker="year" />
+        </Space>
+        <br />
+        <Table
+          columns={column}
+          dataSource={dataSource}
+          onRow={(record, rowIndex) => {
+            return {
+              onDoubleClick: (event) => {
+                add.setVisible(true);
+              }, // double click row
+            };
+          }}
+        />
+        <CdcExternalForm.CdcRegisterForm
+          visible={add.visible}
+          onClose={() => add.setVisible(false)}
+        ></CdcExternalForm.CdcRegisterForm>
+      </div>
     </>
   );
 };

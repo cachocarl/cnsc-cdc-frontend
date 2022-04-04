@@ -1,6 +1,7 @@
 import React from "react";
 import { Avatar, Button, Dropdown, Menu, Space, Typography } from "antd";
 import { LogoutOutlined } from "@ant-design/icons/lib/icons";
+import { useSessionStorageState } from "ahooks";
 
 const avatarMenu = (
   <Menu>
@@ -11,6 +12,7 @@ const avatarMenu = (
 );
 
 const CustomAvatar = () => {
+  const [userInfo, setUserInfo] = useSessionStorageState("user");
   return (
     <Dropdown
       arrow
@@ -20,8 +22,8 @@ const CustomAvatar = () => {
     >
       <Button type="text" style={{ height: "100%" }}>
         <Space size="small">
-          <Avatar>SU</Avatar>
-          <Typography.Text strong>Sample User</Typography.Text>
+          <Avatar>A</Avatar>
+          <Typography.Text strong>{userInfo._user.username}</Typography.Text>
         </Space>
       </Button>
     </Dropdown>

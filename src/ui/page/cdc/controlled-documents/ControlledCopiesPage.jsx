@@ -79,6 +79,7 @@ const ControlledCopiesPage = () => {
       <div className="base-container">
         <Table
           bordered
+          style={{ margin: 20 }}
           columns={column}
           dataSource={dataSource}
           onRow={(record) => {

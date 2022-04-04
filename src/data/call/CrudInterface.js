@@ -2,13 +2,15 @@ import axiosInstance from "../static/axiosInstance";
 import APP_CONFIG from "../static/config";
 
 const create = (url) => {
-  return async (data) =>
-    axiosInstance({
+  return async (data) => {
+    return axiosInstance({
       method: "post",
       url: `${APP_CONFIG.endpointPrefix}${url}`,
       data: data,
     });
+  };
 };
+//localhost:8000/api/v1/users/list&search
 
 const update = (url) => {
   return async (data) => {
@@ -45,7 +47,7 @@ const retrieveList = (url) => {
     return axiosInstance({
       method: "get",
       url: `${APP_CONFIG.endpointPrefix}${url}/list`,
-      params: { params },
+      params: params,
     });
   };
 };
