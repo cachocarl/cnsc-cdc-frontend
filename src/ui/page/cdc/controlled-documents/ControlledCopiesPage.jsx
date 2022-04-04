@@ -75,9 +75,8 @@ const ControlledCopiesPage = () => {
 
   return (
     <>
+      <PageHeader title="List of Request" subTitle="Controlled Documents" />
       <div className="base-container">
-        <PageHeader title="List of Request" subTitle="Controlled Documents" />
-
         <Table
           bordered
           columns={column}

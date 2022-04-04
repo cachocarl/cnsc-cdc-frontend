@@ -112,20 +112,19 @@ const UserMasterListRecordsPage = () => {
   const { add, view /*edit*/ } = useDrawerVisibility();
   return (
     <>
+      <PageHeader
+        title="Master List of Records"
+        extra={[
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => add.setVisible(true)}
+          >
+            Add Item
+          </Button>,
+        ]}
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title="Master List of Records"
-          extra={[
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={() => add.setVisible(true)}
-            >
-              Add Item
-            </Button>,
-          ]}
-        ></PageHeader>
-
         <Table
           bordered
           columns={column}

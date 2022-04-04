@@ -72,12 +72,11 @@ const ReviewRequestDocumentInfoPage = () => {
 
   return (
     <>
+      <PageHeader
+        title="List of My Request for Documented Information"
+        subTitle="View List of my Request"
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title="List of My Request for Documented Information"
-          subTitle="View List of my Request"
-        ></PageHeader>
-        <br></br>
         <Table
           bordered
           columns={column}

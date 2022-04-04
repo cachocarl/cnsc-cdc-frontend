@@ -40,9 +40,8 @@ const ApproveDocumentsPage = () => {
   navigatorContext.setSelectedKey("approve-documents");
   return (
     <>
+      <PageHeader title="Approved Documents"></PageHeader>
       <div className="base-container">
-        <PageHeader title="Approved Documents"></PageHeader>
-
         <Table
           bordered
           columns={column}

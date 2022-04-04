@@ -66,21 +66,20 @@ const ExternalDocumentPage = () => {
 
   return (
     <>
+      <PageHeader
+        title="List of My External Document Request"
+        //subTitle="View List of my Request"
+        extra={[
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => add.setVisible(true)}
+          >
+            Initiate New Request
+          </Button>,
+        ]}
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title="List of My External Document Request"
-          //subTitle="View List of my Request"
-          extra={[
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={() => add.setVisible(true)}
-            >
-              Initiate New Request
-            </Button>,
-          ]}
-        ></PageHeader>
-        <br></br>
         <Table
           bordered
           columns={column}

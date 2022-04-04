@@ -12,28 +12,27 @@ const CdcExternalDocumentsPage = () => {
   navigatorContext.setSelectedKey("cdc-external-documents");
   return (
     <>
+      <PageHeader title="External Documents" />
       <div className="base-container">
-        <PageHeader title="External Documents">
-          <ContentTab
-            content={[
-              {
-                title: "List of Requests",
-                key: "tab1",
-                content: <ExternalListRequestPage />,
-              },
-              {
-                title: "Masters List of External Documented Information",
-                key: "tab2",
-                content: <MasterListPageExternal />,
-              },
-              {
-                title: "Issuance And Retrieval",
-                key: "tab3",
-                content: <IssuanceAndRetrievalPage />,
-              },
-            ]}
-          />
-        </PageHeader>
+        <ContentTab
+          content={[
+            {
+              title: "List of Requests",
+              key: "tab1",
+              content: <ExternalListRequestPage />,
+            },
+            {
+              title: "Masters List of External Documented Information",
+              key: "tab2",
+              content: <MasterListPageExternal />,
+            },
+            {
+              title: "Issuance And Retrieval",
+              key: "tab3",
+              content: <IssuanceAndRetrievalPage />,
+            },
+          ]}
+        />
       </div>
     </>
   );

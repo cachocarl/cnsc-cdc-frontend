@@ -11,8 +11,8 @@ const SystemAministrationPage = () => {
   navigatorContext.setSelectedKey("user-management");
   return (
     <>
+      <PageHeader title="System Administration"></PageHeader>
       <div className="base-container">
-        <PageHeader title="System Administration"></PageHeader>
         <ContentTab
           content={[
             {

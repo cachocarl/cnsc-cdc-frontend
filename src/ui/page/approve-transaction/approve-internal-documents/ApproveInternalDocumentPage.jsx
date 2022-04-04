@@ -53,12 +53,11 @@ const ApproveInternalDocumentPage = () => {
 
   return (
     <>
+      <PageHeader
+        title="List of Documented Information Change Request for Approval"
+        //subTitle="View List of my Request"
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title="List of Documented Information Change Request for Approval"
-          //subTitle="View List of my Request"
-        ></PageHeader>
-        <br></br>
         <Table
           bordered
           columns={column}

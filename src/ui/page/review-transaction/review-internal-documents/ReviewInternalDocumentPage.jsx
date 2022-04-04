@@ -56,12 +56,11 @@ const ReviewInternalDocumentPage = () => {
 
   return (
     <>
+      <PageHeader
+        title=" Documented Information Change Request for Review"
+        //subTitle="View List of my Request"
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title=" Documented Information Change Request for Review"
-          //subTitle="View List of my Request"
-        ></PageHeader>
-        <br></br>
         <Table
           bordered
           columns={column}

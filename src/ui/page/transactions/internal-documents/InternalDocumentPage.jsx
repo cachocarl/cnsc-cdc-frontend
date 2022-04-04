@@ -75,21 +75,20 @@ const InternalDocumentPage = () => {
 
   return (
     <>
+      <PageHeader
+        title="List of My Documented Information Change Request "
+        //subTitle="View List of my Request"
+        extra={[
+          <Button
+            onClick={() => add.setVisible(true)}
+            type="primary"
+            icon={<PlusOutlined />}
+          >
+            Initiate New Request
+          </Button>,
+        ]}
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title="List of My Documented Information Change Request "
-          //subTitle="View List of my Request"
-          extra={[
-            <Button
-              onClick={() => add.setVisible(true)}
-              type="primary"
-              icon={<PlusOutlined />}
-            >
-              Initiate New Request
-            </Button>,
-          ]}
-        ></PageHeader>
-        <br></br>
         <Table
           bordered
           columns={column}

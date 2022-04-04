@@ -31,7 +31,6 @@ const DocumentTypePage = () => {
           </Col>
         </Row>
 
-        <br></br>
         <Table bordered>
           <Column title="Type  "></Column>
           <Column colSpan={200} title="Description"></Column>
@@ -61,7 +60,6 @@ const DocumentTypePage = () => {
             </Button>
           </Col>
         </Row>
-        <br></br>
         <Table bordered>
           <Column title="Nature"></Column>
           <Column colSpan={200} title="Description"></Column>

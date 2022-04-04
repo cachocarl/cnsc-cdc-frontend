@@ -97,9 +97,8 @@ const MasterListRecordsPage = () => {
   navigatorContext.setSelectedKey("cdc-master-list-of-records");
   return (
     <>
+      <PageHeader title="Master List of Records"></PageHeader>
       <div className="base-container">
-        <PageHeader title="Master List of Records"></PageHeader>
-
         <Table
           bordered
           columns={column}

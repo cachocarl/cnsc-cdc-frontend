@@ -46,13 +46,13 @@ const ApproveRequestDocumentInfoPage = () => {
   navigatorContext.setSelectedKey("approve-request-document-info");
   return (
     <>
+      <PageHeader
+        title="List of Approve Forms Requests"
+        subTitle="View List of my Request"
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title="List of Approve Forms Requests"
-          subTitle="View List of my Request"
-        ></PageHeader>
-        <br></br>
         <Table
+          bordered
           columns={column}
           dataSource={dataSource}
           onRow={(record, rowIndex) => {

@@ -72,12 +72,11 @@ const ReviewExternalDocumentPage = () => {
 
   return (
     <>
+      <PageHeader
+        title="My External Document Request List"
+        subTitle="View List of my Request"
+      ></PageHeader>
       <div className="base-container">
-        <PageHeader
-          title="My External Document Request List"
-          subTitle="View List of my Request"
-        ></PageHeader>
-        <br></br>
         <Table
           bordered
           columns={column}

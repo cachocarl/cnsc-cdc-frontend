@@ -35,8 +35,8 @@ const ArchivePage = () => {
 
   return (
     <>
+      <PageHeader title="Archived Documents"></PageHeader>
       <div className="base-container">
-        <PageHeader title="Archived Documents"></PageHeader>
         <Table
           bordered
           columns={column}
