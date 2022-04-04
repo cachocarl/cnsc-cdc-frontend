@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import { Input, Button, PageHeader, Table, Tag, Space } from "antd";
+import { Input, Button, PageHeader, Table, Tag, Row, Col } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import NavigatorContext from "../../../../service/context/NavigatorContext";
 import useDrawerVisibility from "../../../../service/hooks/useDrawerVisibility";
 import UserInternalDrawer from "../../../component/drawers/internalDrawer/user/UserInternalDrawer";
 
-const { Search } = Input;
 const dataSource = [
   {
     docinfotitle: "Sample Document Change Request #1",
@@ -90,16 +89,9 @@ const InternalDocumentPage = () => {
             </Button>,
           ]}
         ></PageHeader>
-
-        <Space justify="right">
-          <Search
-            placeholder="input search text"
-            style={{ width: 250, margin: 18 }}
-            allowClear
-          />
-        </Space>
         <br></br>
         <Table
+          bordered
           columns={column}
           dataSource={dataSource}
           onRow={(record, rowIndex) => {
@@ -108,6 +100,21 @@ const InternalDocumentPage = () => {
                 view.setVisible(true);
               }, // double click row
             };
+          }}
+          scroll={{ x: 1200 }}
+          title={(c) => {
+            return (
+              <Input.Group>
+                <Row justify="space-between">
+                  <Col span={12}>
+                    <Input.Search addonBefore="COLLEGE/DEPARTMENT/OFFICE:" />
+                  </Col>
+                  <Col>
+                    <Input.Search addonBefore="As of:" />
+                  </Col>
+                </Row>
+              </Input.Group>
+            );
           }}
         />
 

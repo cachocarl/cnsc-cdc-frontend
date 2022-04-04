@@ -18,15 +18,15 @@ import UserRdiDrawer from "../../../component/drawers/rdiDrawer/user/UserRdiDraw
 
 const dataSource = [
   {
-    filecode: "CNSC-SP-QMS-01",
-    filename: "Document Information Change Request-DICR",
-    docformat: "E",
-    doctype: "C",
-    activeperiod: "sample date",
-    activelocation: "sample location",
-    retnperiod: "sample ret'nperiod",
-    archiveloc: "sample archive",
-    remarks: "astig",
+    filecode: "CNSC-PM-QMS-01",
+    filename: "Policy Manual (QMS)",
+    docformat: "p",
+    doctype: "NC",
+    activeperiod: "3",
+    activelocation: "Motorpool",
+    retnperiod: "N/A",
+    archiveloc: "N/A",
+    remarks: "N/A",
   },
   {
     filecode: "CNSC-SP-QMS-01",
@@ -97,7 +97,8 @@ const column = [
       <Space>
         <Tooltip title="Edit">
           <Button
-            icon={<EditOutlined />} /* onClick={() => view.setVisible(true)}*/
+            onClick={<UserRdiDrawer.ViewRdiDrawer />}
+            icon={<EditOutlined />} /**/
           />
         </Tooltip>
       </Space>
@@ -108,9 +109,7 @@ const column = [
 const UserMasterListRecordsPage = () => {
   const navigatorContext = useContext(NavigatorContext);
   navigatorContext.setSelectedKey("user-master-list-records");
-
   const { add, view /*edit*/ } = useDrawerVisibility();
-
   return (
     <>
       <div className="base-container">
